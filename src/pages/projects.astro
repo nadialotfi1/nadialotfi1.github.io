@@ -3,6 +3,46 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE } from '../consts';
+import { url } from '../utils/paths';
+
+const projects = [
+	{
+		title: 'Oscillometric Blood Pressure Monitoring System',
+		category: 'Biomedical Instrumentation',
+		description:
+			'Designed an instrumentation system for non-invasive blood pressure measurement using analog circuitry and physiological signal processing.',
+		skills: ['Python', 'Signal Processing', 'Analog Circuits', 'Instrumentation'],
+		image: null,
+		link: '/projects/blood-pressure',
+	},
+	{
+		title: 'Bicycle Caliper Brake Design',
+		category: 'Mechanical Design',
+		description:
+			'Designed, optimized, manufactured, and tested a lightweight bicycle braking system using simulation and iterative prototyping.',
+		skills: ['FEA', 'Topology Optimization', 'CAD', 'Prototyping'],
+		image: null,
+		link: '/projects/bicycle-brake',
+	},
+	{
+		title: 'Once Upon a Tile',
+		category: 'Robotics + Accessible Design',
+		description:
+			'An interactive robotics system designed around accessible and intuitive creative learning.',
+		skills: ['Robotics', 'Prototyping', 'Accessible Design'],
+		image: null,
+		link: '/projects/once-upon-a-tile',
+	},
+	{
+		title: 'Legacy PopUp Display',
+		category: 'Product Design',
+		description:
+			'A portable modular exhibition system designed to protect and present historical materials.',
+		skills: ['CAD', 'Fabrication', 'Product Design'],
+		image: null,
+		link: '/projects/legacy-popup',
+	},
+];
 ---
 
 <!doctype html>
@@ -10,7 +50,7 @@ import { SITE_TITLE } from '../consts';
 	<head>
 		<BaseHead
 			title={`Projects | ${SITE_TITLE}`}
-			description="Selected engineering, biomedical, robotics, and design projects."
+			description="Selected engineering, biomedical, and design projects."
 		/>
 
 		<style>
@@ -24,14 +64,9 @@ import { SITE_TITLE } from '../consts';
 				min-height: 100vh;
 				background:
 					radial-gradient(
-						ellipse at 18% 4%,
-						rgba(49, 70, 105, 0.24) 0%,
-						transparent 48%
-					),
-					radial-gradient(
-						ellipse at 82% 32%,
-						rgba(35, 50, 78, 0.14) 0%,
-						transparent 45%
+						ellipse at 18% 5%,
+						rgba(49, 70, 105, 0.25),
+						transparent 50%
 					),
 					#050814;
 			}
@@ -42,10 +77,6 @@ import { SITE_TITLE } from '../consts';
 				padding: 4.5rem 0 6rem;
 			}
 
-			/* =========================
-			   PAGE HEADER
-			   ========================= */
-
 			.page-header {
 				padding-bottom: 2rem;
 				border-bottom: 1px solid #334155;
@@ -53,8 +84,6 @@ import { SITE_TITLE } from '../consts';
 
 			.page-header h1 {
 				margin: 0;
-				padding: 0;
-				border: none;
 				font-family: var(--font-serif);
 				font-size: clamp(2rem, 3vw, 2.6rem);
 				font-weight: 700;
@@ -62,88 +91,50 @@ import { SITE_TITLE } from '../consts';
 			}
 
 			.page-header p {
-				max-width: 720px;
+				max-width: 650px;
 				margin: 1rem 0 0;
 				font-size: 1rem;
 				line-height: 1.7;
 				color: var(--color-text-muted);
 			}
 
-			/* =========================
-			   PROJECT
-			   ========================= */
-
-			.project {
-				padding: 4.5rem 0;
-				border-bottom: 1px solid #334155;
+			.project-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1.5rem;
+				padding-top: 3rem;
 			}
 
-			.project:last-child {
-				border-bottom: none;
-			}
-
-			.project-top {
+			.project-card {
 				display: flex;
-				align-items: end;
-				justify-content: space-between;
-				gap: 2rem;
-				margin-bottom: 2rem;
-			}
-
-			.project-label {
-				display: block;
-				margin-bottom: 0.65rem;
-				font-size: 0.72rem;
-				font-weight: 700;
-				letter-spacing: 0.13em;
-				text-transform: uppercase;
-				color: #80b7f4;
-			}
-
-			.project-title {
-				margin: 0;
-				padding: 0;
-				border: none;
-				font-family: var(--font-serif);
-				font-size: clamp(1.7rem, 2.5vw, 2.2rem);
-				line-height: 1.25;
-				color: var(--color-text-main);
-			}
-
-			.project-year {
-				margin: 0;
-				font-size: 0.85rem;
-				color: #64748b;
-				white-space: nowrap;
-			}
-
-			/* =========================
-			   HERO VISUAL
-			   ========================= */
-
-			.hero-visual {
-				width: 100%;
-				aspect-ratio: 16 / 7;
+				flex-direction: column;
 				overflow: hidden;
-				margin-bottom: 2.5rem;
 				border: 1px solid #334155;
 				border-radius: 16px;
+				background: rgba(15, 23, 42, 0.45);
+			}
+
+			.project-image {
+				aspect-ratio: 16 / 9;
+				width: 100%;
+				overflow: hidden;
 				background:
 					linear-gradient(
 						135deg,
 						#172033,
 						#0b1020
 					);
+				border-bottom: 1px solid #334155;
 			}
 
-			.hero-visual img {
+			.project-image img {
 				width: 100%;
 				height: 100%;
-				display: block;
 				object-fit: cover;
+				display: block;
 			}
 
-			.visual-placeholder {
+			.image-placeholder {
 				width: 100%;
 				height: 100%;
 				display: flex;
@@ -156,159 +147,66 @@ import { SITE_TITLE } from '../consts';
 				color: #64748b;
 			}
 
-			/* =========================
-			   TEXT GRID
-			   ========================= */
-
-			.project-info-grid {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 2.5rem 4rem;
+			.project-content {
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+				padding: 1.5rem;
 			}
 
-			.project-section h3 {
+			.project-category {
+				margin-bottom: 0.65rem;
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.13em;
+				text-transform: uppercase;
+				color: #80b7f4;
+			}
+
+			.project-card h2 {
+				display: block;
 				margin: 0 0 0.8rem;
+				padding: 0;
+				border: none;
 				font-family: var(--font-serif);
-				font-size: 1.2rem;
+				font-size: 1.4rem;
 				color: var(--color-text-main);
 			}
 
-			.project-section p {
-				margin: 0;
-				font-size: 0.94rem;
-				line-height: 1.75;
+			.project-description {
+				margin: 0 0 1.25rem;
+				font-size: 0.92rem;
+				line-height: 1.7;
 				color: var(--color-text-muted);
 			}
-
-			/* =========================
-			   SKILLS
-			   ========================= */
 
 			.skills {
 				display: flex;
 				flex-wrap: wrap;
-				gap: 0.5rem;
+				gap: 0.45rem;
+				margin-bottom: 1.5rem;
 			}
 
 			.skill {
-				padding: 0.35rem 0.7rem;
+				padding: 0.3rem 0.65rem;
 				border: 1px solid #334155;
 				border-radius: 999px;
 				font-size: 0.72rem;
 				color: #cbd5e1;
 			}
 
-			/* =========================
-			   RESULTS
-			   ========================= */
-
-			.results {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 1rem;
-				margin-top: 2.5rem;
-			}
-
-			.result-card {
-				padding: 1.3rem;
-				border: 1px solid #334155;
-				border-radius: 12px;
-				background: rgba(15, 23, 42, 0.35);
-			}
-
-			.result-card strong {
-				display: block;
-				margin-bottom: 0.35rem;
-				font-family: var(--font-serif);
-				font-size: 1.65rem;
-				color: #80b7f4;
-			}
-
-			.result-card span {
-				display: block;
-				font-size: 0.78rem;
-				line-height: 1.5;
-				color: var(--color-text-muted);
-			}
-
-			/* =========================
-			   GALLERY
-			   ========================= */
-
-			.gallery-title {
-				margin: 2.75rem 0 1rem;
-				font-family: var(--font-serif);
-				font-size: 1.2rem;
-				color: var(--color-text-main);
-			}
-
-			.gallery {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				gap: 1rem;
-			}
-
-			.gallery-item {
-				aspect-ratio: 4 / 3;
-				overflow: hidden;
-				border: 1px solid #334155;
-				border-radius: 12px;
-				background: #0b1020;
-			}
-
-			.gallery-item img {
-				width: 100%;
-				height: 100%;
-				display: block;
-				object-fit: cover;
-			}
-
-			.gallery-placeholder {
-				width: 100%;
-				height: 100%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				padding: 1rem;
-				text-align: center;
-				font-size: 0.72rem;
-				font-weight: 700;
-				letter-spacing: 0.1em;
-				text-transform: uppercase;
-				color: #64748b;
-			}
-
-			/* =========================
-			   REPORT BUTTON
-			   ========================= */
-
-			.project-actions {
-				margin-top: 1.5rem;
-			}
-
-			.report-link {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				min-height: 42px;
-				padding: 0.55rem 1rem;
-				border: 1px solid #334155;
-				border-radius: 999px;
-				font-size: 0.82rem;
+			.view-project {
+				margin-top: auto;
+				font-size: 0.88rem;
 				font-weight: 600;
 				color: #80b7f4;
 				text-decoration: none;
 			}
 
-			.report-link:hover {
-				border-color: #80b7f4;
+			.view-project:hover {
 				color: #a7cffb;
 				text-decoration: none;
 			}
-
-			/* =========================
-			   RESPONSIVE
-			   ========================= */
 
 			@media (max-width: 800px) {
 				.projects-inner {
@@ -316,12 +214,7 @@ import { SITE_TITLE } from '../consts';
 					padding-right: 2rem;
 				}
 
-				.project-info-grid {
-					grid-template-columns: 1fr;
-					gap: 2rem;
-				}
-
-				.results {
+				.project-grid {
 					grid-template-columns: 1fr;
 				}
 			}
@@ -329,26 +222,6 @@ import { SITE_TITLE } from '../consts';
 			@media (max-width: 600px) {
 				.projects-inner {
 					padding: 3rem 1rem 4rem;
-				}
-
-				.project {
-					padding: 3.5rem 0;
-				}
-
-				.project-top {
-					display: block;
-				}
-
-				.project-year {
-					margin-top: 0.75rem;
-				}
-
-				.hero-visual {
-					aspect-ratio: 4 / 3;
-				}
-
-				.gallery {
-					grid-template-columns: 1fr;
 				}
 			}
 		</style>
@@ -364,448 +237,53 @@ import { SITE_TITLE } from '../consts';
 					<section class="page-header">
 						<h1>Projects</h1>
 						<p>
-							Selected engineering, biomedical, and design work.
-							Each project is shown through the problem, approach,
-							technical methods, results, and visual development process.
+							Selected engineering, biomedical, and design work —
+							from early concepts and analysis through prototyping and testing.
 						</p>
 					</section>
 
-					<!-- ========================================
-					     PROJECT 1: BLOOD PRESSURE
-					     ======================================== -->
+					<div class="project-grid">
+						{projects.map((project) => (
+							<article class="project-card">
 
-					<section class="project">
-						<div class="project-top">
-							<div>
-								<span class="project-label">
-									Biomedical Instrumentation
-								</span>
-
-								<h2 class="project-title">
-									Oscillometric Blood Pressure Monitoring System
-								</h2>
-							</div>
-
-							<p class="project-year">2026</p>
-						</div>
-
-						<div class="hero-visual">
-							<div class="visual-placeholder">
-								Add Main Blood Pressure Image
-							</div>
-						</div>
-
-						<div class="project-info-grid">
-							<div class="project-section">
-								<h3>Problem</h3>
-								<p>
-									Develop a system capable of extracting meaningful
-									physiological information from cuff-pressure signals
-									during non-invasive blood pressure measurement.
-								</p>
-							</div>
-
-							<div class="project-section">
-								<h3>Approach</h3>
-								<p>
-									Built an instrumentation chain using pressure sensing,
-									instrumentation amplification, high-pass and low-pass
-									filtering, and Python-based analysis of the resulting
-									oscillometric signal.
-								</p>
-							</div>
-
-							<div class="project-section">
-								<h3>Technical Skills</h3>
-
-								<div class="skills">
-									<span class="skill">Python</span>
-									<span class="skill">Signal Processing</span>
-									<span class="skill">Analog Circuits</span>
-									<span class="skill">Instrumentation</span>
-									<span class="skill">Frequency Analysis</span>
-									<span class="skill">Peak Detection</span>
+								<div class="project-image">
+									{project.image ? (
+										<img src={url(project.image)} alt={project.title} />
+									) : (
+										<div class="image-placeholder">
+											Add Project Image
+										</div>
+									)}
 								</div>
-							</div>
 
-							<div class="project-section">
-								<h3>Results</h3>
-								<p>
-									The system successfully isolated arterial oscillations
-									and used the oscillation envelope to estimate systolic,
-									mean arterial, and diastolic pressure.
-								</p>
-							</div>
-						</div>
+								<div class="project-content">
+									<span class="project-category">
+										{project.category}
+									</span>
 
-						<div class="results">
-							<div class="result-card">
-								<strong>135.7</strong>
-								<span>Estimated systolic pressure, mmHg</span>
-							</div>
+									<h2>{project.title}</h2>
 
-							<div class="result-card">
-								<strong>89.3</strong>
-								<span>Estimated mean arterial pressure, mmHg</span>
-							</div>
+									<p class="project-description">
+										{project.description}
+									</p>
 
-							<div class="result-card">
-								<strong>70.4</strong>
-								<span>Estimated diastolic pressure, mmHg</span>
-							</div>
-						</div>
+									<div class="skills">
+										{project.skills.map((skill) => (
+											<span class="skill">{skill}</span>
+										))}
+									</div>
 
-						<h3 class="gallery-title">Gallery</h3>
-
-						<div class="gallery">
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Circuit Schematic
+									<a
+										href={url(project.link)}
+										class="view-project"
+									>
+										View Project →
+									</a>
 								</div>
-							</div>
 
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Raw + Filtered Signals
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Frequency-Domain Plot
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Blood Pressure Results Plot
-								</div>
-							</div>
-						</div>
-
-						<div class="project-actions">
-							<a
-								href="/projects/blood-pressure/report.pdf"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="report-link"
-							>
-								Technical Report ↗
-							</a>
-						</div>
-					</section>
-
-					<!-- ========================================
-					     PROJECT 2: BICYCLE BRAKE
-					     ======================================== -->
-
-					<section class="project">
-						<div class="project-top">
-							<div>
-								<span class="project-label">
-									Mechanical Design
-								</span>
-
-								<h2 class="project-title">
-									Bicycle Caliper Brake Design
-								</h2>
-							</div>
-
-							<p class="project-year">2026</p>
-						</div>
-
-						<div class="hero-visual">
-							<div class="visual-placeholder">
-								Add Main Brake CAD or Prototype Image
-							</div>
-						</div>
-
-						<div class="project-info-grid">
-							<div class="project-section">
-								<h3>Problem</h3>
-								<p>
-									Design and manufacture a lightweight bicycle caliper
-									brake capable of meeting structural and braking
-									requirements while remaining practical to install and use.
-								</p>
-							</div>
-
-							<div class="project-section">
-								<h3>Approach</h3>
-								<p>
-									Used analytical modeling, CAD, finite element analysis,
-									topology optimization, SLS prototyping, and physical
-									testing to iteratively improve stiffness, stress
-									distribution, mass, and braking performance.
-								</p>
-							</div>
-
-							<div class="project-section">
-								<h3>Technical Skills</h3>
-
-								<div class="skills">
-									<span class="skill">SolidWorks</span>
-									<span class="skill">FEA</span>
-									<span class="skill">Topology Optimization</span>
-									<span class="skill">Mechanical Design</span>
-									<span class="skill">Prototyping</span>
-									<span class="skill">Design Testing</span>
-								</div>
-							</div>
-
-							<div class="project-section">
-								<h3>Results</h3>
-								<p>
-									The final design met the established braking and
-									structural targets while substantially reducing right
-									caliper deformation through iterative redesign.
-								</p>
-							</div>
-						</div>
-
-						<div class="results">
-							<div class="result-card">
-								<strong>96 g</strong>
-								<span>Final brake system mass</span>
-							</div>
-
-							<div class="result-card">
-								<strong>~8 → ~3 mm</strong>
-								<span>Right-caliper FEA deflection reduction</span>
-							</div>
-
-							<div class="result-card">
-								<strong>13.4 m</strong>
-								<span>Rescaled dry braking distance at 25 km/h</span>
-							</div>
-						</div>
-
-						<h3 class="gallery-title">Gallery</h3>
-
-						<div class="gallery">
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									CAD Design
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Topology Optimization
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									FEA Stress / Deflection Plot
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Final Physical Prototype
-								</div>
-							</div>
-						</div>
-
-						<div class="project-actions">
-							<a
-								href="/projects/bicycle-brake/report.pdf"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="report-link"
-							>
-								Design Report ↗
-							</a>
-						</div>
-					</section>
-
-					<!-- ========================================
-					     PROJECT 3: ONCE UPON A TILE
-					     ======================================== -->
-
-					<section class="project">
-						<div class="project-top">
-							<div>
-								<span class="project-label">
-									Robotics + Accessible Design
-								</span>
-
-								<h2 class="project-title">
-									Once Upon a Tile
-								</h2>
-							</div>
-
-							<p class="project-year">2025</p>
-						</div>
-
-						<div class="hero-visual">
-							<div class="visual-placeholder">
-								Add Main Project Photo
-							</div>
-						</div>
-
-						<div class="project-info-grid">
-							<div class="project-section">
-								<h3>Problem</h3>
-								<p>
-									Design an accessible creative-learning experience
-									for adults with cognitive and developmental disabilities.
-								</p>
-							</div>
-
-							<div class="project-section">
-								<h3>Approach</h3>
-								<p>
-									Developed an interactive robotics system using modular
-									whiteboard puzzle tiles and a robot capable of interpreting
-									and following user-drawn trajectories.
-								</p>
-							</div>
-
-							<div class="project-section">
-								<h3>Technical Skills</h3>
-
-								<div class="skills">
-									<span class="skill">Robotics</span>
-									<span class="skill">Prototyping</span>
-									<span class="skill">Accessible Design</span>
-									<span class="skill">Human-Centered Design</span>
-								</div>
-							</div>
-
-							<div class="project-section">
-								<h3>Results</h3>
-								<p>
-									[Add concise outcome here: testing results, user feedback,
-									final behavior, or design improvements.]
-								</p>
-							</div>
-						</div>
-
-						<h3 class="gallery-title">Gallery</h3>
-
-						<div class="gallery">
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Final System
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Robot / Hardware
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Tile Interaction
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Testing / Prototype
-								</div>
-							</div>
-						</div>
-					</section>
-
-					<!-- ========================================
-					     PROJECT 4: LEGACY POPUP
-					     ======================================== -->
-
-					<section class="project">
-						<div class="project-top">
-							<div>
-								<span class="project-label">
-									Product + Exhibition Design
-								</span>
-
-								<h2 class="project-title">
-									Legacy PopUp Display
-								</h2>
-							</div>
-
-							<p class="project-year">2025</p>
-						</div>
-
-						<div class="hero-visual">
-							<div class="visual-placeholder">
-								Add Main Display Photo
-							</div>
-						</div>
-
-						<div class="project-info-grid">
-							<div class="project-section">
-								<h3>Problem</h3>
-								<p>
-									Create a portable exhibition system that could safely
-									store and present historical materials while supporting
-									the Shorefront Legacy Center’s public-facing work.
-								</p>
-							</div>
-
-							<div class="project-section">
-								<h3>Approach</h3>
-								<p>
-									Designed modular protective display components for
-									both two-dimensional and three-dimensional media,
-									balancing portability, durability, presentation,
-									and ease of setup.
-								</p>
-							</div>
-
-							<div class="project-section">
-								<h3>Technical Skills</h3>
-
-								<div class="skills">
-									<span class="skill">CAD</span>
-									<span class="skill">Fabrication</span>
-									<span class="skill">Product Design</span>
-									<span class="skill">Prototyping</span>
-								</div>
-							</div>
-
-							<div class="project-section">
-								<h3>Results</h3>
-								<p>
-									[Add short final outcome here: final prototype,
-									client feedback, portability improvement, or
-									testing result.]
-								</p>
-							</div>
-						</div>
-
-						<h3 class="gallery-title">Gallery</h3>
-
-						<div class="gallery">
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Final Display
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									CAD
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Fabrication
-								</div>
-							</div>
-
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Installed / In Use
-								</div>
-							</div>
-						</div>
-					</section>
+							</article>
+						))}
+					</div>
 
 				</div>
 			</div>
