@@ -3,184 +3,295 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE } from '../consts';
-import AuthorLink from '../components/AuthorLink.astro';
-import bibFileRaw from '../data/publications.bib?raw';
+import { url } from '../utils/paths';
 
-interface Author {
-    first: string;
-    last: string;
-}
-
-interface BibEntry {
-    type: string;
-    key: string;
-    fields: Record<string, string>;
-    authors: Author[];
-}
-
-function parseBibTeX(input: string): BibEntry[] {
-    const entries: BibEntry[] = [];
-    const rawEntries = input.split(/@(\w+)\s*\{/g).slice(1);
-
-    for (let i = 0; i < rawEntries.length; i += 2) {
-        const type = rawEntries[i].trim();
-        const body = rawEntries[i+1];
-        if (!body) continue;
-
-        const keyMatch = body.match(/^\s*([^,]+),/);
-        const key = keyMatch ? keyMatch[1].trim() : 'unknown';
-        
-        const fields: Record<string, string> = { title: "Untitled", year: "0000" };
-        
-        const fieldRegex = /(\w+)\s*=\s*(?:\{((?:[^{}]|{[^{}]*})*)\}|"((?:[^"]|\\")*)"|(\d+))/g;
-        
-        let match;
-        while ((match = fieldRegex.exec(body)) !== null) {
-            const fieldKey = match[1].toLowerCase();
-            const val = match[2] || match[3] || match[4] || "";
-            fields[fieldKey] = val.replace(/\s+/g, ' ').trim();
-        }
-
-        let authors: Author[] = [];
-        if (fields.author) {
-            authors = fields.author.split(/\s+and\s+/i).map(str => {
-                const parts = str.split(',');
-                if (parts.length > 1) {
-                    return { first: parts[1].trim(), last: parts[0].trim() };
-                } else {
-                    const names = str.trim().split(' ');
-                    const last = names.pop() || "";
-                    const first = names.join(' ');
-                    return { first, last };
-                }
-            });
-        }
-
-        entries.push({ type, key, fields, authors });
-    }
-    return entries;
-}
-
-const publications = parseBibTeX(bibFileRaw).sort((a, b) => {
-    return (parseInt(b.fields.year) || 0) - (parseInt(a.fields.year) || 0);
-});
-
-const formatAuthor = (auth: Author) => {
-    return auth.first ? `${auth.first} ${auth.last}` : auth.last;
-};
+const research = [
+	{
+		title: 'Mitochondrial Transplantation & Diabetic Endothelial Dysfunction',
+		lab: 'Bin Jiang Lab',
+		institution: 'Northwestern University',
+		description:
+			'Investigating mitochondrial transplantation as a potential therapeutic strategy for impaired endothelial function in diabetes.',
+		skills: ['Cell Culture', 'Histology', 'ImageJ', 'Python', 'Experimental Design'],
+		image: null,
+		link: '/research/mitochondrial-transplantation',
+	},
+	{
+		title: 'Low-Field MRI & T1 Relaxometry',
+		lab: 'Magnetic Resonance Technology Discovery Lab',
+		institution: 'Northwestern University',
+		description:
+			'Quantitative analysis of gadolinium contrast phantoms using low-field MRI and T1 relaxometry.',
+		skills: ['MRI', 'MATLAB', 'qMRLab', 'Signal Analysis'],
+		image: null,
+		link: '/research/low-field-mri',
+	},
+];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Publications | ${SITE_TITLE}`} description="Academic Publications" />
+		<BaseHead
+			title={`Research | ${SITE_TITLE}`}
+			description="Research experience and selected biomedical research work."
+		/>
+
+		<style>
+			main {
+				max-width: none;
+				padding: 0;
+				background: #050814;
+			}
+
+			.research-page {
+				min-height: 100vh;
+				background:
+					radial-gradient(
+						ellipse at 18% 5%,
+						rgba(49, 70, 105, 0.25),
+						transparent 50%
+					),
+					#050814;
+			}
+
+			.research-inner {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 4.5rem 0 6rem;
+			}
+
+			.page-header {
+				padding-bottom: 2rem;
+				border-bottom: 1px solid #334155;
+			}
+
+			.page-header h1 {
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: clamp(2rem, 3vw, 2.6rem);
+				font-weight: 700;
+				color: var(--color-text-main);
+			}
+
+			.page-header p {
+				max-width: 700px;
+				margin: 1rem 0 0;
+				font-size: 1rem;
+				line-height: 1.7;
+				color: var(--color-text-muted);
+			}
+
+			.research-list {
+				padding-top: 3rem;
+			}
+
+			.research-item {
+				display: grid;
+				grid-template-columns: 320px minmax(0, 1fr);
+				gap: 3rem;
+				padding: 2.5rem 0;
+				border-bottom: 1px solid #334155;
+			}
+
+			.research-item:first-child {
+				padding-top: 0;
+			}
+
+			.research-image {
+				width: 100%;
+				aspect-ratio: 4 / 3;
+				overflow: hidden;
+				border: 1px solid #334155;
+				border-radius: 14px;
+				background:
+					linear-gradient(
+						135deg,
+						#172033,
+						#0b1020
+					);
+			}
+
+			.research-image img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+			}
+
+			.image-placeholder {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 0.72rem;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: #64748b;
+			}
+
+			.research-lab {
+				display: block;
+				margin-bottom: 0.7rem;
+				font-size: 0.72rem;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: #80b7f4;
+			}
+
+			.research-item h2 {
+				display: block;
+				margin: 0 0 0.5rem;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: 1.55rem;
+				line-height: 1.35;
+				color: var(--color-text-main);
+			}
+
+			.institution {
+				margin: 0 0 1rem;
+				font-size: 0.85rem;
+				color: #64748b;
+			}
+
+			.research-description {
+				max-width: 650px;
+				margin: 0 0 1.25rem;
+				font-size: 0.95rem;
+				line-height: 1.75;
+				color: var(--color-text-muted);
+			}
+
+			.skills {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.45rem;
+				margin-bottom: 1.4rem;
+			}
+
+			.skill {
+				padding: 0.3rem 0.65rem;
+				border: 1px solid #334155;
+				border-radius: 999px;
+				font-size: 0.72rem;
+				color: #cbd5e1;
+			}
+
+			.view-research {
+				font-size: 0.88rem;
+				font-weight: 600;
+				color: #80b7f4;
+				text-decoration: none;
+			}
+
+			.view-research:hover {
+				color: #a7cffb;
+				text-decoration: none;
+			}
+
+			@media (max-width: 800px) {
+				.research-inner {
+					padding-left: 2rem;
+					padding-right: 2rem;
+				}
+
+				.research-item {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+
+				.research-image {
+					max-width: 500px;
+				}
+			}
+
+			@media (max-width: 600px) {
+				.research-inner {
+					padding: 3rem 1rem 4rem;
+				}
+			}
+		</style>
 	</head>
+
 	<body>
 		<Header />
+
 		<main>
-			<h1>Publications</h1>
-			<p>Selected peer-reviewed publications.</p>
-			
-			<div class="publication-list">
-				{publications.map((entry) => (
-					<article class="publication-item">
-						<span class="pub-title">
-                            {entry.fields.title.replace(/[{}]/g, '')}
-                        </span>
-						
-						<div class="pub-authors">
-							{entry.authors && entry.authors.map((auth, i) => (
-								<>
-                                    <AuthorLink nameOrSlug={formatAuthor(auth)} />
-                                    {i < entry.authors.length - 1 ? ', ' : ''}
-                                </>
-							))}
-						</div>
-						
-						<div class="pub-venue">
-                            {
-                                (entry.fields.journal || 
-                                entry.fields.booktitle || 
-                                entry.fields.publisher || 
-                                entry.fields.school || 
-                                "Preprint").replace(/[{}]/g, '')
-                            }
-                            {entry.fields.year && <span> ({entry.fields.year})</span>}
-                        </div>
+			<div class="research-page">
+				<div class="research-inner">
 
-						<div class="pub-links" style="margin-top: 0.5rem; font-size: 0.9rem;">
-							{entry.fields.pdf ? (
-                                <a href={entry.fields.pdf} target="_blank" class="btn-outline" style="padding: 2px 6px; font-size: 0.8rem;">
-                                    PDF
-                                </a>
-                            ) : entry.fields.url ? (
-                                <a href={entry.fields.url} target="_blank" class="btn-outline" style="padding: 2px 6px; font-size: 0.8rem;">
-                                    URL
-                                </a>
-                            ) : null}
-                            
-							{entry.fields.doi && <a href={`https://doi.org/${entry.fields.doi}`} target="_blank" style="margin-left: 0.5rem;">DOI</a>}
-                            
-                            <details name="bibtex" style="display: inline-block; margin-left: 0.5rem;">
-                                <summary style="font-size: 0.8rem; cursor: pointer; color: var(--color-accent);">BibTeX</summary>
-                                <div class="bibtex-panel" style="position: absolute; background-color: var(--color-bg-offset); border: 1px solid var(--color-border); color: var(--color-text-main); padding: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 8px; z-index: 10; width: 300px; max-height: 250px; overflow-y: auto; overflow-x: auto; margin-top: 0.5rem;">
-                                    <div style="display: flex; justify-content: flex-end; margin-bottom: 8px;">
-                                        <button class="copy-bibtex-btn" data-bibtex={`@${entry.type}{${entry.key},\n  title={${entry.fields.title}},\n  author={${entry.fields.author || ''}},\n  year={${entry.fields.year}}\n}`} style="background: none; border: none; cursor: pointer; color: var(--color-text-muted); font-size: 0.75rem; display: flex; align-items: center; gap: 4px; padding: 0;">
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                                            <span class="copy-text">Copy</span>
-                                        </button>
-                                    </div>
-                                    <pre style="margin: 0; font-size: 0.7rem; white-space: pre-wrap; word-break: break-all;">{`@${entry.type}{${entry.key},\n  title={${entry.fields.title}},\n  author={${entry.fields.author || ''}},\n  year={${entry.fields.year}}\n}`}</pre>
-                                </div>
-                            </details>
-						</div>
-					</article>
-				))}
+					<section class="page-header">
+						<h1>Research</h1>
 
-                {publications.length === 0 && (
-                    <p>No publications found.</p>
-                )}
+						<p>
+							My research interests center on biomedical engineering,
+							experimental systems, and technologies that can translate
+							from the lab into meaningful real-world applications.
+						</p>
+					</section>
+
+					<div class="research-list">
+
+						{research.map((item) => (
+							<article class="research-item">
+
+								<div class="research-image">
+									{item.image ? (
+										<img src={url(item.image)} alt={item.title} />
+									) : (
+										<div class="image-placeholder">
+											Add Research Image
+										</div>
+									)}
+								</div>
+
+								<div class="research-content">
+
+									<span class="research-lab">
+										{item.lab}
+									</span>
+
+									<h2>{item.title}</h2>
+
+									<p class="institution">
+										{item.institution}
+									</p>
+
+									<p class="research-description">
+										{item.description}
+									</p>
+
+									<div class="skills">
+										{item.skills.map((skill) => (
+											<span class="skill">{skill}</span>
+										))}
+									</div>
+
+									<a
+										href={url(item.link)}
+										class="view-research"
+									>
+										View Research →
+									</a>
+
+								</div>
+
+							</article>
+						))}
+
+					</div>
+
+				</div>
 			</div>
 		</main>
+
 		<Footer />
-
-		<script>
-            // Ensure only one BibTeX panel is open at a time (fallback for browsers without 'name' attr support)
-			const detailsElements = document.querySelectorAll('details[name="bibtex"]');
-			detailsElements.forEach(details => {
-				details.addEventListener('toggle', () => {
-					if (details.hasAttribute('open')) {
-						detailsElements.forEach(other => {
-							if (other !== details && other.hasAttribute('open')) {
-								other.removeAttribute('open');
-							}
-						});
-					}
-				});
-			});
-
-            // Copy to clipboard functionality
-			const copyBtns = document.querySelectorAll('.copy-bibtex-btn');
-			copyBtns.forEach(btn => {
-				btn.addEventListener('click', async (e) => {
-					e.preventDefault(); // prevent details from toggling if button triggers
-					const bibtex = btn.getAttribute('data-bibtex');
-					const textSpan = btn.querySelector('.copy-text');
-					if (bibtex && textSpan) {
-						try {
-							await navigator.clipboard.writeText(bibtex);
-							textSpan.textContent = 'Copied!';
-                            btn.setAttribute('style', 'background: none; border: none; cursor: pointer; color: var(--color-accent); font-size: 0.75rem; display: flex; align-items: center; gap: 4px; padding: 0;');
-							setTimeout(() => {
-								textSpan.textContent = 'Copy';
-                                btn.setAttribute('style', 'background: none; border: none; cursor: pointer; color: var(--color-text-muted); font-size: 0.75rem; display: flex; align-items: center; gap: 4px; padding: 0;');
-							}, 2000);
-						} catch (err) {
-							console.error('Failed to copy', err);
-						}
-					}
-				});
-			});
-		</script>
 	</body>
 </html>
