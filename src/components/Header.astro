@@ -66,13 +66,12 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 <style>
 	header {
 		margin: 0;
-		padding: 0 1em;
-		background: #050814 !important;
+		padding: 0 2rem;
+		background-color: var(--color-bg-header);
 		position: sticky;
 		top: 0;
 		z-index: 100;
 	}
-
 	header::after {
 		content: "";
 		position: absolute;
@@ -87,9 +86,9 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 	nav {
 		display: flex;
 		align-items: center;
-		max-width: var(--max-width);
+		max-width: 1420px;
 		margin: 0 auto;
-		height: 4.5rem;
+		height: 4rem;
 	}
 
 	/* Your name */
@@ -127,7 +126,7 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 	.internal-links {
 		display: flex;
 		align-items: center;
-		gap: 1.25rem;
+		gap: 1.15rem;
 		margin-left: auto;
 	}
 
