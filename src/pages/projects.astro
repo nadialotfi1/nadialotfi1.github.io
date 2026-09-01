@@ -3,223 +3,292 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE } from '../consts';
-import AuthorLink from '../components/AuthorLink.astro';
-import projectsData from '../data/projects.json';
 import { url } from '../utils/paths';
 
-const projects = projectsData.sort((a, b) => b.year - a.year);
+const projects = [
+	{
+		title: 'Oscillometric Blood Pressure Monitoring System',
+		category: 'Biomedical Instrumentation',
+		description:
+			'Designed an instrumentation system for non-invasive blood pressure measurement using analog circuitry and physiological signal processing.',
+		skills: ['Python', 'Signal Processing', 'Analog Circuits', 'Instrumentation'],
+		image: null,
+		link: '/projects/blood-pressure',
+	},
+	{
+		title: 'Bicycle Caliper Brake Design',
+		category: 'Mechanical Design',
+		description:
+			'Designed, optimized, manufactured, and tested a lightweight bicycle braking system using simulation and iterative prototyping.',
+		skills: ['FEA', 'Topology Optimization', 'CAD', 'Prototyping'],
+		image: null,
+		link: '/projects/bicycle-brake',
+	},
+	{
+		title: 'Once Upon a Tile',
+		category: 'Robotics + Accessible Design',
+		description:
+			'An interactive robotics system designed around accessible and intuitive creative learning.',
+		skills: ['Robotics', 'Prototyping', 'Accessible Design'],
+		image: null,
+		link: '/projects/once-upon-a-tile',
+	},
+	{
+		title: 'Legacy PopUp Display',
+		category: 'Product Design',
+		description:
+			'A portable modular exhibition system designed to protect and present historical materials.',
+		skills: ['CAD', 'Fabrication', 'Product Design'],
+		image: null,
+		link: '/projects/legacy-popup',
+	},
+];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Projects | ${SITE_TITLE}`} description="Research Projects" />
+		<BaseHead
+			title={`Projects | ${SITE_TITLE}`}
+			description="Selected engineering, biomedical, and design projects."
+		/>
+
 		<style>
-			.projects-section {
-				max-width: var(--max-width);
+			main {
+				max-width: none;
+				padding: 0;
+				background: #050814;
+			}
+
+			.projects-page {
+				min-height: 100vh;
+				background:
+					radial-gradient(
+						ellipse at 18% 5%,
+						rgba(49, 70, 105, 0.25),
+						transparent 50%
+					),
+					#050814;
+			}
+
+			.projects-inner {
+				max-width: 1100px;
 				margin: 0 auto;
+				padding: 4.5rem 0 6rem;
 			}
-			.projects-hero {
-				text-align: center;
-				margin-bottom: 4rem;
-				padding: 2rem 0;
+
+			.page-header {
+				padding-bottom: 2rem;
+				border-bottom: 1px solid #334155;
 			}
-			.projects-hero h1 {
+
+			.page-header h1 {
+				margin: 0;
 				font-family: var(--font-serif);
-				font-size: 3.2rem;
-				margin: 0 0 1rem 0;
+				font-size: clamp(2rem, 3vw, 2.6rem);
+				font-weight: 700;
 				color: var(--color-text-main);
-				letter-spacing: -0.02em;
-				line-height: 1.2;
 			}
-			.projects-hero p {
-				font-size: 1.15rem;
-				color: var(--color-text-muted);
-				max-width: 700px;
-				margin: 0 auto;
+
+			.page-header p {
+				max-width: 650px;
+				margin: 1rem 0 0;
+				font-size: 1rem;
 				line-height: 1.7;
+				color: var(--color-text-muted);
 			}
-			.projects-grid {
+
+			.project-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-				gap: 2.5rem;
-				margin-bottom: 4rem;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1.5rem;
+				padding-top: 3rem;
 			}
+
 			.project-card {
 				display: flex;
 				flex-direction: column;
-				background-color: var(--color-bg-offset);
-				border: 1px solid var(--color-border);
+				overflow: hidden;
+				border: 1px solid #334155;
 				border-radius: 16px;
-				overflow: hidden;
-				transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+				background: rgba(15, 23, 42, 0.45);
 			}
-			.project-card:hover {
-				transform: translateY(-6px);
-				box-shadow: var(--shadow-lg);
-				border-color: var(--color-accent);
-			}
+
 			.project-image {
-				position: relative;
-				width: 100%;
 				aspect-ratio: 16 / 9;
+				width: 100%;
 				overflow: hidden;
+				background:
+					linear-gradient(
+						135deg,
+						#172033,
+						#0b1020
+					);
+				border-bottom: 1px solid #334155;
 			}
+
 			.project-image img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
-				transition: transform 0.6s ease;
+				display: block;
 			}
-			.project-card:hover .project-image img {
-				transform: scale(1.05);
-			}
-			.project-badge {
-				position: absolute;
-				top: 1rem;
-				right: 1rem;
-				padding: 0.35rem 0.8rem;
-				background-color: var(--color-bg-header);
-				color: var(--color-text-main);
-				font-size: 0.7rem;
+
+			.image-placeholder {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 0.75rem;
 				font-weight: 700;
+				letter-spacing: 0.12em;
 				text-transform: uppercase;
-				letter-spacing: 0.1em;
-				border-radius: 20px;
-				backdrop-filter: blur(8px);
-				box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-				z-index: 10;
+				color: #64748b;
 			}
-			.project-content-wrapper {
+
+			.project-content {
 				display: flex;
 				flex-direction: column;
-				padding: 1.75rem;
 				flex: 1;
+				padding: 1.5rem;
 			}
-			.project-year {
-				font-size: 0.75rem;
-				color: var(--color-accent);
+
+			.project-category {
+				margin-bottom: 0.65rem;
+				font-size: 0.7rem;
 				font-weight: 700;
+				letter-spacing: 0.13em;
 				text-transform: uppercase;
-				letter-spacing: 0.1em;
-				margin-bottom: 0.5rem;
+				color: #80b7f4;
 			}
-			.project-card h3 {
+
+			.project-card h2 {
+				display: block;
+				margin: 0 0 0.8rem;
+				padding: 0;
+				border: none;
 				font-family: var(--font-serif);
 				font-size: 1.4rem;
-				margin: 0 0 1rem 0;
-				line-height: 1.3;
 				color: var(--color-text-main);
 			}
-			.project-card h3 a {
-				color: inherit;
-				text-decoration: none;
-			}
+
 			.project-description {
+				margin: 0 0 1.25rem;
+				font-size: 0.92rem;
+				line-height: 1.7;
 				color: var(--color-text-muted);
-				font-size: 0.95rem;
-				line-height: 1.6;
-				margin-bottom: 1.5rem;
-				flex: 1;
 			}
-			.project-meta {
+
+			.skills {
 				display: flex;
-				align-items: center;
-				gap: 0.5rem;
-				font-size: 0.85rem;
-				margin-bottom: 1.25rem;
 				flex-wrap: wrap;
-				padding-top: 1rem;
-				border-top: 1px solid var(--color-border);
+				gap: 0.45rem;
+				margin-bottom: 1.5rem;
 			}
-			.meta-label {
+
+			.skill {
+				padding: 0.3rem 0.65rem;
+				border: 1px solid #334155;
+				border-radius: 999px;
+				font-size: 0.72rem;
+				color: #cbd5e1;
+			}
+
+			.view-project {
+				margin-top: auto;
+				font-size: 0.88rem;
 				font-weight: 600;
-				color: var(--color-text-muted);
-			}
-			.author-names {
-				color: var(--color-text-main);
-				font-weight: 500;
-			}
-			.read-more {
-				display: inline-flex;
-				align-items: center;
-				font-size: 0.9rem;
-				color: var(--color-accent);
+				color: #80b7f4;
 				text-decoration: none;
-				font-weight: 600;
-				transition: gap 0.2s ease;
-				gap: 0.25rem;
 			}
-			.read-more:hover {
-				gap: 0.5rem;
+
+			.view-project:hover {
+				color: #a7cffb;
+				text-decoration: none;
 			}
-			@media (max-width: 768px) {
-				.projects-hero h1 { font-size: 2.5rem; }
-				.projects-grid { gap: 2rem; }
-				.project-content-wrapper { padding: 1.5rem; }
+
+			@media (max-width: 800px) {
+				.projects-inner {
+					padding-left: 2rem;
+					padding-right: 2rem;
+				}
+
+				.project-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media (max-width: 600px) {
+				.projects-inner {
+					padding: 3rem 1rem 4rem;
+				}
 			}
 		</style>
 	</head>
+
 	<body>
 		<Header />
-		<main class="projects-section">
-			<div class="projects-hero">
-				<h1>Research Projects</h1>
-				<p>Landmark philosophical investigations that have fundamentally shaped the course of Western intellectual history.</p>
-			</div>
-			
-			<div class="projects-grid">
-				{projects.length > 0 ? projects.map((project) => (
-					<article class="project-card">
-						<div class="project-image">
-							<img
-								src={url(`/projects/${project.id}.png`)}
-								alt={project.title}
-							/>
-							<span class="project-badge">{project.status}</span>
-						</div>
 
-						<div class="project-content-wrapper">
-							<div class="project-header">
-								<span class="project-year">{project.year > 0 ? project.year : 'Classical'}</span>
-								<h3>
-									{project.link ? (
-										<a href={project.link} target="_blank">{project.title}</a>
+		<main>
+			<div class="projects-page">
+				<div class="projects-inner">
+
+					<section class="page-header">
+						<h1>Projects</h1>
+						<p>
+							Selected engineering, biomedical, and design work —
+							from early concepts and analysis through prototyping and testing.
+						</p>
+					</section>
+
+					<div class="project-grid">
+						{projects.map((project) => (
+							<article class="project-card">
+
+								<div class="project-image">
+									{project.image ? (
+										<img src={url(project.image)} alt={project.title} />
 									) : (
-										project.title
+										<div class="image-placeholder">
+											Add Project Image
+										</div>
 									)}
-								</h3>
-							</div>
-							
-							<p class="project-description">{project.description}</p>
-							
-							{project.authors && project.authors.length > 0 && (
-								<div class="project-meta">
-									<span class="meta-label">By:</span>
-									<span class="author-names">
-										{project.authors.map((authorId, i) => (
-											<span>
-												<AuthorLink nameOrSlug={authorId} />
-												{i < project.authors!.length - 1 ? ', ' : ''}
-											</span>
-										))}
-									</span>
 								</div>
-							)}
 
-							{project.link && (
-								<a href={project.link} target="_blank" class="read-more">
-									Read More &rarr;
-								</a>
-							)}
-						</div>
-					</article>
-				)) : (
-                    <p>No projects found in <code>src/data/projects.json</code>.</p>
-                )}
+								<div class="project-content">
+									<span class="project-category">
+										{project.category}
+									</span>
+
+									<h2>{project.title}</h2>
+
+									<p class="project-description">
+										{project.description}
+									</p>
+
+									<div class="skills">
+										{project.skills.map((skill) => (
+											<span class="skill">{skill}</span>
+										))}
+									</div>
+
+									<a
+										href={url(project.link)}
+										class="view-project"
+									>
+										View Project →
+									</a>
+								</div>
+
+							</article>
+						))}
+					</div>
+
+				</div>
 			</div>
 		</main>
+
 		<Footer />
 	</body>
 </html>
