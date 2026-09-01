@@ -17,7 +17,7 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 			main {
 				max-width: none;
 				padding: 0;
-				background: #070b14;
+				background: transparent;
 			}
 
 			/* =========================
@@ -114,29 +114,34 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 			   BIO
 			   ========================= */
 
-		.bio-section {
-			max-width: 820px;
-			margin: 0 auto;
-			padding: 1.75rem 2rem 7rem;
-			position: relative;
-			z-index: 1;
-		}
+			.bio-section {
+				max-width: 820px;
+				margin: 0 auto;
+				padding: 1.75rem 2rem 7rem;
+				position: relative;
+				z-index: 1;
+			}
+
+			.intro-section {
+				background: linear-gradient(
+					to bottom,
+					#172033 0%,
+					#111827 35%,
+					#0b1020 70%,
+					#050814 100%
+				);
+				border-bottom: 1px solid #334155;
+			}
 
 			/* =========================
 			   FEATURED HIGHLIGHTS
 			   ========================= */
 
-		.highlights-section {
-			position: relative;
-			padding: 6rem 2rem 5rem;
-			background: linear-gradient(
-				to bottom,
-				#070b14 0%,
-				#0b1120 18%,
-				#0f172a 45%,
-				#0f172a 100%
-		);
-}
+			.highlights-section {
+				padding: 4.5rem 2rem 5rem;
+				background: #111827;
+				border-bottom: 1px solid #334155;
+			}
 
 			.highlights-inner {
 				max-width: 1100px;
@@ -266,56 +271,29 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 		<Header />
 
 		<main>
-			<section class="hero">
-				<p class="hero-label">YOUR UNIVERSITY / AFFILIATION</p>
+<div class="intro-section">
+	<section class="hero">
+		<p class="hero-label">YOUR UNIVERSITY / AFFILIATION</p>
 
-				<h1>Nadia Lotfi</h1>
+		<h1>Nadia Lotfi</h1>
 
-				<p class="hero-intro">
-					Your short one- or two-line introduction goes here. Describe what you
-					work on, what you care about, or the intersection of your interests.
-				</p>
+		<p class="hero-intro">
+			Your short introduction goes here.
+		</p>
 
-				<div class="hero-buttons">
-					<a href={url('/about')} class="hero-button primary">
-						About Me
-					</a>
+		<div class="hero-buttons">
+			...
+		</div>
+	</section>
 
-					<a href={url('/projects')} class="hero-button">
-						Projects
-					</a>
+	<section class="bio-section">
+		<p>
+			Your longer bio goes here.
+		</p>
+	</section>
+</div>
 
-					<a href={url('/research')} class="hero-button">
-						Research
-					</a>
-
-					<a href={url('/contact')} class="hero-button">
-						Contact
-					</a>
-
-					{cvHref && (
-						<a
-							href={cvHref}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="hero-button"
-						>
-							Resume (PDF)
-						</a>
-					)}
-				</div>
-			</section>
-
-			<section class="bio-section">
-				<p>
-					Write a slightly longer introduction here. This can be two or three
-					sentences about your background, current work, research interests,
-					creative practice, and the kinds of questions or projects you are
-					interested in pursuing.
-				</p>
-			</section>
-
-			<section class="highlights-section">
+<section class="highlights-section">
 				<div class="highlights-inner">
 					<h2 class="highlights-heading">Featured highlights</h2>
 
