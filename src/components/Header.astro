@@ -8,9 +8,9 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 
 <header>
 	<nav>
-		<h2>
+		<div class="site-name">
 			<a href={url('/')}>{SITE_TITLE}</a>
-		</h2>
+		</div>
 
 		<div class="internal-links">
 			<HeaderLink href={url('/')}>Home</HeaderLink>
@@ -93,33 +93,35 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 	}
 
 	/* Your name */
-	h2 {
-		margin: 0;
-		padding: 0;
-		border-bottom: none;
-		font-family: var(--font-serif);
-		font-size: 1.2rem;
-		font-weight: 700;
-		letter-spacing: -0.01em;
-		line-height: 1;
-		white-space: nowrap;
-	}
+.site-name {
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
 
-	h2 a {
-		text-decoration: none !important;
-		border: none !important;
-		border-bottom: none !important;
-		box-shadow: none !important;
-		color: var(--color-text-main);
-	}
+.site-name a {
+	font-family: var(--font-serif);
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--color-text-main);
+	text-decoration: none !important;
+	border: 0 !important;
+	border-bottom: 0 !important;
+	box-shadow: none !important;
+	background-image: none !important;
+}
 
-	h2 a:hover {
-		text-decoration: none !important;
-		border: none !important;
-		border-bottom: none !important;
-		box-shadow: none !important;
-		color: var(--color-text-main);
-	}
+.site-name a:hover,
+.site-name a:focus,
+.site-name a:visited {
+	color: var(--color-text-main);
+	text-decoration: none !important;
+	border: 0 !important;
+	border-bottom: 0 !important;
+	box-shadow: none !important;
+	background-image: none !important;
+}
 
 	/* Navigation */
 	.internal-links {
