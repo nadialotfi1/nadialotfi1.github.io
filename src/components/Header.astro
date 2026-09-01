@@ -108,49 +108,51 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 
 	h2 a {
 		text-decoration: none;
-		color: var(--color-text-main);
 		border: none;
-		border-bottom: none;
+		color: var(--color-text-main);
 	}
 
 	h2 a:hover {
+		text-decoration: none;
+		border: none;
 		color: var(--color-text-main);
 	}
 
-	/* Desktop navigation */
+	/* Navigation */
 	.internal-links {
 		display: flex;
 		align-items: center;
-		gap: 0.15rem;
+		gap: 1.25rem;
 		margin-left: auto;
 	}
 
 	.internal-links :global(a) {
-		padding: 0.5em 0.65em;
+		padding: 0;
 		color: var(--color-text-main);
-		border-bottom: 2px solid transparent;
+		border: none;
 		text-decoration: none;
 		font-size: 0.9rem;
 		font-weight: 500;
 		white-space: nowrap;
-		transition: color 0.2s ease, border-color 0.2s ease;
+		transition: color 0.2s ease;
 	}
 
 	.internal-links :global(a:hover) {
 		color: var(--color-accent);
 	}
 
+	/* Active page */
 	.internal-links :global(a.active) {
-		text-decoration: none;
-		border-bottom-color: var(--color-accent);
 		color: var(--color-accent);
+		text-decoration: none;
+		border: none;
 	}
 
-	/* Mobile menu button */
+	/* Mobile button */
 	.menu-button {
 		display: none;
 		margin-left: auto;
-		padding: 0.4rem 0;
+		padding: 0;
 		background: transparent;
 		border: none;
 		color: var(--color-text-main);
@@ -194,7 +196,9 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 		font-weight: 500;
 		font-size: 0.9rem;
 		border-radius: 7px;
-		transition: background-color 0.2s ease, color 0.2s ease;
+		transition:
+			background-color 0.2s ease,
+			color 0.2s ease;
 	}
 
 	.mobile-menu a:hover {
