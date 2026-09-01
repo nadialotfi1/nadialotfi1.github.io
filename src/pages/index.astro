@@ -21,13 +21,24 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 			}
 
 			/* =========================
-			   HERO
+			   HERO / INTRO
 			   ========================= */
+
+			.intro-section {
+				background: linear-gradient(
+					to bottom,
+					#172033 0%,
+					#111827 35%,
+					#0b1020 70%,
+					#050814 100%
+				);
+				border-bottom: 1px solid #334155;
+			}
 
 			.hero {
 				max-width: 1100px;
 				margin: 0 auto;
-				padding: 6.5rem 2rem 4rem;
+				padding: 6.5rem 0 4rem;
 				position: relative;
 				z-index: 1;
 			}
@@ -72,10 +83,11 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 				display: inline-flex;
 				align-items: center;
 				justify-content: center;
+
 				min-height: 48px;
 				padding: 0.7rem 1.35rem;
 
-				border: 1px solid var(--color-border);
+				border: 1px solid #334155;
 				border-radius: 999px;
 
 				font-family: var(--font-sans);
@@ -83,9 +95,9 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 				font-weight: 600;
 
 				color: var(--color-text-main);
+				background: transparent;
 				text-decoration: none;
 
-				background: transparent;
 				transition:
 					background-color 0.2s ease,
 					border-color 0.2s ease,
@@ -93,9 +105,9 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 			}
 
 			.hero-button:hover {
-				text-decoration: none;
-				border-color: var(--color-accent);
+				border-color: #60a5fa;
 				color: var(--color-text-main);
+				text-decoration: none;
 			}
 
 			.hero-button.primary {
@@ -122,15 +134,11 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 				z-index: 1;
 			}
 
-			.intro-section {
-				background: linear-gradient(
-					to bottom,
-					#172033 0%,
-					#111827 35%,
-					#0b1020 70%,
-					#050814 100%
-				);
-				border-bottom: 1px solid #334155;
+			.bio-section p {
+				margin: 0;
+				font-size: 1.05rem;
+				line-height: 1.85;
+				color: var(--color-text-main);
 			}
 
 			/* =========================
@@ -180,7 +188,6 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 
 				border: 1px solid var(--color-border);
 				border-radius: 14px;
-
 				background: transparent;
 			}
 
@@ -271,29 +278,58 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 		<Header />
 
 		<main>
-<div class="intro-section">
-	<section class="hero">
-		<p class="hero-label">YOUR UNIVERSITY / AFFILIATION</p>
+			<div class="intro-section">
+				<section class="hero">
+					<p class="hero-label">Northwestern University</p>
 
-		<h1>Nadia Lotfi</h1>
+					<h1>Nadia Lotfi</h1>
 
-		<p class="hero-intro">
-			Your short introduction goes here.
-		</p>
+					<p class="hero-intro">
+						Your short one- or two-line introduction goes here. Describe what you
+						work on, what you care about, or the intersection of your interests.
+					</p>
 
-		<div class="hero-buttons">
-			...
-		</div>
-	</section>
+					<div class="hero-buttons">
+						<a href={url('/about')} class="hero-button primary">
+							About Me
+						</a>
 
-	<section class="bio-section">
-		<p>
-			Your longer bio goes here.
-		</p>
-	</section>
-</div>
+						<a href={url('/research')} class="hero-button">
+							Research
+						</a>
 
-<section class="highlights-section">
+						<a href={url('/projects')} class="hero-button">
+							Projects
+						</a>
+
+						<a href={url('/contact')} class="hero-button">
+							Contact
+						</a>
+
+						{cvHref && (
+							<a
+								href={cvHref}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="hero-button"
+							>
+								Resume (PDF)
+							</a>
+						)}
+					</div>
+				</section>
+
+				<section class="bio-section">
+					<p>
+						Write a slightly longer introduction here. This can be two or three
+						sentences about your background, current work, research interests,
+						creative practice, and the kinds of questions or projects you are
+						interested in pursuing.
+					</p>
+				</section>
+			</div>
+
+			<section class="highlights-section">
 				<div class="highlights-inner">
 					<h2 class="highlights-heading">Featured highlights</h2>
 
@@ -323,11 +359,11 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 							<h3>Featured Project</h3>
 
 							<p>
-								A short description of your research focus, publication,
-								or current area of investigation.
+								A short description of this project, experiment,
+								or current body of work.
 							</p>
 
-							<a href={url('/research')} class="card-link">
+							<a href={url('/projects')} class="card-link">
 								Explore
 							</a>
 						</article>
@@ -338,11 +374,11 @@ const cvHref = CV_URL ? url(CV_URL) : null;
 							<h3>Featured Research</h3>
 
 							<p>
-								A short description of a creative project, practice,
-								experiment, or other body of work.
+								A short description of your research focus, publication,
+								or current area of investigation.
 							</p>
 
-							<a href={url('/creative-practice')} class="card-link">
+							<a href={url('/research')} class="card-link">
 								Explore
 							</a>
 						</article>
