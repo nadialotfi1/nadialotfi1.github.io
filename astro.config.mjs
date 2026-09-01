@@ -9,8 +9,8 @@ import remarkMath from 'remark-math';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://shravangoswami.com',
-	base: process.env.BASE_PATH || '/astro-scholar',
+	site: 'https://nadialotfi1.github.io',
+	base: '/',
 	integrations: [
 		mdx(),
 		sitemap()
