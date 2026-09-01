@@ -1,22 +1,29 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'Friedrich Nietzsche';
-export const SITE_DESCRIPTION = 'The academic portfolio of Friedrich Nietzsche.';
+export const SITE_TITLE = 'Nadia Lotfi';
+export const SITE_DESCRIPTION = 'The engineering portfolio of Nadia Lotfi.';
 
-export const CV_URL = 'https://shravangoswami.com/resume.pdf';
+export const CV_URL = '/Nadia_Lotfi_Resume.pdf';
 
 export const CONTACT = {
-  organization: 'Shravan Goswami',
+  organization: 'Nadia Lotfi',
   addressLines: [
-    'Creator of Astro Scholar',
+    'Northwestern University',
+    'Biomedical Engineering',
   ],
   emails: [
-    'contact@shravangoswami.com',
+    'nadialotfi2028@u.northwestern.edu',
   ],
 };
 
-export type SocialIcon = 'website' | 'scholar' | 'email' | 'github' | 'linkedin' | 'twitter';
+export type SocialIcon =
+  | 'website'
+  | 'scholar'
+  | 'email'
+  | 'github'
+  | 'linkedin'
+  | 'twitter';
 
 export const SOCIAL_LINKS: ReadonlyArray<{
   label: string;
@@ -24,32 +31,27 @@ export const SOCIAL_LINKS: ReadonlyArray<{
   icon: SocialIcon;
 }> = [
   {
-    label: 'GitHub',
-    href: 'https://github.com/shravanngoswamii/astro-scholar',
-    icon: 'github',
-  },
-  {
     label: 'Email',
-    href: 'mailto:contact@shravangoswami.com',
+    href: 'mailto:nadialotfi2028@u.northwestern.edu',
     icon: 'email',
   },
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/shravangoswami/',
+    href: 'https://www.linkedin.com/in/nadia-lotfi/',
     icon: 'linkedin',
   },
   {
-    label: 'X',
-    href: 'https://x.com/shravangoswamii',
-    icon: 'twitter',
+    label: 'GitHub',
+    href: 'https://github.com/nadialotfi1',
+    icon: 'github',
   },
 ];
 
 export const FOOTER_CREDIT = {
-  designerName: 'Shravan Goswami',
-  designerUrl: 'https://shravangoswami.com',
-  sourceLabel: 'Open Source',
-  sourceUrl: 'https://github.com/shravanngoswamii/astro-scholar',
+  designerName: 'Nadia Lotfi',
+  designerUrl: 'https://nadialotfi1.github.io',
+  sourceLabel: '',
+  sourceUrl: '',
 };
 
 // Umami analytics — configured via environment variables so no tracking ID is
