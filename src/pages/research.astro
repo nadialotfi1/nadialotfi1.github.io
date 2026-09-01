@@ -3,30 +3,6 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE } from '../consts';
-import { url } from '../utils/paths';
-
-const research = [
-	{
-		title: 'Mitochondrial Transplantation & Diabetic Endothelial Dysfunction',
-		lab: 'Bin Jiang Lab',
-		institution: 'Northwestern University',
-		description:
-			'Investigating mitochondrial transplantation as a potential therapeutic strategy for impaired endothelial function in diabetes.',
-		skills: ['Cell Culture', 'Histology', 'ImageJ', 'Python', 'Experimental Design'],
-		image: null,
-		link: '/research/mitochondrial-transplantation',
-	},
-	{
-		title: 'Low-Field MRI & T1 Relaxometry',
-		lab: 'Magnetic Resonance Technology Discovery Lab',
-		institution: 'Northwestern University',
-		description:
-			'Quantitative analysis of gadolinium contrast phantoms using low-field MRI and T1 relaxometry.',
-		skills: ['MRI', 'MATLAB', 'qMRLab', 'Signal Analysis'],
-		image: null,
-		link: '/research/low-field-mri',
-	},
-];
 ---
 
 <!doctype html>
@@ -34,7 +10,7 @@ const research = [
 	<head>
 		<BaseHead
 			title={`Research | ${SITE_TITLE}`}
-			description="Research experience and selected biomedical research work."
+			description="Selected biomedical engineering research and experimental work."
 		/>
 
 		<style>
@@ -48,9 +24,14 @@ const research = [
 				min-height: 100vh;
 				background:
 					radial-gradient(
-						ellipse at 18% 5%,
-						rgba(49, 70, 105, 0.25),
-						transparent 50%
+						ellipse at 18% 4%,
+						rgba(49, 70, 105, 0.24) 0%,
+						transparent 48%
+					),
+					radial-gradient(
+						ellipse at 82% 32%,
+						rgba(35, 50, 78, 0.14) 0%,
+						transparent 45%
 					),
 					#050814;
 			}
@@ -60,6 +41,10 @@ const research = [
 				margin: 0 auto;
 				padding: 4.5rem 0 6rem;
 			}
+
+			/* =========================
+			   PAGE HEADER
+			   ========================= */
 
 			.page-header {
 				padding-bottom: 2rem;
@@ -77,35 +62,78 @@ const research = [
 			}
 
 			.page-header p {
-				max-width: 700px;
+				max-width: 720px;
 				margin: 1rem 0 0;
 				font-size: 1rem;
 				line-height: 1.7;
 				color: var(--color-text-muted);
 			}
 
-			.research-list {
-				padding-top: 3rem;
-			}
+			/* =========================
+			   RESEARCH ITEM
+			   ========================= */
 
 			.research-item {
-				display: grid;
-				grid-template-columns: 320px minmax(0, 1fr);
-				gap: 3rem;
-				padding: 2.5rem 0;
+				padding: 4.5rem 0;
 				border-bottom: 1px solid #334155;
 			}
 
-			.research-item:first-child {
-				padding-top: 0;
+			.research-item:last-child {
+				border-bottom: none;
 			}
 
-			.research-image {
+			.research-top {
+				display: flex;
+				align-items: end;
+				justify-content: space-between;
+				gap: 2rem;
+				margin-bottom: 2rem;
+			}
+
+			.research-label {
+				display: block;
+				margin-bottom: 0.65rem;
+				font-size: 0.72rem;
+				font-weight: 700;
+				letter-spacing: 0.13em;
+				text-transform: uppercase;
+				color: #80b7f4;
+			}
+
+			.research-title {
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: clamp(1.7rem, 2.5vw, 2.2rem);
+				line-height: 1.25;
+				color: var(--color-text-main);
+			}
+
+			.research-meta {
+				margin: 0.65rem 0 0;
+				font-size: 0.86rem;
+				color: #64748b;
+			}
+
+			.research-year {
+				margin: 0;
+				font-size: 0.85rem;
+				color: #64748b;
+				white-space: nowrap;
+			}
+
+			/* =========================
+			   HERO VISUAL
+			   ========================= */
+
+			.hero-visual {
 				width: 100%;
-				aspect-ratio: 4 / 3;
+				aspect-ratio: 16 / 7;
 				overflow: hidden;
+				margin-bottom: 2.5rem;
 				border: 1px solid #334155;
-				border-radius: 14px;
+				border-radius: 16px;
 				background:
 					linear-gradient(
 						135deg,
@@ -114,87 +142,151 @@ const research = [
 					);
 			}
 
-			.research-image img {
+			.hero-visual img {
 				width: 100%;
 				height: 100%;
 				display: block;
 				object-fit: cover;
 			}
 
-			.image-placeholder {
+			.visual-placeholder {
 				width: 100%;
 				height: 100%;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				font-size: 0.72rem;
+				font-size: 0.75rem;
 				font-weight: 700;
 				letter-spacing: 0.12em;
 				text-transform: uppercase;
 				color: #64748b;
 			}
 
-			.research-lab {
-				display: block;
-				margin-bottom: 0.7rem;
-				font-size: 0.72rem;
-				font-weight: 700;
-				letter-spacing: 0.12em;
-				text-transform: uppercase;
-				color: #80b7f4;
+			/* =========================
+			   INFO
+			   ========================= */
+
+			.research-info-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 2.5rem 4rem;
 			}
 
-			.research-item h2 {
-				display: block;
-				margin: 0 0 0.5rem;
-				padding: 0;
-				border: none;
+			.research-section h3 {
+				margin: 0 0 0.8rem;
 				font-family: var(--font-serif);
-				font-size: 1.55rem;
-				line-height: 1.35;
+				font-size: 1.2rem;
 				color: var(--color-text-main);
 			}
 
-			.institution {
-				margin: 0 0 1rem;
-				font-size: 0.85rem;
-				color: #64748b;
-			}
-
-			.research-description {
-				max-width: 650px;
-				margin: 0 0 1.25rem;
-				font-size: 0.95rem;
+			.research-section p {
+				margin: 0;
+				font-size: 0.94rem;
 				line-height: 1.75;
 				color: var(--color-text-muted);
 			}
 
+			/* =========================
+			   SKILLS
+			   ========================= */
+
 			.skills {
 				display: flex;
 				flex-wrap: wrap;
-				gap: 0.45rem;
-				margin-bottom: 1.4rem;
+				gap: 0.5rem;
 			}
 
 			.skill {
-				padding: 0.3rem 0.65rem;
+				padding: 0.35rem 0.7rem;
 				border: 1px solid #334155;
 				border-radius: 999px;
 				font-size: 0.72rem;
 				color: #cbd5e1;
 			}
 
-			.view-research {
-				font-size: 0.88rem;
-				font-weight: 600;
-				color: #80b7f4;
-				text-decoration: none;
+			/* =========================
+			   OUTCOMES
+			   ========================= */
+
+			.outcomes {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1rem;
+				margin-top: 2.5rem;
 			}
 
-			.view-research:hover {
-				color: #a7cffb;
-				text-decoration: none;
+			.outcome-card {
+				padding: 1.3rem;
+				border: 1px solid #334155;
+				border-radius: 12px;
+				background: rgba(15, 23, 42, 0.35);
 			}
+
+			.outcome-card strong {
+				display: block;
+				margin-bottom: 0.35rem;
+				font-family: var(--font-serif);
+				font-size: 1.65rem;
+				color: #80b7f4;
+			}
+
+			.outcome-card span {
+				display: block;
+				font-size: 0.78rem;
+				line-height: 1.5;
+				color: var(--color-text-muted);
+			}
+
+			/* =========================
+			   GALLERY
+			   ========================= */
+
+			.gallery-title {
+				margin: 2.75rem 0 1rem;
+				font-family: var(--font-serif);
+				font-size: 1.2rem;
+				color: var(--color-text-main);
+			}
+
+			.gallery {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1rem;
+			}
+
+			.gallery-item {
+				aspect-ratio: 4 / 3;
+				overflow: hidden;
+				border: 1px solid #334155;
+				border-radius: 12px;
+				background: #0b1020;
+			}
+
+			.gallery-item img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+			}
+
+			.gallery-placeholder {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 1rem;
+				text-align: center;
+				font-size: 0.72rem;
+				font-weight: 700;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: #64748b;
+			}
+
+			/* =========================
+			   RESPONSIVE
+			   ========================= */
 
 			@media (max-width: 800px) {
 				.research-inner {
@@ -202,19 +294,39 @@ const research = [
 					padding-right: 2rem;
 				}
 
-				.research-item {
+				.research-info-grid {
 					grid-template-columns: 1fr;
-					gap: 1.5rem;
+					gap: 2rem;
 				}
 
-				.research-image {
-					max-width: 500px;
+				.outcomes {
+					grid-template-columns: 1fr;
 				}
 			}
 
 			@media (max-width: 600px) {
 				.research-inner {
 					padding: 3rem 1rem 4rem;
+				}
+
+				.research-item {
+					padding: 3.5rem 0;
+				}
+
+				.research-top {
+					display: block;
+				}
+
+				.research-year {
+					margin-top: 0.75rem;
+				}
+
+				.hero-visual {
+					aspect-ratio: 4 / 3;
+				}
+
+				.gallery {
+					grid-template-columns: 1fr;
 				}
 			}
 		</style>
@@ -231,62 +343,233 @@ const research = [
 						<h1>Research</h1>
 
 						<p>
-							My research interests center on biomedical engineering,
-							experimental systems, and technologies that can translate
-							from the lab into meaningful real-world applications.
+							Selected biomedical engineering research spanning
+							experimental biology, quantitative image analysis,
+							and medical imaging.
 						</p>
 					</section>
 
-					<div class="research-list">
+					<!-- ========================================
+					     RESEARCH 1: MITOCHONDRIAL
+					     ======================================== -->
 
-						{research.map((item) => (
-							<article class="research-item">
+					<section class="research-item">
+						<div class="research-top">
+							<div>
+								<span class="research-label">
+									Biomedical Research
+								</span>
 
-								<div class="research-image">
-									{item.image ? (
-										<img src={url(item.image)} alt={item.title} />
-									) : (
-										<div class="image-placeholder">
-											Add Research Image
-										</div>
-									)}
+								<h2 class="research-title">
+									Mitochondrial Transplantation &
+									Diabetic Endothelial Dysfunction
+								</h2>
+
+								<p class="research-meta">
+									Bin Jiang Lab · Northwestern University
+								</p>
+							</div>
+
+							<p class="research-year">2025–2026</p>
+						</div>
+
+						<div class="hero-visual">
+							<div class="visual-placeholder">
+								Add Main Research Image
+							</div>
+						</div>
+
+						<div class="research-info-grid">
+							<div class="research-section">
+								<h3>Research Question</h3>
+								<p>
+									Can mitochondrial transplantation help restore
+									endothelial function impaired by diabetes and
+									support improved tissue repair?
+								</p>
+							</div>
+
+							<div class="research-section">
+								<h3>Approach</h3>
+								<p>
+									Designed and performed experiments evaluating
+									mitochondrial transplantation through measurements
+									of viability, mitochondrial function, inflammatory
+									markers, migration, wound models, histology,
+									and microscopy-based analysis.
+								</p>
+							</div>
+
+							<div class="research-section">
+								<h3>Methods & Skills</h3>
+
+								<div class="skills">
+									<span class="skill">Cell Culture</span>
+									<span class="skill">Histology</span>
+									<span class="skill">Microscopy</span>
+									<span class="skill">ImageJ</span>
+									<span class="skill">Python</span>
+									<span class="skill">Experimental Design</span>
+									<span class="skill">Statistical Analysis</span>
 								</div>
+							</div>
 
-								<div class="research-content">
+							<div class="research-section">
+								<h3>Progress / Outcomes</h3>
+								<p>
+									Completed a series of experiments and quantitative
+									image analyses contributing data and figures toward
+									an in-progress manuscript.
+								</p>
+							</div>
+						</div>
 
-									<span class="research-lab">
-										{item.lab}
-									</span>
+						<div class="outcomes">
+							<div class="outcome-card">
+								<strong>10+</strong>
+								<span>Experiments designed and performed</span>
+							</div>
 
-									<h2>{item.title}</h2>
+							<div class="outcome-card">
+								<strong>500+</strong>
+								<span>Microscopy images analyzed</span>
+							</div>
 
-									<p class="institution">
-										{item.institution}
-									</p>
+							<div class="outcome-card">
+								<strong>$4,500</strong>
+								<span>McCormick Summer Research Grant</span>
+							</div>
+						</div>
 
-									<p class="research-description">
-										{item.description}
-									</p>
+						<h3 class="gallery-title">Gallery</h3>
 
-									<div class="skills">
-										{item.skills.map((skill) => (
-											<span class="skill">{skill}</span>
-										))}
-									</div>
-
-									<a
-										href={url(item.link)}
-										class="view-research"
-									>
-										View Research →
-									</a>
-
+						<div class="gallery">
+							<div class="gallery-item">
+								<div class="gallery-placeholder">
+									Microscopy
 								</div>
+							</div>
 
-							</article>
-						))}
+							<div class="gallery-item">
+								<div class="gallery-placeholder">
+									Experimental Workflow
+								</div>
+							</div>
 
-					</div>
+							<div class="gallery-item">
+								<div class="gallery-placeholder">
+									Histology / Staining
+								</div>
+							</div>
+
+							<div class="gallery-item">
+								<div class="gallery-placeholder">
+									Quantitative Analysis / Figure
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- ========================================
+					     RESEARCH 2: MRI
+					     ======================================== -->
+
+					<section class="research-item">
+						<div class="research-top">
+							<div>
+								<span class="research-label">
+									Medical Imaging
+								</span>
+
+								<h2 class="research-title">
+									Low-Field MRI & T1 Relaxometry
+								</h2>
+
+								<p class="research-meta">
+									Magnetic Resonance Technology Discovery Lab · Northwestern University
+								</p>
+							</div>
+
+							<p class="research-year">2023</p>
+						</div>
+
+						<div class="hero-visual">
+							<div class="visual-placeholder">
+								Add MRI / Phantom Image
+							</div>
+						</div>
+
+						<div class="research-info-grid">
+							<div class="research-section">
+								<h3>Research Question</h3>
+								<p>
+									How effectively can low-field MRI characterize
+									T1 relaxation behavior in gadolinium contrast phantoms,
+									and what does that imply for more accessible imaging systems?
+								</p>
+							</div>
+
+							<div class="research-section">
+								<h3>Approach</h3>
+								<p>
+									Performed precision testing and data collection using
+									the Hyperfine Swoop low-field MRI system, then analyzed
+									relaxation data using MATLAB and qMRLab for signal fitting
+									and T1 relaxometry.
+								</p>
+							</div>
+
+							<div class="research-section">
+								<h3>Methods & Skills</h3>
+
+								<div class="skills">
+									<span class="skill">MRI</span>
+									<span class="skill">T1 Relaxometry</span>
+									<span class="skill">MATLAB</span>
+									<span class="skill">qMRLab</span>
+									<span class="skill">Signal Fitting</span>
+									<span class="skill">Quantitative Analysis</span>
+								</div>
+							</div>
+
+							<div class="research-section">
+								<h3>Progress / Outcomes</h3>
+								<p>
+									Evaluated low-field MRI data and contrast behavior
+									while exploring the potential of lower-cost imaging
+									systems for more accessible diagnostic applications.
+								</p>
+							</div>
+						</div>
+
+						<h3 class="gallery-title">Gallery</h3>
+
+						<div class="gallery">
+							<div class="gallery-item">
+								<div class="gallery-placeholder">
+									Hyperfine Swoop / MRI Setup
+								</div>
+							</div>
+
+							<div class="gallery-item">
+								<div class="gallery-placeholder">
+									Gadolinium Phantom
+								</div>
+							</div>
+
+							<div class="gallery-item">
+								<div class="gallery-placeholder">
+									T1 Relaxation Curve
+								</div>
+							</div>
+
+							<div class="gallery-item">
+								<div class="gallery-placeholder">
+									MATLAB / qMRLab Analysis
+								</div>
+							</div>
+						</div>
+					</section>
 
 				</div>
 			</div>
