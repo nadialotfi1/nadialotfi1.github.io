@@ -24,13 +24,13 @@ import { SITE_TITLE } from '../consts';
 				min-height: 100vh;
 				background:
 					radial-gradient(
-						ellipse at 18% 6%,
-						rgba(49, 70, 105, 0.25) 0%,
+						ellipse at 18% 5%,
+						rgba(49, 70, 105, 0.22),
 						transparent 50%
 					),
 					radial-gradient(
-						ellipse at 82% 30%,
-						rgba(35, 50, 78, 0.14) 0%,
+						ellipse at 82% 28%,
+						rgba(35, 50, 78, 0.12),
 						transparent 45%
 					),
 					#050814;
@@ -43,159 +43,143 @@ import { SITE_TITLE } from '../consts';
 			}
 
 			/* =========================
-			   HEADER
+			   SHARED
 			   ========================= */
 
-			.page-header {
-				padding-bottom: 2rem;
-				border-bottom: 1px solid #334155;
-			}
-
-			.page-header h1 {
-				margin: 0;
-				padding: 0;
-				border: none;
-				font-family: var(--font-serif);
-				font-size: clamp(2rem, 3vw, 2.6rem);
+			.eyebrow {
+				display: block;
+				margin-bottom: 0.9rem;
+				font-size: 0.7rem;
 				font-weight: 700;
-				color: var(--color-text-main);
-			}
-
-			.page-header p {
-				max-width: 720px;
-				margin: 1rem 0 0;
-				font-size: 1rem;
-				line-height: 1.7;
-				color: var(--color-text-muted);
-			}
-
-			/* =========================
-			   INTRO
-			   ========================= */
-
-			.intro {
-				display: grid;
-				grid-template-columns: 1.15fr 0.85fr;
-				gap: 5rem;
-				align-items: start;
-				padding: 4rem 0;
-			}
-
-			.intro h2,
-			.section-heading {
-				display: block;
-				margin: 0 0 1.25rem;
-				padding: 0;
-				border: none;
-				font-family: var(--font-serif);
-				font-size: 1.7rem;
-				color: var(--color-text-main);
-			}
-
-			.intro-copy p {
-				margin: 0 0 1.2rem;
-				font-size: 1rem;
-				line-height: 1.8;
-				color: var(--color-text-main);
-			}
-
-			.intro-copy p:last-child {
-				margin-bottom: 0;
-			}
-
-			.intro-quote {
-				padding: 1.5rem 0 1.5rem 1.5rem;
-				border-left: 2px solid #80b7f4;
-			}
-
-			.intro-quote p {
-				margin: 0;
-				font-family: var(--font-serif);
-				font-size: 1.25rem;
-				line-height: 1.6;
-				color: #cbd5e1;
-			}
-
-			/* =========================
-			   CONNECTION
-			   ========================= */
-
-			.connection {
-				padding: 3.5rem 0;
-				border-top: 1px solid #334155;
-				border-bottom: 1px solid #334155;
-			}
-
-			.connection-intro {
-				max-width: 760px;
-				margin: 0 0 2rem;
-				font-size: 0.98rem;
-				line-height: 1.8;
-				color: var(--color-text-muted);
-			}
-
-			.practice-grid {
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				gap: 1rem;
-			}
-
-			.practice-item {
-				padding: 1.4rem;
-				border: 1px solid #334155;
-				border-radius: 12px;
-				background: rgba(15, 23, 42, 0.35);
-			}
-
-			.practice-number {
-				display: block;
-				margin-bottom: 1rem;
-				font-family: var(--font-serif);
-				font-size: 0.9rem;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
 				color: #80b7f4;
 			}
 
-			.practice-item h3 {
-				margin: 0 0 0.55rem;
+			.image-placeholder {
+				position: absolute;
+				inset: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 1rem;
+				text-align: center;
+				font-size: 0.68rem;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: #64748b;
+			}
+
+			/* =========================
+			   TOP SECTION
+			   ========================= */
+
+			.creative-hero {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) 380px;
+				gap: 5rem;
+				align-items: center;
+				padding-bottom: 4.5rem;
+			}
+
+			.creative-copy {
+				max-width: 680px;
+			}
+
+			.creative-copy h1 {
+				margin: 0 0 1.5rem;
+				padding: 0;
+				border: none;
 				font-family: var(--font-serif);
-				font-size: 1.05rem;
+				font-size: clamp(2.1rem, 3.5vw, 3rem);
+				line-height: 1.18;
 				color: var(--color-text-main);
 			}
 
-			.practice-item p {
-				margin: 0;
-				font-size: 0.82rem;
-				line-height: 1.65;
+			.creative-copy p {
+				margin: 0 0 1rem;
+				font-size: 0.96rem;
+				line-height: 1.8;
 				color: var(--color-text-muted);
+			}
+
+			.creative-copy p:last-of-type {
+				margin-bottom: 0;
+			}
+
+			.practice-line {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 0.7rem;
+				margin-top: 1.75rem;
+				font-size: 0.75rem;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: #cbd5e1;
+			}
+
+			.practice-line .arrow {
+				color: #80b7f4;
+			}
+
+			.hero-image {
+				position: relative;
+				width: 100%;
+				aspect-ratio: 4 / 5;
+				overflow: hidden;
+				border: 1px solid #334155;
+				border-radius: 16px;
+				background:
+					linear-gradient(
+						135deg,
+						#172033,
+						#0b1020
+					);
+			}
+
+			.hero-image img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
 			}
 
 			/* =========================
 			   GALLERY
 			   ========================= */
 
-			.work-section {
-				padding: 4rem 0;
+			.gallery-section {
+				padding: 4.5rem 0;
+				border-top: 1px solid #334155;
 			}
 
-			.work-intro {
-				max-width: 680px;
-				margin: -0.4rem 0 2rem;
-				font-size: 0.95rem;
-				line-height: 1.7;
-				color: var(--color-text-muted);
+			.section-heading {
+				margin-bottom: 2rem;
 			}
 
-			.gallery {
+			.section-heading h2 {
+				display: block;
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: 1.6rem;
+				color: var(--color-text-main);
+			}
+
+			.art-gallery {
 				display: grid;
-				grid-template-columns: 1.2fr 0.8fr;
-				grid-template-rows: auto auto;
+				grid-template-columns: repeat(3, 1fr);
+				grid-auto-rows: 260px;
 				gap: 1rem;
 			}
 
-			.gallery-item {
+			.gallery-image {
 				position: relative;
 				overflow: hidden;
-				min-height: 280px;
 				border: 1px solid #334155;
 				border-radius: 14px;
 				background:
@@ -206,61 +190,19 @@ import { SITE_TITLE } from '../consts';
 					);
 			}
 
-			.gallery-item.large {
+			.gallery-image-large {
 				grid-row: span 2;
-				min-height: 580px;
 			}
 
-			.gallery-item img {
+			.gallery-image-wide {
+				grid-column: span 2;
+			}
+
+			.gallery-image img {
 				width: 100%;
 				height: 100%;
 				display: block;
 				object-fit: cover;
-			}
-
-			.gallery-placeholder {
-				position: absolute;
-				inset: 0;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				padding: 1rem;
-				text-align: center;
-				font-size: 0.72rem;
-				font-weight: 700;
-				letter-spacing: 0.12em;
-				text-transform: uppercase;
-				color: #64748b;
-			}
-
-			/* =========================
-			   MEDIUM GALLERY
-			   ========================= */
-
-			.mediums {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 1.5rem;
-				margin-top: 1.5rem;
-			}
-
-			.medium {
-				padding-top: 1.25rem;
-				border-top: 1px solid #334155;
-			}
-
-			.medium h3 {
-				margin: 0 0 0.6rem;
-				font-family: var(--font-serif);
-				font-size: 1.1rem;
-				color: var(--color-text-main);
-			}
-
-			.medium p {
-				margin: 0;
-				font-size: 0.85rem;
-				line-height: 1.65;
-				color: var(--color-text-muted);
 			}
 
 			/* =========================
@@ -268,11 +210,14 @@ import { SITE_TITLE } from '../consts';
 			   ========================= */
 
 			.reflection {
-				display: grid;
-				grid-template-columns: 0.75fr 1.25fr;
-				gap: 5rem;
-				padding: 4rem 0 0;
+				padding: 4rem 0 1rem;
 				border-top: 1px solid #334155;
+			}
+
+			.reflection-content {
+				display: grid;
+				grid-template-columns: 0.7fr 1.3fr;
+				gap: 5rem;
 			}
 
 			.reflection h2 {
@@ -281,15 +226,16 @@ import { SITE_TITLE } from '../consts';
 				padding: 0;
 				border: none;
 				font-family: var(--font-serif);
-				font-size: 1.7rem;
+				font-size: 1.65rem;
+				line-height: 1.3;
 				color: var(--color-text-main);
 			}
 
 			.reflection-copy p {
-				margin: 0 0 1.2rem;
-				font-size: 1rem;
+				margin: 0 0 1rem;
+				font-size: 0.93rem;
 				line-height: 1.8;
-				color: var(--color-text-main);
+				color: var(--color-text-muted);
 			}
 
 			.reflection-copy p:last-child {
@@ -300,54 +246,62 @@ import { SITE_TITLE } from '../consts';
 			   RESPONSIVE
 			   ========================= */
 
-			@media (max-width: 900px) {
+			@media (max-width: 850px) {
 				.creative-inner {
 					padding-left: 2rem;
 					padding-right: 2rem;
 				}
 
-				.intro {
+				.creative-hero {
 					grid-template-columns: 1fr;
 					gap: 2.5rem;
 				}
 
-				.practice-grid {
+				.hero-image {
+					max-width: 480px;
+					aspect-ratio: 4 / 3;
+				}
+
+				.art-gallery {
 					grid-template-columns: repeat(2, 1fr);
 				}
 
-				.reflection {
+				.reflection-content {
 					grid-template-columns: 1fr;
-					gap: 1.5rem;
+					gap: 1.25rem;
 				}
 			}
 
-			@media (max-width: 650px) {
+			@media (max-width: 600px) {
 				.creative-inner {
 					padding: 3rem 1rem 4rem;
 				}
 
-				.intro {
+				.creative-hero {
+					padding-bottom: 3rem;
+				}
+
+				.creative-copy h1 {
+					font-size: 2rem;
+				}
+
+				.practice-line {
+					gap: 0.5rem;
+				}
+
+				.gallery-section {
 					padding: 3rem 0;
 				}
 
-				.practice-grid,
-				.mediums {
+				.art-gallery {
 					grid-template-columns: 1fr;
+					grid-auto-rows: 320px;
 				}
 
-				.gallery {
-					grid-template-columns: 1fr;
-					grid-template-rows: auto;
-				}
-
-				.gallery-item,
-				.gallery-item.large {
+				.gallery-image-large,
+				.gallery-image-wide {
 					grid-row: auto;
-					min-height: 320px;
-				}
-
-				.work-section {
-					padding: 3rem 0;
+					grid-column: auto;
 				}
 
 				.reflection {
@@ -364,198 +318,150 @@ import { SITE_TITLE } from '../consts';
 			<div class="creative-page">
 				<div class="creative-inner">
 
-					<!-- =========================
-					     PAGE HEADER
-					     ========================= -->
+					<!-- ========================================
+					     1. MAKING + ENGINEERING
+					     ======================================== -->
 
-					<section class="page-header">
-						<h1>Creative Practice</h1>
+					<section class="creative-hero">
 
-						<p>
-							Ceramics, sketching, and visual design are another part of
-							how I learn to make things — through observation,
-							experimentation, failure, and refinement.
-						</p>
-					</section>
+						<div class="creative-copy">
+							<span class="eyebrow">
+								Creative Practice
+							</span>
 
-					<!-- =========================
-					     INTRO
-					     ========================= -->
-
-					<section class="intro">
-						<div class="intro-copy">
-							<h2>Making as a way of thinking</h2>
+							<h1>
+								Making, testing, and learning through materials.
+							</h1>
 
 							<p>
-								My interests in ceramics, sketching, and visual design
-								strengthen many of the same iterative skills I use in
-								engineering: observation, prototyping, material exploration,
-								and refinement through critique.
+								My creative practice and engineering work are shaped by
+								many of the same habits: observation, prototyping,
+								testing, and refinement.
 							</p>
 
 							<p>
-								Working creatively has taught me to pay attention not only
-								to whether something functions, but also to how it feels,
-								how it is used, and how decisions about form and material
-								shape the final experience.
+								I’ve learned a lot from ideas that looked good on paper
+								but changed once they encountered real materials, real
+								constraints, or real people. Those moments have made me
+								a better builder — more willing to question assumptions,
+								understand materials deeply, and treat iteration as an
+								essential part of the process.
 							</p>
-						</div>
 
-						<div class="intro-quote">
 							<p>
-								Good ideas become better through making, testing,
-								seeing what fails, and trying again.
+								Whether I’m working in ceramics, sketching an idea, or
+								building an engineering prototype, I’m most interested
+								in thoughtful, human-centered design that feels tangible,
+								useful, and connected to the people it is made for.
 							</p>
-						</div>
-					</section>
 
-					<!-- =========================
-					     ENGINEERING CONNECTION
-					     ========================= -->
-
-					<section class="connection">
-						<h2 class="section-heading">
-							Creative practice → engineering practice
-						</h2>
-
-						<p class="connection-intro">
-							The medium changes, but the process is surprisingly similar.
-							Both creative and engineering work require translating an idea
-							into something physical, evaluating what actually happens,
-							and being willing to revise it.
-						</p>
-
-						<div class="practice-grid">
-							<div class="practice-item">
-								<span class="practice-number">01</span>
-
-								<h3>Observe</h3>
-
-								<p>
-									Pay attention to form, behavior, context, and the
-									details that are easy to overlook.
-								</p>
-							</div>
-
-							<div class="practice-item">
-								<span class="practice-number">02</span>
-
-								<h3>Prototype</h3>
-
-								<p>
-									Move ideas out of your head and into a form that
-									can actually be evaluated.
-								</p>
-							</div>
-
-							<div class="practice-item">
-								<span class="practice-number">03</span>
-
-								<h3>Test</h3>
-
-								<p>
-									Let materials, users, and real constraints expose
-									assumptions that were invisible on paper.
-								</p>
-							</div>
-
-							<div class="practice-item">
-								<span class="practice-number">04</span>
-
-								<h3>Refine</h3>
-
-								<p>
-									Use critique and failure as information, then make
-									the next iteration more intentional.
-								</p>
+							<div class="practice-line">
+								<span>Observe</span>
+								<span class="arrow">→</span>
+								<span>Prototype</span>
+								<span class="arrow">→</span>
+								<span>Test</span>
+								<span class="arrow">→</span>
+								<span>Refine</span>
 							</div>
 						</div>
+
+						<div class="hero-image">
+							<div class="image-placeholder">
+								Add Creative Practice Photo
+							</div>
+						</div>
+
 					</section>
 
-					<!-- =========================
-					     CREATIVE WORK
-					     ========================= -->
 
-					<section class="work-section">
-						<h2 class="section-heading">Selected work</h2>
+					<!-- ========================================
+					     2. ART + CERAMICS GALLERY
+					     ======================================== -->
 
-						<p class="work-intro">
-							A growing collection of physical and visual work.
-							I’ll continue adding process images, experiments,
-							and finished pieces here.
-						</p>
+					<section class="gallery-section">
 
-						<div class="gallery">
-							<div class="gallery-item large">
-								<div class="gallery-placeholder">
-									Add Ceramics Photo
+						<div class="section-heading">
+							<span class="eyebrow">
+								Selected Work
+							</span>
+
+							<h2>
+								Ceramics & visual studies
+							</h2>
+						</div>
+
+						<div class="art-gallery">
+
+							<div class="gallery-image gallery-image-large">
+								<div class="image-placeholder">
+									Ceramics
 								</div>
 							</div>
 
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Add Sketch / Process Work
+							<div class="gallery-image">
+								<div class="image-placeholder">
+									Sketch
 								</div>
 							</div>
 
-							<div class="gallery-item">
-								<div class="gallery-placeholder">
-									Add Visual Design Work
+							<div class="gallery-image">
+								<div class="image-placeholder">
+									Ceramic Detail
 								</div>
 							</div>
-						</div>
 
-						<div class="mediums">
-							<div class="medium">
-								<h3>Ceramics</h3>
-								<p>
-									Material exploration, form, fabrication,
-									and learning through physical constraints.
-								</p>
+							<div class="gallery-image">
+								<div class="image-placeholder">
+									Sketch / Study
+								</div>
 							</div>
 
-							<div class="medium">
-								<h3>Sketching</h3>
-								<p>
-									A quick way to observe, communicate ideas,
-									explore alternatives, and think visually.
-								</p>
+							<div class="gallery-image">
+								<div class="image-placeholder">
+									Ceramics
+								</div>
 							</div>
 
-							<div class="medium">
-								<h3>Visual Design</h3>
-								<p>
-									Exploring hierarchy, composition, clarity,
-									and how information is experienced.
-								</p>
+							<div class="gallery-image gallery-image-wide">
+								<div class="image-placeholder">
+									Process / Visual Study
+								</div>
 							</div>
+
 						</div>
 					</section>
 
-					<!-- =========================
-					     REFLECTION
-					     ========================= -->
+
+					<!-- ========================================
+					     3. SHORT REFLECTION
+					     ======================================== -->
 
 					<section class="reflection">
-						<h2>What making has taught me</h2>
 
-						<div class="reflection-copy">
-							<p>
-								I’ve learned a lot from designs that looked good on paper
-								but failed under real constraints. Those moments have made
-								me a better builder because they force me to question
-								assumptions, understand materials more deeply, and treat
-								iteration as part of the process rather than as a correction
-								at the end.
-							</p>
+						<span class="eyebrow">
+							Reflection
+						</span>
 
-							<p>
-								I also value community, service, and making things that
-								feel tangible and useful. Whether I’m working on an
-								engineering prototype or something made by hand, I’m most
-								interested in work that connects thoughtful design with
-								real people and real experiences.
-							</p>
+						<div class="reflection-content">
+
+							<h2>
+								Making keeps ideas honest.
+							</h2>
+
+							<div class="reflection-copy">
+								<p>
+									Working by hand reminds me that good design is rarely
+									finished in the first iteration. Materials push back,
+									prototypes fail, and feedback changes the direction.
+								</p>
+
+								<p>
+									I value that process — and the possibility of making
+									things that are both thoughtful and useful.
+								</p>
+							</div>
+
 						</div>
 					</section>
 
