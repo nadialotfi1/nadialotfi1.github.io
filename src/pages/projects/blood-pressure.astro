@@ -232,44 +232,52 @@ import { url } from '../../utils/paths';
 			}
 
 			.results-grid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 1rem;
-	margin-top: 1.5rem;
-}
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1rem;
+				margin-top: 1.5rem;
+				margin-bottom: 2.25rem;
+			}
 
-.result-card {
-	padding: 1.25rem 1.5rem;
-	min-height: 95px;
-	border: 1px solid #334155;
-	border-radius: 12px;
-	background: #111827;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
+			.result-card {
+				padding: 1rem 1.25rem;
+				min-height: 78px;
+				border: 1px solid #334155;
+				border-radius: 12px;
+				background: #111827;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
 
-.result-card .label {
-	margin-bottom: 0.55rem;
-	font-size: 0.62rem;
-	font-weight: 700;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
-	color: #94a3b8;
-}
+			.result-card span {
+				display: block;
+				margin-bottom: 0.35rem;
+				font-size: 0.62rem;
+				font-weight: 700;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: #94a3b8;
+			}
 
-.result-card h3 {
-	margin: 0;
-	font-family: var(--font-serif);
-	font-size: 1.55rem;
-	line-height: 1.1;
-	color: var(--color-text-main);
-}
+			.result-card strong {
+				display: block;
+				font-family: var(--font-serif);
+				font-size: 1.35rem;
+				line-height: 1.1;
+				color: var(--color-text-main);
+			}
+
+			.results-image {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+			}
 
 			.results-image img {
-				width: 100%;
-				height: auto;
 				display: block;
+				width: min(100%, 820px);
+				height: auto;
 			}
 
 			/* =========================
@@ -303,58 +311,6 @@ import { url } from '../../utils/paths';
 			}
 
 			/* =========================
-			   REPORT
-			   ========================= */
-
-			.report-section {
-				padding-top: 3.5rem;
-			}
-
-			.report-content {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				gap: 3rem;
-			}
-
-			.report-copy h2 {
-				display: block;
-				margin: 0;
-				padding: 0;
-				border: none;
-				font-family: var(--font-serif);
-				font-size: 1.55rem;
-				color: var(--color-text-main);
-			}
-
-			.report-copy p {
-				margin: 0.6rem 0 0;
-				font-size: 0.88rem;
-				color: var(--color-text-muted);
-			}
-
-			.report-button {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				flex-shrink: 0;
-				padding: 0.7rem 1.1rem;
-				border: 1px solid #4b6f9e;
-				border-radius: 999px;
-				font-size: 0.82rem;
-				font-weight: 600;
-				color: #80b7f4;
-				text-decoration: none;
-			}
-
-			.report-button:hover {
-				background: #172033;
-				border-color: #80b7f4;
-				color: #a7cffb;
-				text-decoration: none;
-			}
-
-			/* =========================
 			   RESPONSIVE
 			   ========================= */
 
@@ -376,15 +332,13 @@ import { url } from '../../utils/paths';
 					grid-template-columns: 1fr;
 				}
 
+				.results-image img {
+					width: 100%;
+				}
+
 				.limitation {
 					grid-template-columns: 1fr;
 					gap: 1rem;
-				}
-
-				.report-content {
-					flex-direction: column;
-					align-items: flex-start;
-					gap: 1.5rem;
 				}
 			}
 
@@ -395,6 +349,14 @@ import { url } from '../../utils/paths';
 
 				.project-hero h1 {
 					font-size: 2rem;
+				}
+
+				.result-card {
+					min-height: 70px;
+				}
+
+				.result-card strong {
+					font-size: 1.25rem;
 				}
 			}
 		</style>
@@ -653,7 +615,7 @@ import { url } from '../../utils/paths';
 
 
 					<!-- =========================
-					     LIMITATIONS
+					     WHAT I LEARNED
 					     ========================= -->
 
 					<section class="limitation">
@@ -671,8 +633,6 @@ import { url } from '../../utils/paths';
 						</p>
 
 					</section>
-
-
 
 				</div>
 			</div>
