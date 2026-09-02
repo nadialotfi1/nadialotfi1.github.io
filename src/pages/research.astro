@@ -15,6 +15,7 @@ const research = [
 		skills: ['Cell Culture', 'Histology', 'ImageJ', 'Python', 'Experimental Design'],
 		image: '/jc1.jpeg',
 		link: '/research/mitochondrial-transplantation',
+		imageClass: 'jiang-image',
 	},
 	{
 		title: 'Low-Field MRI & T1 Relaxometry',
@@ -25,6 +26,7 @@ const research = [
 		skills: ['MRI', 'MATLAB', 'qMRLab', 'Signal Analysis'],
 		image: '/Hyperfine-Swoop-portable-low-field-magnetic-resonance-imaging-MRI-system.png',
 		link: '/research/low-field-mri',
+		imageClass: 'mri-image',
 	},
 ];
 ---
@@ -101,25 +103,36 @@ const research = [
 			}
 
 			.research-image {
-	width: 100%;
-	aspect-ratio: 4 / 3;
-	overflow: hidden;
-	border: 1px solid #334155;
-	border-radius: 14px;
-	background: white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+				width: 100%;
+				aspect-ratio: 4 / 3;
+				overflow: hidden;
+				border-radius: 14px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
 
-		.research-image img {
-	width: 88%;
-	height: 88%;
-	display: block;
-	object-fit: contain;
-	object-position: center;
-	margin: auto;
-}
+			.research-image img {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-position: center;
+			}
+
+			/* Jiang Lab: zoom in and remove white frame look */
+			.research-image img.jiang-image {
+				object-fit: cover;
+				transform: scale(1.08);
+			}
+
+			/* MRI: keep full image visible */
+			.research-image img.mri-image {
+				object-fit: contain;
+				width: 88%;
+				height: 88%;
+				margin: auto;
+				background: white;
+			}
 
 			.image-placeholder {
 				width: 100%;
@@ -244,7 +257,11 @@ const research = [
 
 								<div class="research-image">
 									{item.image ? (
-										<img src={url(item.image)} alt={item.title} />
+										<img
+											src={url(item.image)}
+											alt={item.title}
+											class={item.imageClass}
+										/>
 									) : (
 										<div class="image-placeholder">
 											Add Research Image
