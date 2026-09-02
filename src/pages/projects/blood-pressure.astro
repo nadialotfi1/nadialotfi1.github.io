@@ -38,13 +38,9 @@ import { url } from '../../utils/paths';
 				padding: 4rem 0 6rem;
 			}
 
-			/* =========================
-			   SHARED
-			   ========================= */
-
 			.label {
 				display: block;
-				margin-bottom: 0.8rem;
+				margin-bottom: 0.75rem;
 				font-size: 0.7rem;
 				font-weight: 700;
 				letter-spacing: 0.13em;
@@ -58,29 +54,19 @@ import { url } from '../../utils/paths';
 				padding: 0;
 				border: none;
 				font-family: var(--font-serif);
-				font-size: 1.65rem;
+				font-size: 1.6rem;
 				line-height: 1.3;
 				color: var(--color-text-main);
 			}
 
-			.section-copy {
-				max-width: 620px;
-			}
-
 			.section-copy p {
-				margin: 0 0 1rem;
+				margin: 0;
 				font-size: 0.95rem;
 				line-height: 1.75;
 				color: #cbd5e1;
 			}
 
-			.section-copy p:last-child {
-				margin-bottom: 0;
-			}
-
-			/* =========================
-			   HERO
-			   ========================= */
+			/* HERO */
 
 			.back-link {
 				display: inline-block;
@@ -88,11 +74,6 @@ import { url } from '../../utils/paths';
 				font-size: 0.82rem;
 				font-weight: 600;
 				color: #80b7f4;
-				text-decoration: none;
-			}
-
-			.back-link:hover {
-				color: #a7cffb;
 				text-decoration: none;
 			}
 
@@ -119,9 +100,9 @@ import { url } from '../../utils/paths';
 			}
 
 			.project-summary {
-				max-width: 850px;
-				margin: 1.6rem 0 0;
-				font-size: 1.05rem;
+				max-width: 820px;
+				margin: 1.5rem 0 0;
+				font-size: 1.03rem;
 				line-height: 1.75;
 				color: #cbd5e1;
 			}
@@ -141,70 +122,34 @@ import { url } from '../../utils/paths';
 				color: #cbd5e1;
 			}
 
-			/* =========================
-			   OVERVIEW
-			   ========================= */
-
-			.overview {
-				display: grid;
-				grid-template-columns: 0.85fr 1.15fr;
-				gap: 4rem;
-				align-items: center;
-				padding: 4rem 0;
-				border-bottom: 1px solid #334155;
-			}
-
-			.overview-image img {
-				width: 100%;
-				height: auto;
-				display: block;
-			}
-
-			/* =========================
-			   SYSTEM SECTION
-			   ========================= */
+			/* SYSTEM */
 
 			.system-section {
 				display: grid;
-				grid-template-columns: 1fr 1fr;
+				grid-template-columns: 0.8fr 1.2fr;
 				gap: 4rem;
 				align-items: center;
 				padding: 4rem 0;
 				border-bottom: 1px solid #334155;
 			}
 
-			.system-image img {
-				width: 100%;
-				height: auto;
-				display: block;
-			}
-
-			/* =========================
-			   SIGNAL SECTION
-			   ========================= */
-
-			.signal-section {
+			.system-visuals {
 				display: grid;
-				grid-template-columns: 1.05fr 0.95fr;
-				gap: 4rem;
-				align-items: center;
-				padding: 4rem 0;
-				border-bottom: 1px solid #334155;
+				grid-template-columns: 1fr 1fr;
+				gap: 1rem;
 			}
 
-			.signal-image img {
+			.system-visuals img {
 				width: 100%;
 				height: auto;
 				display: block;
 			}
 
-			/* =========================
-			   PROCESSING SECTION
-			   ========================= */
+			/* PROCESSING */
 
 			.processing-section {
 				display: grid;
-				grid-template-columns: 0.9fr 1.1fr;
+				grid-template-columns: 1.15fr 0.85fr;
 				gap: 4rem;
 				align-items: center;
 				padding: 4rem 0;
@@ -217,33 +162,29 @@ import { url } from '../../utils/paths';
 				display: block;
 			}
 
-			/* =========================
-			   RESULTS
-			   ========================= */
+			/* RESULTS */
 
 			.results-section {
 				padding: 4rem 0;
-				border-bottom: 1px solid #334155;
 			}
 
 			.results-heading {
 				max-width: 700px;
-				margin-bottom: 2rem;
+				margin-bottom: 1.75rem;
 			}
 
 			.results-grid {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
 				gap: 1rem;
-				margin-top: 1.5rem;
-				margin-bottom: 2.25rem;
+				margin-bottom: 2rem;
 			}
 
 			.result-card {
-				padding: 1rem 1.25rem;
-				min-height: 78px;
+				min-height: 72px;
+				padding: 0.9rem 1.1rem;
 				border: 1px solid #334155;
-				border-radius: 12px;
+				border-radius: 10px;
 				background: #111827;
 				display: flex;
 				flex-direction: column;
@@ -251,9 +192,8 @@ import { url } from '../../utils/paths';
 			}
 
 			.result-card span {
-				display: block;
-				margin-bottom: 0.35rem;
-				font-size: 0.62rem;
+				margin-bottom: 0.3rem;
+				font-size: 0.61rem;
 				font-weight: 700;
 				letter-spacing: 0.1em;
 				text-transform: uppercase;
@@ -261,58 +201,22 @@ import { url } from '../../utils/paths';
 			}
 
 			.result-card strong {
-				display: block;
 				font-family: var(--font-serif);
-				font-size: 1.35rem;
+				font-size: 1.3rem;
 				line-height: 1.1;
 				color: var(--color-text-main);
 			}
 
 			.results-image {
-				width: 100%;
 				display: flex;
 				justify-content: center;
 			}
 
 			.results-image img {
-				display: block;
-				width: min(100%, 820px);
+				width: min(100%, 760px);
 				height: auto;
-			}
-
-			/* =========================
-			   LIMITATION
-			   ========================= */
-
-			.limitation {
-				display: grid;
-				grid-template-columns: 220px minmax(0, 1fr);
-				gap: 4rem;
-				padding: 3.5rem 0;
-				border-bottom: 1px solid #334155;
-			}
-
-			.limitation h2 {
 				display: block;
-				margin: 0;
-				padding: 0;
-				border: none;
-				font-family: var(--font-serif);
-				font-size: 1.45rem;
-				color: var(--color-text-main);
 			}
-
-			.limitation p {
-				max-width: 700px;
-				margin: 0;
-				font-size: 0.92rem;
-				line-height: 1.75;
-				color: #cbd5e1;
-			}
-
-			/* =========================
-			   RESPONSIVE
-			   ========================= */
 
 			@media (max-width: 850px) {
 				.project-inner {
@@ -320,9 +224,7 @@ import { url } from '../../utils/paths';
 					padding-right: 2rem;
 				}
 
-				.overview,
 				.system-section,
-				.signal-section,
 				.processing-section {
 					grid-template-columns: 1fr;
 					gap: 2rem;
@@ -331,15 +233,6 @@ import { url } from '../../utils/paths';
 				.results-grid {
 					grid-template-columns: 1fr;
 				}
-
-				.results-image img {
-					width: 100%;
-				}
-
-				.limitation {
-					grid-template-columns: 1fr;
-					gap: 1rem;
-				}
 			}
 
 			@media (max-width: 600px) {
@@ -347,16 +240,12 @@ import { url } from '../../utils/paths';
 					padding: 3rem 1rem 4rem;
 				}
 
+				.system-visuals {
+					grid-template-columns: 1fr;
+				}
+
 				.project-hero h1 {
 					font-size: 2rem;
-				}
-
-				.result-card {
-					min-height: 70px;
-				}
-
-				.result-card strong {
-					font-size: 1.25rem;
 				}
 			}
 		</style>
@@ -368,10 +257,6 @@ import { url } from '../../utils/paths';
 		<main>
 			<div class="project-page">
 				<div class="project-inner">
-
-					<!-- =========================
-					     HERO
-					     ========================= -->
 
 					<section class="project-hero">
 
@@ -388,152 +273,68 @@ import { url } from '../../utils/paths';
 						</p>
 
 						<p class="project-summary">
-							Designed and analyzed an instrumentation system for
-							non-invasive blood-pressure measurement using pressure
-							sensing, analog amplification and filtering, and Python-based
-							physiological signal processing.
+							Built an instrumentation system that acquires cuff-pressure
+							signals and uses analog filtering and Python signal processing
+							to estimate blood pressure.
 						</p>
 
 						<div class="tags">
-							<span class="tag">Biomedical Instrumentation</span>
 							<span class="tag">Python</span>
 							<span class="tag">Signal Processing</span>
 							<span class="tag">Analog Circuits</span>
+							<span class="tag">Instrumentation</span>
 						</div>
 
 					</section>
 
 
-					<!-- =========================
-					     SYSTEM OVERVIEW
-					     ========================= -->
-
-					<section class="overview">
-
-						<div class="section-copy">
-
-							<span class="label">
-								System Overview
-							</span>
-
-							<h2 class="section-title">
-								From cuff pressure to physiological measurements
-							</h2>
-
-							<p>
-								The system converts pressure changes in an inflatable
-								cuff into an electrical signal that can be amplified,
-								filtered, recorded, and analyzed.
-							</p>
-
-							<p>
-								One channel preserves the raw cuff-pressure waveform,
-								while a second filtered channel isolates the small
-								oscillations produced by arterial pulsation.
-							</p>
-
-						</div>
-
-						<div class="overview-image">
-							<img
-								src={url('/blood-pressure-schematic.png')}
-								alt="Block diagram of the oscillometric blood pressure monitoring system"
-							/>
-						</div>
-
-					</section>
-
-
-					<!-- =========================
-					     ANALOG CIRCUIT
-					     ========================= -->
+					<!-- SYSTEM DESIGN -->
 
 					<section class="system-section">
 
-						<div class="system-image">
+						<div class="section-copy">
+
+							<span class="label">
+								System Design
+							</span>
+
+							<h2 class="section-title">
+								Pressure sensing → amplification → filtering
+							</h2>
+
+							<p>
+								The circuit converts cuff pressure into an electrical
+								signal, amplifies it, and separates the raw pressure
+								waveform from the smaller oscillometric pulse signal.
+							</p>
+
+						</div>
+
+						<div class="system-visuals">
+
+							<img
+								src={url('/blood-pressure-schematic.png')}
+								alt="Blood pressure monitoring system block diagram"
+							/>
+
 							<img
 								src={url('/blood-pressure-circuit.png')}
-								alt="Circuit diagram for pressure sensing, amplification, and filtering"
+								alt="Blood pressure instrumentation circuit"
 							/>
-						</div>
-
-						<div class="section-copy">
-
-							<span class="label">
-								Instrumentation
-							</span>
-
-							<h2 class="section-title">
-								Amplifying and isolating the oscillometric signal
-							</h2>
-
-							<p>
-								The pressure sensor output was amplified using an INA121
-								instrumentation amplifier. The amplified signal was split
-								into a raw-pressure channel and a filtered channel.
-							</p>
-
-							<p>
-								High-pass and low-pass filtering removed the slow cuff
-								pressure trend and higher-frequency noise, making the
-								pulse-related oscillations easier to analyze.
-							</p>
 
 						</div>
 
 					</section>
 
 
-					<!-- =========================
-					     SIGNAL ACQUISITION
-					     ========================= -->
-
-					<section class="signal-section">
-
-						<div class="section-copy">
-
-							<span class="label">
-								Signal Acquisition
-							</span>
-
-							<h2 class="section-title">
-								Separating cuff pressure from arterial oscillations
-							</h2>
-
-							<p>
-								The raw signal captures inflation and gradual deflation
-								of the cuff, while the filtered signal reveals the
-								smaller pressure oscillations produced by blood flow.
-							</p>
-
-							<p>
-								As cuff pressure falls, the oscillation envelope grows,
-								reaches a maximum, and then decreases — the pattern used
-								for oscillometric blood-pressure estimation.
-							</p>
-
-						</div>
-
-						<div class="signal-image">
-							<img
-								src={url('/blood-pressure-time-domain.png')}
-								alt="Raw cuff pressure and filtered oscillometric signals over time"
-							/>
-						</div>
-
-					</section>
-
-
-					<!-- =========================
-					     SIGNAL PROCESSING
-					     ========================= -->
+					<!-- SIGNAL PROCESSING -->
 
 					<section class="processing-section">
 
 						<div class="processing-image">
 							<img
-								src={url('/blood-pressure-peaks.png')}
-								alt="Oscillometric signal with detected peaks and oscillation amplitudes"
+								src={url('/blood-pressure-time-domain.png')}
+								alt="Raw and filtered blood pressure signals"
 							/>
 						</div>
 
@@ -548,16 +349,9 @@ import { url } from '../../utils/paths';
 							</h2>
 
 							<p>
-								Python was used to trim the useful portion of the signal,
-								detect oscillatory peaks and troughs, and calculate
-								peak-to-peak amplitudes.
-							</p>
-
-							<p>
-								The largest oscillation amplitude was used to identify
-								mean arterial pressure, while percentage thresholds on
-								either side of the maximum were used to estimate systolic
-								and diastolic pressure.
+								Python was used to isolate the useful portion of the
+								signal, detect oscillations, and calculate the amplitude
+								envelope used to estimate arterial pressure.
 							</p>
 
 						</div>
@@ -565,9 +359,7 @@ import { url } from '../../utils/paths';
 					</section>
 
 
-					<!-- =========================
-					     RESULTS
-					     ========================= -->
+					<!-- RESULTS -->
 
 					<section class="results-section">
 
@@ -578,11 +370,10 @@ import { url } from '../../utils/paths';
 							</span>
 
 							<h2 class="section-title">
-								Extracting MAP, systolic, and diastolic pressure
+								Systolic, MAP, and diastolic pressure
 							</h2>
 
 						</div>
-
 
 						<div class="results-grid">
 
@@ -603,34 +394,12 @@ import { url } from '../../utils/paths';
 
 						</div>
 
-
 						<div class="results-image">
 							<img
 								src={url('/blood-pressure-results.png')}
-								alt="Final oscillometric blood pressure analysis showing raw signal, filtered signal, and blood pressure estimates"
+								alt="Final oscillometric blood pressure analysis"
 							/>
 						</div>
-
-					</section>
-
-
-					<!-- =========================
-					     WHAT I LEARNED
-					     ========================= -->
-
-					<section class="limitation">
-
-						<h2>
-							What I learned
-						</h2>
-
-						<p>
-							Physiological signal processing is highly sensitive to noise
-							and peak-detection choices. The heart-rate estimates from both
-							the frequency-domain analysis and automated peak detection
-							were higher than physiologically expected, highlighting the
-							need for more robust filtering and peak-selection methods.
-						</p>
 
 					</section>
 
