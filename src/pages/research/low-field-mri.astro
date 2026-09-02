@@ -1,0 +1,332 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+import { url } from '../../utils/paths';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Low-Field MRI & T1 Relaxometry | ${SITE_TITLE}`}
+			description="T1 mapping of gadolinium using low-field MRI, MATLAB, and qMRLab."
+		/>
+
+		<style>
+			main {
+				max-width: none;
+				padding: 0;
+				background: #050814;
+			}
+
+			.research-page {
+				min-height: 100vh;
+				background:
+					radial-gradient(
+						ellipse at 18% 5%,
+						rgba(49, 70, 105, 0.22),
+						transparent 50%
+					),
+					#050814;
+			}
+
+			.research-inner {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 4rem 0 6rem;
+			}
+
+			/* HERO */
+
+			.back-link {
+				display: inline-block;
+				margin-bottom: 2rem;
+				font-size: 0.82rem;
+				font-weight: 600;
+				color: #80b7f4;
+				text-decoration: none;
+			}
+
+			.research-hero {
+				padding-bottom: 3rem;
+				border-bottom: 1px solid #334155;
+			}
+
+			.research-hero h1 {
+				max-width: 900px;
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: clamp(2.2rem, 3.5vw, 3rem);
+				line-height: 1.15;
+				color: var(--color-text-main);
+			}
+
+			.research-meta {
+				margin: 1.25rem 0 0;
+				font-size: 0.95rem;
+				color: var(--color-text-muted);
+			}
+
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.55rem;
+				margin-top: 1.5rem;
+			}
+
+			.tag {
+				padding: 0.35rem 0.7rem;
+				border-radius: 999px;
+				background: #172033;
+				font-size: 0.72rem;
+				color: #cbd5e1;
+			}
+
+			/* SUMMARY */
+
+			.summary {
+				padding: 3rem 0;
+				border-bottom: 1px solid #334155;
+			}
+
+			.label {
+				display: block;
+				margin-bottom: 0.8rem;
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.13em;
+				text-transform: uppercase;
+				color: #94a3b8;
+			}
+
+			.summary p {
+				max-width: 900px;
+				margin: 0;
+				font-size: 1.05rem;
+				line-height: 1.75;
+				color: #cbd5e1;
+			}
+
+			/* DETAILS */
+
+			.details-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				column-gap: 5rem;
+				row-gap: 3rem;
+				padding: 3.5rem 0;
+				border-bottom: 1px solid #334155;
+			}
+
+			.detail p {
+				margin: 0;
+				font-size: 0.95rem;
+				line-height: 1.75;
+				color: #cbd5e1;
+			}
+
+			/* POSTER */
+
+			.poster-section {
+				padding-top: 4rem;
+			}
+
+			.poster-header {
+				margin-bottom: 1.75rem;
+			}
+
+			.poster-header h2 {
+				display: block;
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: 1.6rem;
+				color: var(--color-text-main);
+			}
+
+			.poster-header p {
+				margin: 0.65rem 0 0;
+				font-size: 0.9rem;
+				color: var(--color-text-muted);
+			}
+
+			.poster-image {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+
+			@media (max-width: 850px) {
+				.research-inner {
+					padding-left: 2rem;
+					padding-right: 2rem;
+				}
+
+				.details-grid {
+					grid-template-columns: 1fr;
+					gap: 2.5rem;
+				}
+			}
+
+			@media (max-width: 600px) {
+				.research-inner {
+					padding: 3rem 1rem 4rem;
+				}
+
+				.research-hero h1 {
+					font-size: 2rem;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<div class="research-page">
+				<div class="research-inner">
+
+					<!-- HERO -->
+
+					<section class="research-hero">
+
+						<a href={url('/research')} class="back-link">
+							← Back to Research
+						</a>
+
+						<h1>
+							T1 Mapping of Gadolinium in Low-Field MRI
+						</h1>
+
+						<p class="research-meta">
+							Magnetic Resonance Technology Discovery Lab · Research Intern · 2023
+						</p>
+
+						<div class="tags">
+							<span class="tag">MRI</span>
+							<span class="tag">T1 Relaxometry</span>
+							<span class="tag">MATLAB</span>
+							<span class="tag">qMRLab</span>
+						</div>
+
+					</section>
+
+
+					<!-- PLAIN-LANGUAGE SUMMARY -->
+
+					<section class="summary">
+
+						<span class="label">
+							Plain-Language Summary
+						</span>
+
+						<p>
+							This research investigated how different concentrations of
+							gadolinium affect T1 relaxation times when imaged using a
+							low-field MRI. The goal was to help establish quantitative
+							reference values that could support the use of more accessible
+							low-field MRI systems.
+						</p>
+
+					</section>
+
+
+					<!-- RESEARCH DETAILS -->
+
+					<section class="details-grid">
+
+						<div class="detail">
+							<span class="label">
+								Research Focus
+							</span>
+
+							<p>
+								Understanding T1 relaxation behavior at low magnetic field
+								strengths and evaluating gadolinium phantoms as reference
+								standards for quantitative MRI.
+							</p>
+						</div>
+
+
+						<div class="detail">
+							<span class="label">
+								Methods & Tools
+							</span>
+
+							<p>
+								64 mT Hyperfine Swoop MRI, inversion-recovery imaging,
+								gadolinium phantoms, MATLAB, qMRLab, DICOM/NIfTI processing,
+								and T1 mapping.
+							</p>
+						</div>
+
+
+						<div class="detail">
+							<span class="label">
+								Key Finding
+							</span>
+
+							<p>
+								T1 relaxation time generally decreased as gadolinium
+								concentration increased, consistent with the expected
+								relaxation effect of the contrast agent.
+							</p>
+						</div>
+
+
+						<div class="detail">
+							<span class="label">
+								Research Significance
+							</span>
+
+							<p>
+								The measured range included T1 values relevant to brain
+								tissue, supporting the phantom's potential use as a
+								reference for quantitative low-field MRI.
+							</p>
+						</div>
+
+					</section>
+
+
+					<!-- POSTER -->
+
+					<section class="poster-section">
+
+						<div class="poster-header">
+
+							<span class="label">
+								Research Poster
+							</span>
+
+							<h2>
+								Full Study
+							</h2>
+
+							<p>
+								Experimental setup, T1 maps, quantitative results, and analysis.
+							</p>
+
+						</div>
+
+						<img
+							src="/SPARK Research Poster.pdf"
+							alt="T1 Mapping of Gadolinium in Low-Field MRI research poster"
+							class="poster-image"
+						/>
+
+					</section>
+
+				</div>
+			</div>
+		</main>
+
+		<Footer />
+	</body>
+</html>
