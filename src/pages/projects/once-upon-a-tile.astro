@@ -1,0 +1,431 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+import { url } from '../../utils/paths';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Once Upon a Tile | ${SITE_TITLE}`}
+			description="Accessible interactive robotics and storytelling system developed with Misericordia Heart of Mercy."
+		/>
+
+		<style>
+			main {
+				max-width: none;
+				padding: 0;
+				background: #050814;
+			}
+
+			.project-page {
+				min-height: 100vh;
+				background:
+					radial-gradient(
+						ellipse at 18% 5%,
+						rgba(49, 70, 105, 0.22),
+						transparent 50%
+					),
+					#050814;
+			}
+
+			.project-inner {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 4rem 0 6rem;
+			}
+
+			.label {
+				display: block;
+				margin-bottom: 0.75rem;
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.13em;
+				text-transform: uppercase;
+				color: #94a3b8;
+			}
+
+			.section-title {
+				display: block;
+				margin: 0 0 1rem;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: 1.65rem;
+				color: var(--color-text-main);
+			}
+
+			.section-copy p {
+				margin: 0 0 0.9rem;
+				font-size: 0.95rem;
+				line-height: 1.75;
+				color: #cbd5e1;
+			}
+
+			.back-link {
+				display: inline-block;
+				margin-bottom: 2rem;
+				font-size: 0.82rem;
+				font-weight: 600;
+				color: #80b7f4;
+				text-decoration: none;
+			}
+
+			.project-hero {
+				padding-bottom: 3.5rem;
+				border-bottom: 1px solid #334155;
+			}
+
+			.project-hero h1 {
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: clamp(2.2rem, 3.5vw, 3rem);
+				color: var(--color-text-main);
+			}
+
+			.project-meta {
+				margin: 1.2rem 0 0;
+				font-size: 0.95rem;
+				color: var(--color-text-muted);
+			}
+
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.55rem;
+				margin-top: 1.5rem;
+			}
+
+			.tag {
+				padding: 0.35rem 0.7rem;
+				border-radius: 999px;
+				background: #172033;
+				font-size: 0.72rem;
+				color: #cbd5e1;
+			}
+
+			.text-section {
+				display: grid;
+				grid-template-columns: 180px minmax(0, 1fr);
+				gap: 4rem;
+				padding: 3.5rem 0;
+				border-bottom: 1px solid #334155;
+			}
+
+			.text-section h2 {
+				display: block;
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: 1.45rem;
+				color: var(--color-text-main);
+			}
+
+			.process-section {
+				padding: 4rem 0;
+				border-bottom: 1px solid #334155;
+			}
+
+			.process-step {
+				display: grid;
+				grid-template-columns: 0.85fr 1.15fr;
+				gap: 4rem;
+				align-items: center;
+				margin-top: 3rem;
+			}
+
+			.process-step.reverse {
+				grid-template-columns: 1.15fr 0.85fr;
+			}
+
+			.project-image img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+
+			.feature-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1rem;
+				margin-top: 2rem;
+			}
+
+			.feature {
+				padding: 1.25rem;
+				background: #111827;
+				border: 1px solid #334155;
+				border-radius: 10px;
+			}
+
+			.feature h3 {
+				margin: 0 0 0.45rem;
+				font-family: var(--font-serif);
+				font-size: 1rem;
+				color: var(--color-text-main);
+			}
+
+			.feature p {
+				margin: 0;
+				font-size: 0.8rem;
+				line-height: 1.6;
+				color: var(--color-text-muted);
+			}
+
+			.results-section {
+				padding: 4rem 0 0;
+			}
+
+			.final-image {
+				margin-top: 2rem;
+				display: flex;
+				justify-content: center;
+			}
+
+			.final-image img {
+				width: min(100%, 820px);
+				height: auto;
+				display: block;
+			}
+
+			@media (max-width: 850px) {
+				.project-inner {
+					padding-left: 2rem;
+					padding-right: 2rem;
+				}
+
+				.text-section,
+				.process-step,
+				.process-step.reverse {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+
+				.feature-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media (max-width: 600px) {
+				.project-inner {
+					padding: 3rem 1rem 4rem;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<div class="project-page">
+				<div class="project-inner">
+
+					<section class="project-hero">
+
+						<a href={url('/projects')} class="back-link">
+							← Back to Projects
+						</a>
+
+						<h1>Once Upon a Tile</h1>
+
+						<p class="project-meta">
+							Misericordia Heart of Mercy · 2025
+						</p>
+
+						<div class="tags">
+							<span class="tag">Human-Centered Design</span>
+							<span class="tag">User Testing</span>
+							<span class="tag">Robotics</span>
+							<span class="tag">Prototyping</span>
+							<span class="tag">Accessible Design</span>
+						</div>
+
+					</section>
+
+
+					<section class="text-section">
+
+						<h2>Overview</h2>
+
+						<div class="section-copy">
+							<p>
+								Designed an interactive robotics experience with
+								Misericordia Heart of Mercy for adults with cognitive and
+								developmental disabilities.
+							</p>
+
+							<p>
+								The system combines modular whiteboard tiles, projected
+								environments, and a line-following robot to support
+								creative, adaptable learning.
+							</p>
+						</div>
+
+					</section>
+
+
+					<section class="text-section">
+
+						<h2>Problem</h2>
+
+						<div class="section-copy">
+							<p>
+								Residents enjoyed the existing robotics activities, but
+								the available content was repetitive, difficult to
+								customize, and offered limited visual or sensory
+								engagement.
+							</p>
+
+							<p>
+								The challenge was to create something accessible across
+								different abilities while giving users more agency and
+								room for imaginative play.
+							</p>
+						</div>
+
+					</section>
+
+
+					<section class="process-section">
+
+						<span class="label">Process</span>
+
+						<h2 class="section-title">
+							User observation, prototyping, and iteration
+						</h2>
+
+
+						<div class="process-step">
+
+							<div class="section-copy">
+								<span class="label">01 · User Research</span>
+
+								<h2 class="section-title">
+									Designing around real interactions
+								</h2>
+
+								<p>
+									We observed residents using existing robotics
+									activities and tested early tile and projection
+									concepts directly at Misericordia.
+								</p>
+
+								<p>
+									Engagement observations, resident feedback, and
+									facilitator input helped identify a preference for
+									simple, tactile, visual, and open-ended experiences.
+								</p>
+							</div>
+
+							<div class="project-image">
+								<img
+									src={url('/tile-testing.png')}
+									alt="Once Upon a Tile user testing"
+								/>
+							</div>
+
+						</div>
+
+
+						<div class="feature-grid">
+
+							<div class="feature">
+								<h3>Whiteboard Tiles</h3>
+								<p>
+									Reusable acrylic puzzle pieces let users draw the
+									robot's path and rearrange the play surface.
+								</p>
+							</div>
+
+							<div class="feature">
+								<h3>Projection</h3>
+								<p>
+									Projected visuals and sound create changing
+									environments without adding physical complexity.
+								</p>
+							</div>
+
+							<div class="feature">
+								<h3>Robot + Toppers</h3>
+								<p>
+									A programmed line-following Cutebot and interchangeable
+									toppers support movement and storytelling.
+								</p>
+							</div>
+
+						</div>
+
+
+						<div class="process-step reverse">
+
+							<div class="project-image">
+								<img
+									src={url('/tile-context.png')}
+									alt="Once Upon a Tile prototype development"
+								/>
+							</div>
+
+							<div class="section-copy">
+								<span class="label">02 · Iteration</span>
+
+								<h2 class="section-title">
+									Simplifying instead of adding complexity
+								</h2>
+
+								<p>
+									Early concepts included more structured games and
+									accessories, but testing showed that open-ended
+									interaction was more flexible and accessible.
+								</p>
+
+								<p>
+									The final concept therefore became a modular platform
+									that instructors and residents could continuously
+									re-theme and expand.
+								</p>
+							</div>
+
+						</div>
+
+					</section>
+
+
+					<section class="results-section">
+
+						<span class="label">Results</span>
+
+						<h2 class="section-title">
+							A reusable platform for creative learning
+						</h2>
+
+						<div class="section-copy">
+							<p>
+								The final prototype replaced fixed activities with a
+								system that can support new paths, stories, environments,
+								and robot themes while keeping the core interaction simple.
+							</p>
+						</div>
+
+						<div class="final-image">
+							<img
+								src={url('/tile-final.png')}
+								alt="Final Once Upon a Tile prototype"
+							/>
+						</div>
+
+					</section>
+
+				</div>
+			</div>
+		</main>
+
+		<Footer />
+	</body>
+</html>
