@@ -38,7 +38,9 @@ import { url } from '../../utils/paths';
 				padding: 4rem 0 6rem;
 			}
 
-			/* HERO */
+			/* =========================
+			   HERO
+			   ========================= */
 
 			.back-link {
 				display: inline-block;
@@ -46,6 +48,11 @@ import { url } from '../../utils/paths';
 				font-size: 0.82rem;
 				font-weight: 600;
 				color: #80b7f4;
+				text-decoration: none;
+			}
+
+			.back-link:hover {
+				color: #a7cffb;
 				text-decoration: none;
 			}
 
@@ -86,7 +93,9 @@ import { url } from '../../utils/paths';
 				color: #cbd5e1;
 			}
 
-			/* SUMMARY */
+			/* =========================
+			   SUMMARY
+			   ========================= */
 
 			.summary {
 				padding: 3rem 0;
@@ -111,7 +120,9 @@ import { url } from '../../utils/paths';
 				color: #cbd5e1;
 			}
 
-			/* DETAILS */
+			/* =========================
+			   DETAILS
+			   ========================= */
 
 			.details-grid {
 				display: grid;
@@ -129,17 +140,26 @@ import { url } from '../../utils/paths';
 				color: #cbd5e1;
 			}
 
-			/* POSTER */
+			/* =========================
+			   POSTER LINK
+			   ========================= */
 
 			.poster-section {
-				padding-top: 4rem;
+				padding-top: 3.5rem;
 			}
 
-			.poster-header {
-				margin-bottom: 1.75rem;
+			.poster-content {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 3rem;
 			}
 
-			.poster-header h2 {
+			.poster-copy {
+				max-width: 650px;
+			}
+
+			.poster-copy h2 {
 				display: block;
 				margin: 0;
 				padding: 0;
@@ -149,17 +169,41 @@ import { url } from '../../utils/paths';
 				color: var(--color-text-main);
 			}
 
-			.poster-header p {
+			.poster-copy p {
 				margin: 0.65rem 0 0;
 				font-size: 0.9rem;
+				line-height: 1.6;
 				color: var(--color-text-muted);
 			}
 
-			.poster-image {
-				display: block;
-				width: 100%;
-				height: auto;
+			.poster-button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				flex-shrink: 0;
+				padding: 0.7rem 1.15rem;
+				border: 1px solid #4b6f9e;
+				border-radius: 999px;
+				font-size: 0.82rem;
+				font-weight: 600;
+				color: #80b7f4;
+				text-decoration: none;
+				transition:
+					background-color 0.2s ease,
+					border-color 0.2s ease,
+					color 0.2s ease;
 			}
+
+			.poster-button:hover {
+				background: #172033;
+				border-color: #80b7f4;
+				color: #a7cffb;
+				text-decoration: none;
+			}
+
+			/* =========================
+			   RESPONSIVE
+			   ========================= */
 
 			@media (max-width: 850px) {
 				.research-inner {
@@ -170,6 +214,12 @@ import { url } from '../../utils/paths';
 				.details-grid {
 					grid-template-columns: 1fr;
 					gap: 2.5rem;
+				}
+
+				.poster-content {
+					align-items: flex-start;
+					flex-direction: column;
+					gap: 1.5rem;
 				}
 			}
 
@@ -192,7 +242,9 @@ import { url } from '../../utils/paths';
 			<div class="research-page">
 				<div class="research-inner">
 
-					<!-- HERO -->
+					<!-- =========================
+					     HERO
+					     ========================= -->
 
 					<section class="research-hero">
 
@@ -218,7 +270,9 @@ import { url } from '../../utils/paths';
 					</section>
 
 
-					<!-- PLAIN-LANGUAGE SUMMARY -->
+					<!-- =========================
+					     SUMMARY
+					     ========================= -->
 
 					<section class="summary">
 
@@ -237,7 +291,9 @@ import { url } from '../../utils/paths';
 					</section>
 
 
-					<!-- RESEARCH DETAILS -->
+					<!-- =========================
+					     RESEARCH DETAILS
+					     ========================= -->
 
 					<section class="details-grid">
 
@@ -295,31 +351,40 @@ import { url } from '../../utils/paths';
 					</section>
 
 
-					<!-- POSTER -->
+					<!-- =========================
+					     RESEARCH POSTER
+					     ========================= -->
 
 					<section class="poster-section">
 
-						<div class="poster-header">
+						<div class="poster-content">
 
-							<span class="label">
-								Research Poster
-							</span>
+							<div class="poster-copy">
 
-							<h2>
-								Full Study
-							</h2>
+								<span class="label">
+									Research Poster
+								</span>
 
-							<p>
-								Experimental setup, T1 maps, quantitative results, and analysis.
-							</p>
+								<h2>
+									View the Full Study
+								</h2>
+
+								<p>
+									Experimental setup, T1 maps, quantitative results, and analysis.
+								</p>
+
+							</div>
+
+							<a
+								href={url('/SPARK Research Poster.pdf')}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="poster-button"
+							>
+								View Research Poster ↗
+							</a>
 
 						</div>
-
-						<img
-							src="/1788341060828-5aea084b-81d7-4f75-870b-06beba339904_1.png"
-							alt="T1 Mapping of Gadolinium in Low-Field MRI research poster"
-							class="poster-image"
-						/>
 
 					</section>
 
