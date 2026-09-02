@@ -172,17 +172,16 @@ import { url } from '../../utils/paths';
 			}
 
 			.system-images {
-				display: grid;
-				grid-template-columns: 0.7fr 1.3fr;
-				gap: 1rem;
-				align-items: center;
-			}
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
-			.system-images img {
-				width: 100%;
-				height: auto;
-				display: block;
-			}
+.system-images img {
+	display: block;
+	width: min(100%, 700px);
+	height: auto;
+}
 
 			/* RESULTS */
 
@@ -305,11 +304,7 @@ import { url } from '../../utils/paths';
 							<p>
 								Designed an instrumentation system that converts
 								pressure changes in a blood-pressure cuff into electrical
-								signals that can be filtered and analyzed.
-							</p>
-
-							<p>
-								Python signal processing was then used to estimate
+								signals that can be filtered and analyzed. Python signal processing was then used to estimate
 								systolic pressure, mean arterial pressure, and diastolic
 								pressure from the oscillometric waveform.
 							</p>
@@ -327,8 +322,7 @@ import { url } from '../../utils/paths';
 						<div class="section-copy">
 							<p>
 								The physiologically useful pulse oscillations are much
-								smaller than the overall cuff-pressure signal. The system
-								therefore needed to amplify the sensor output while
+								smaller than the overall cuff-pressure signal. With this in mind, the system needed to amplify the sensor output while
 								separating arterial oscillations from the slow pressure
 								trend and electrical noise.
 							</p>
@@ -362,27 +356,18 @@ import { url } from '../../utils/paths';
 								<p>
 									The pressure-sensor output was amplified with an
 									INA121 instrumentation amplifier and split into two
-									channels.
-								</p>
-
-								<p>
-									One preserved raw cuff pressure while high- and
+									channels. One preserved raw cuff pressure while high- and
 									low-pass filtering isolated the smaller pulse-related
 									oscillations on the second channel.
 								</p>
 							</div>
 
 							<div class="system-images">
-								<img
-									src={url('/blood-pressure-schematic.png')}
-									alt="Blood pressure system block diagram"
-								/>
-
-								<img
-									src={url('/blood-pressure-circuit.png')}
-									alt="Instrumentation circuit"
-								/>
-							</div>
+	<img
+		src={url('/blood-pressure-circuit.png')}
+		alt="Blood pressure instrumentation circuit showing pressure sensing, amplification, and filtering"
+	/>
+</div>
 
 						</div>
 
@@ -405,11 +390,7 @@ import { url } from '../../utils/paths';
 
 								<p>
 									The filtered signal reveals the arterial pulsations
-									that appear as the cuff gradually deflates.
-								</p>
-
-								<p>
-									I used Python to trim the useful signal region,
+									that appear as the cuff gradually deflates. Python was used to trim the useful signal region,
 									detect oscillation peaks and troughs, and calculate
 									peak-to-peak amplitude.
 								</p>
