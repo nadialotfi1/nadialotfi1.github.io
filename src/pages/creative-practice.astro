@@ -89,6 +89,10 @@ import { SITE_TITLE } from '../consts';
 				color: var(--color-text-muted);
 			}
 
+			.creative-copy p:last-of-type {
+				margin-bottom: 0;
+			}
+
 			.practice-line {
 				display: flex;
 				flex-wrap: wrap;
@@ -110,7 +114,6 @@ import { SITE_TITLE } from '../consts';
 				width: 100%;
 				aspect-ratio: 4 / 5;
 				overflow: hidden;
-				border: 1px solid #334155;
 				border-radius: 14px;
 				background: #111827;
 			}
@@ -123,11 +126,11 @@ import { SITE_TITLE } from '../consts';
 			}
 
 			/* =========================
-			   COLLAGE
+			   GALLERY
 			   ========================= */
 
 			.gallery-section {
-				padding: 3.5rem 0;
+				padding: 3.5rem 0 0;
 				border-top: 1px solid #334155;
 			}
 
@@ -153,11 +156,14 @@ import { SITE_TITLE } from '../consts';
 				gap: 0.7rem;
 			}
 
+			/*
+				No borders or cards around the artwork.
+				The images themselves define the collage.
+			*/
+
 			.gallery-image {
 				overflow: hidden;
-				border: 1px solid #334155;
-				border-radius: 12px;
-				background: #0b1020;
+				background: transparent;
 			}
 
 			.gallery-image img {
@@ -166,7 +172,11 @@ import { SITE_TITLE } from '../consts';
 				display: block;
 			}
 
-			/* 1 — ceramic mugs */
+			/* =========================
+			   INDIVIDUAL IMAGES
+			   ========================= */
+
+			/* Ceramic mugs */
 			.item-1 {
 				grid-column: 1;
 				grid-row: span 5;
@@ -176,7 +186,7 @@ import { SITE_TITLE } from '../consts';
 				object-fit: cover;
 			}
 
-			/* 2 — wide outdoor sketch */
+			/* Wide outdoor sketch */
 			.item-2 {
 				grid-column: 2 / 4;
 				grid-row: span 3;
@@ -184,10 +194,9 @@ import { SITE_TITLE } from '../consts';
 
 			.item-2 img {
 				object-fit: contain;
-				background: #f3f3f1;
 			}
 
-			/* 3 — blue vessel */
+			/* Blue ceramic vessel */
 			.item-3 {
 				grid-column: 4;
 				grid-row: span 5;
@@ -197,7 +206,7 @@ import { SITE_TITLE } from '../consts';
 				object-fit: cover;
 			}
 
-			/* 4 — food sketch */
+			/* Food sketch */
 			.item-4 {
 				grid-column: 1;
 				grid-row: span 6;
@@ -205,10 +214,9 @@ import { SITE_TITLE } from '../consts';
 
 			.item-4 img {
 				object-fit: contain;
-				background: #f3f3f1;
 			}
 
-			/* 5 — hands sketch */
+			/* Hands sketch */
 			.item-5 {
 				grid-column: 2;
 				grid-row: span 5;
@@ -216,10 +224,9 @@ import { SITE_TITLE } from '../consts';
 
 			.item-5 img {
 				object-fit: contain;
-				background: #f3f3f1;
 			}
 
-			/* 6 — cat sketch */
+			/* Cat sketch */
 			.item-6 {
 				grid-column: 3;
 				grid-row: span 5;
@@ -227,20 +234,20 @@ import { SITE_TITLE } from '../consts';
 
 			.item-6 img {
 				object-fit: contain;
-				background: #f3f3f1;
 			}
 
-			/* 7 — ceramic bowl */
+			/* Ceramic bowl */
 			.item-7 {
 				grid-column: 4;
 				grid-row: span 6;
 			}
 
 			.item-7 img {
-				object-fit: cover;
+				object-fit: contain;
+				object-position: center;
 			}
 
-			/* 8 + 9 — paintings lower in the collage */
+			/* Portrait paintings */
 			.item-8 {
 				grid-column: 2;
 				grid-row: span 6;
@@ -254,48 +261,10 @@ import { SITE_TITLE } from '../consts';
 			.item-8 img,
 			.item-9 img {
 				object-fit: contain;
-				background: #0b1020;
 			}
 
 			/* =========================
-			   REFLECTION
-			   ========================= */
-
-			.reflection {
-				padding: 3.5rem 0 0;
-				border-top: 1px solid #334155;
-			}
-
-			.reflection-content {
-				display: grid;
-				grid-template-columns: 0.7fr 1.3fr;
-				gap: 4rem;
-			}
-
-			.reflection h2 {
-				display: block;
-				margin: 0;
-				padding: 0;
-				border: none;
-				font-family: var(--font-serif);
-				font-size: 1.55rem;
-				line-height: 1.3;
-				color: var(--color-text-main);
-			}
-
-			.reflection-copy {
-				max-width: 620px;
-			}
-
-			.reflection-copy p {
-				margin: 0 0 0.9rem;
-				font-size: 0.9rem;
-				line-height: 1.75;
-				color: var(--color-text-muted);
-			}
-
-			/* =========================
-			   RESPONSIVE
+			   TABLET
 			   ========================= */
 
 			@media (max-width: 850px) {
@@ -346,12 +315,11 @@ import { SITE_TITLE } from '../consts';
 				.item-7 {
 					aspect-ratio: 4 / 3;
 				}
-
-				.reflection-content {
-					grid-template-columns: 1fr;
-					gap: 1.25rem;
-				}
 			}
+
+			/* =========================
+			   MOBILE
+			   ========================= */
 
 			@media (max-width: 600px) {
 				.creative-inner {
@@ -366,17 +334,17 @@ import { SITE_TITLE } from '../consts';
 					font-size: 2rem;
 				}
 
-				.art-gallery {
-					grid-template-columns: repeat(2, minmax(0, 1fr));
-					gap: 0.55rem;
+				.practice-line {
+					gap: 0.5rem;
 				}
 
 				.gallery-section {
-					padding: 3rem 0;
+					padding-top: 3rem;
 				}
 
-				.reflection {
-					padding-top: 3rem;
+				.art-gallery {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+					gap: 0.55rem;
 				}
 			}
 		</style>
@@ -389,9 +357,9 @@ import { SITE_TITLE } from '../consts';
 			<div class="creative-page">
 				<div class="creative-inner">
 
-					<!-- =========================
-					     TOP
-					     ========================= -->
+					<!-- ========================================
+					     CREATIVE PRACTICE + ENGINEERING
+					     ======================================== -->
 
 					<section class="creative-hero">
 
@@ -443,13 +411,14 @@ import { SITE_TITLE } from '../consts';
 					</section>
 
 
-					<!-- =========================
-					     GALLERY
-					     ========================= -->
+					<!-- ========================================
+					     ART + CERAMICS GALLERY
+					     ======================================== -->
 
 					<section class="gallery-section">
 
 						<div class="section-heading">
+
 							<span class="eyebrow">
 								Selected Work
 							</span>
@@ -457,11 +426,13 @@ import { SITE_TITLE } from '../consts';
 							<h2>
 								Ceramics & visual studies
 							</h2>
+
 						</div>
+
 
 						<div class="art-gallery">
 
-							<!-- Ceramics -->
+							<!-- Ceramic mugs -->
 							<div class="gallery-image item-1">
 								<img
 									src="/IMG_6940.jpeg"
@@ -469,7 +440,8 @@ import { SITE_TITLE } from '../consts';
 								/>
 							</div>
 
-							<!-- Sketch -->
+
+							<!-- Outdoor sketch -->
 							<div class="gallery-image item-2">
 								<img
 									src="/IMG_4436.jpeg"
@@ -477,7 +449,8 @@ import { SITE_TITLE } from '../consts';
 								/>
 							</div>
 
-							<!-- Ceramics -->
+
+							<!-- Blue ceramic vessel -->
 							<div class="gallery-image item-3">
 								<img
 									src="/IMG_6074.jpeg"
@@ -485,15 +458,17 @@ import { SITE_TITLE } from '../consts';
 								/>
 							</div>
 
-							<!-- Sketch -->
+
+							<!-- Food sketch -->
 							<div class="gallery-image item-4">
 								<img
 									src="/IMG_4435.jpeg"
-									alt="Observational ink sketch"
+									alt="Observational ink sketch of food and objects"
 								/>
 							</div>
 
-							<!-- Sketch -->
+
+							<!-- Hands sketch -->
 							<div class="gallery-image item-5">
 								<img
 									src="/IMG_4433.jpeg"
@@ -501,7 +476,8 @@ import { SITE_TITLE } from '../consts';
 								/>
 							</div>
 
-							<!-- Sketch -->
+
+							<!-- Cat sketch -->
 							<div class="gallery-image item-6">
 								<img
 									src="/IMG_4434.jpeg"
@@ -509,7 +485,8 @@ import { SITE_TITLE } from '../consts';
 								/>
 							</div>
 
-							<!-- Ceramics -->
+
+							<!-- Ceramic bowl -->
 							<div class="gallery-image item-7">
 								<img
 									src="/IMG_6936.jpeg"
@@ -517,7 +494,8 @@ import { SITE_TITLE } from '../consts';
 								/>
 							</div>
 
-							<!-- Paintings lower in the collage -->
+
+							<!-- Portrait painting -->
 							<div class="gallery-image item-8">
 								<img
 									src="/IMG_0247.jpeg"
@@ -525,6 +503,8 @@ import { SITE_TITLE } from '../consts';
 								/>
 							</div>
 
+
+							<!-- Portrait painting -->
 							<div class="gallery-image item-9">
 								<img
 									src="/IMG_0248.jpeg"
