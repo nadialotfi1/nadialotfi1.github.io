@@ -107,7 +107,6 @@ import { SITE_TITLE } from '../consts';
 			}
 
 			.hero-image {
-				position: relative;
 				width: 100%;
 				aspect-ratio: 4 / 5;
 				overflow: hidden;
@@ -124,7 +123,7 @@ import { SITE_TITLE } from '../consts';
 			}
 
 			/* =========================
-			   COLLAGE GALLERY
+			   COLLAGE
 			   ========================= */
 
 			.gallery-section {
@@ -149,74 +148,111 @@ import { SITE_TITLE } from '../consts';
 			.art-gallery {
 				display: grid;
 				grid-template-columns: repeat(4, minmax(0, 1fr));
-				grid-template-rows: repeat(4, 150px);
-				gap: 0.75rem;
+				grid-auto-rows: 65px;
+				grid-auto-flow: dense;
+				gap: 0.7rem;
 			}
 
 			.gallery-image {
-				position: relative;
 				overflow: hidden;
 				border: 1px solid #334155;
 				border-radius: 12px;
-				background: #111827;
+				background: #0b1020;
 			}
 
 			.gallery-image img {
 				width: 100%;
 				height: 100%;
 				display: block;
+			}
+
+			/* 1 — ceramic mugs */
+			.item-1 {
+				grid-column: 1;
+				grid-row: span 5;
+			}
+
+			.item-1 img {
 				object-fit: cover;
 			}
 
-			/* Ceramics + sketches mixed together */
-
-			.item-1 {
-				grid-column: 1 / 2;
-				grid-row: 1 / 3;
-			}
-
+			/* 2 — wide outdoor sketch */
 			.item-2 {
 				grid-column: 2 / 4;
-				grid-row: 1 / 2;
+				grid-row: span 3;
 			}
 
+			.item-2 img {
+				object-fit: contain;
+				background: #f3f3f1;
+			}
+
+			/* 3 — blue vessel */
 			.item-3 {
-				grid-column: 4 / 5;
-				grid-row: 1 / 3;
+				grid-column: 4;
+				grid-row: span 5;
 			}
 
+			.item-3 img {
+				object-fit: cover;
+			}
+
+			/* 4 — food sketch */
 			.item-4 {
-				grid-column: 2 / 3;
-				grid-row: 2 / 4;
+				grid-column: 1;
+				grid-row: span 6;
 			}
 
+			.item-4 img {
+				object-fit: contain;
+				background: #f3f3f1;
+			}
+
+			/* 5 — hands sketch */
 			.item-5 {
-				grid-column: 3 / 4;
-				grid-row: 2 / 4;
+				grid-column: 2;
+				grid-row: span 5;
 			}
 
+			.item-5 img {
+				object-fit: contain;
+				background: #f3f3f1;
+			}
+
+			/* 6 — cat sketch */
 			.item-6 {
-				grid-column: 1 / 2;
-				grid-row: 3 / 5;
+				grid-column: 3;
+				grid-row: span 5;
 			}
 
+			.item-6 img {
+				object-fit: contain;
+				background: #f3f3f1;
+			}
+
+			/* 7 — ceramic bowl */
 			.item-7 {
-				grid-column: 4 / 5;
-				grid-row: 3 / 5;
+				grid-column: 4;
+				grid-row: span 6;
 			}
 
+			.item-7 img {
+				object-fit: cover;
+			}
+
+			/* 8 + 9 — paintings lower in the collage */
 			.item-8 {
-				grid-column: 2 / 3;
-				grid-row: 4 / 5;
+				grid-column: 2;
+				grid-row: span 6;
 			}
 
 			.item-9 {
-				grid-column: 3 / 4;
-				grid-row: 4 / 5;
+				grid-column: 3;
+				grid-row: span 6;
 			}
 
-			/* Keep paintings fully visible */
-			.painting img {
+			.item-8 img,
+			.item-9 img {
 				object-fit: contain;
 				background: #0b1020;
 			}
@@ -247,15 +283,15 @@ import { SITE_TITLE } from '../consts';
 				color: var(--color-text-main);
 			}
 
+			.reflection-copy {
+				max-width: 620px;
+			}
+
 			.reflection-copy p {
 				margin: 0 0 0.9rem;
 				font-size: 0.9rem;
 				line-height: 1.75;
 				color: var(--color-text-muted);
-			}
-
-			.reflection-copy p:last-child {
-				margin-bottom: 0;
 			}
 
 			/* =========================
@@ -279,9 +315,8 @@ import { SITE_TITLE } from '../consts';
 				}
 
 				.art-gallery {
-					grid-template-columns: repeat(2, 1fr);
-					grid-template-rows: none;
-					grid-auto-rows: 220px;
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+					grid-auto-rows: auto;
 				}
 
 				.item-1,
@@ -295,6 +330,21 @@ import { SITE_TITLE } from '../consts';
 				.item-9 {
 					grid-column: auto;
 					grid-row: auto;
+				}
+
+				.item-1,
+				.item-3,
+				.item-4,
+				.item-5,
+				.item-6,
+				.item-8,
+				.item-9 {
+					aspect-ratio: 3 / 4;
+				}
+
+				.item-2,
+				.item-7 {
+					aspect-ratio: 4 / 3;
 				}
 
 				.reflection-content {
@@ -312,10 +362,21 @@ import { SITE_TITLE } from '../consts';
 					padding-bottom: 3rem;
 				}
 
+				.creative-copy h1 {
+					font-size: 2rem;
+				}
+
 				.art-gallery {
-					grid-template-columns: repeat(2, 1fr);
-					grid-auto-rows: 170px;
-					gap: 0.6rem;
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+					gap: 0.55rem;
+				}
+
+				.gallery-section {
+					padding: 3rem 0;
+				}
+
+				.reflection {
+					padding-top: 3rem;
 				}
 			}
 		</style>
@@ -335,6 +396,7 @@ import { SITE_TITLE } from '../consts';
 					<section class="creative-hero">
 
 						<div class="creative-copy">
+
 							<span class="eyebrow">
 								Creative Practice
 							</span>
@@ -368,6 +430,7 @@ import { SITE_TITLE } from '../consts';
 								<span class="arrow">→</span>
 								<span>Refine</span>
 							</div>
+
 						</div>
 
 						<div class="hero-image">
@@ -381,7 +444,7 @@ import { SITE_TITLE } from '../consts';
 
 
 					<!-- =========================
-					     COLLAGE GALLERY
+					     GALLERY
 					     ========================= -->
 
 					<section class="gallery-section">
@@ -410,7 +473,7 @@ import { SITE_TITLE } from '../consts';
 							<div class="gallery-image item-2">
 								<img
 									src="/IMG_4436.jpeg"
-									alt="Outdoor observational sketch"
+									alt="Outdoor observational ink sketch"
 								/>
 							</div>
 
@@ -422,39 +485,16 @@ import { SITE_TITLE } from '../consts';
 								/>
 							</div>
 
-							<!-- Portrait paintings in the middle -->
-							<div class="gallery-image item-4 painting">
-								<img
-									src="/IMG_0247.jpeg"
-									alt="Portrait painting"
-								/>
-							</div>
-
-							<div class="gallery-image item-5 painting">
-								<img
-									src="/IMG_0248.jpeg"
-									alt="Portrait painting"
-								/>
-							</div>
-
 							<!-- Sketch -->
-							<div class="gallery-image item-6">
+							<div class="gallery-image item-4">
 								<img
 									src="/IMG_4435.jpeg"
 									alt="Observational ink sketch"
 								/>
 							</div>
 
-							<!-- Ceramics -->
-							<div class="gallery-image item-7">
-								<img
-									src="/IMG_6936.jpeg"
-									alt="Handmade ceramic bowl"
-								/>
-							</div>
-
 							<!-- Sketch -->
-							<div class="gallery-image item-8">
+							<div class="gallery-image item-5">
 								<img
 									src="/IMG_4433.jpeg"
 									alt="Ink study of hands"
@@ -462,10 +502,33 @@ import { SITE_TITLE } from '../consts';
 							</div>
 
 							<!-- Sketch -->
-							<div class="gallery-image item-9">
+							<div class="gallery-image item-6">
 								<img
 									src="/IMG_4434.jpeg"
 									alt="Ink sketch of a resting cat"
+								/>
+							</div>
+
+							<!-- Ceramics -->
+							<div class="gallery-image item-7">
+								<img
+									src="/IMG_6936.jpeg"
+									alt="Handmade glazed ceramic bowl"
+								/>
+							</div>
+
+							<!-- Paintings lower in the collage -->
+							<div class="gallery-image item-8">
+								<img
+									src="/IMG_0247.jpeg"
+									alt="Portrait painting"
+								/>
+							</div>
+
+							<div class="gallery-image item-9">
+								<img
+									src="/IMG_0248.jpeg"
+									alt="Portrait painting"
 								/>
 							</div>
 
@@ -491,6 +554,7 @@ import { SITE_TITLE } from '../consts';
 							</h2>
 
 							<div class="reflection-copy">
+
 								<p>
 									Working by hand reminds me that good design is rarely
 									finished in the first iteration. Materials push back,
@@ -503,6 +567,7 @@ import { SITE_TITLE } from '../consts';
 									staying curious, and creating things that feel
 									thoughtful, tangible, and useful.
 								</p>
+
 							</div>
 
 						</div>
