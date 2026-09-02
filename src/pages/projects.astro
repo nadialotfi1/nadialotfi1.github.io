@@ -14,6 +14,7 @@ const projects = [
 		skills: ['Python', 'Signal Processing', 'Analog Circuits', 'Instrumentation'],
 		image: '/blood-pressure-circuit.png',
 		link: '/projects/blood-pressure',
+		imageClass: 'blood-pressure-cover',
 	},
 	{
 		title: 'Bicycle Caliper Brake Design',
@@ -23,6 +24,7 @@ const projects = [
 		skills: ['FEA', 'Topology Optimization', 'CAD', 'Prototyping'],
 		image: null,
 		link: '/projects/bicycle-brake',
+		imageClass: '',
 	},
 	{
 		title: 'Once Upon a Tile',
@@ -32,6 +34,7 @@ const projects = [
 		skills: ['Robotics', 'Prototyping', 'Accessible Design'],
 		image: null,
 		link: '/projects/once-upon-a-tile',
+		imageClass: '',
 	},
 	{
 		title: 'Legacy PopUp Display',
@@ -41,6 +44,7 @@ const projects = [
 		skills: ['Fabrication', 'Product Design', 'Teamwork'],
 		image: null,
 		link: '/projects/legacy-popup',
+		imageClass: '',
 	},
 ];
 ---
@@ -132,6 +136,13 @@ const projects = [
 				height: 100%;
 				object-fit: cover;
 				display: block;
+			}
+
+			/* Blood-pressure schematic: show full image, don't crop it */
+			.project-image img.blood-pressure-cover {
+				object-fit: contain;
+				object-position: center;
+				background: #e5e5e5;
 			}
 
 			.image-placeholder {
@@ -247,7 +258,11 @@ const projects = [
 
 								<div class="project-image">
 									{project.image ? (
-										<img src={url(project.image)} alt={project.title} />
+										<img
+											src={url(project.image)}
+											alt={project.title}
+											class={project.imageClass}
+										/>
 									) : (
 										<div class="image-placeholder">
 											Add Project Image
