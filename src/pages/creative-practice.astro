@@ -56,21 +56,6 @@ import { SITE_TITLE } from '../consts';
 				color: #80b7f4;
 			}
 
-			.image-placeholder {
-				position: absolute;
-				inset: 0;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				padding: 1rem;
-				text-align: center;
-				font-size: 0.68rem;
-				font-weight: 700;
-				letter-spacing: 0.12em;
-				text-transform: uppercase;
-				color: #64748b;
-			}
-
 			/* =========================
 			   TOP SECTION
 			   ========================= */
@@ -132,12 +117,7 @@ import { SITE_TITLE } from '../consts';
 				overflow: hidden;
 				border: 1px solid #334155;
 				border-radius: 16px;
-				background:
-					linear-gradient(
-						135deg,
-						#172033,
-						#0b1020
-					);
+				background: #111827;
 			}
 
 			.hero-image img {
@@ -172,30 +152,17 @@ import { SITE_TITLE } from '../consts';
 
 			.art-gallery {
 				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				grid-auto-rows: 260px;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
 				gap: 1rem;
 			}
 
 			.gallery-image {
 				position: relative;
 				overflow: hidden;
+				min-height: 360px;
 				border: 1px solid #334155;
 				border-radius: 14px;
-				background:
-					linear-gradient(
-						135deg,
-						#172033,
-						#0b1020
-					);
-			}
-
-			.gallery-image-large {
-				grid-row: span 2;
-			}
-
-			.gallery-image-wide {
-				grid-column: span 2;
+				background: #111827;
 			}
 
 			.gallery-image img {
@@ -203,6 +170,27 @@ import { SITE_TITLE } from '../consts';
 				height: 100%;
 				display: block;
 				object-fit: cover;
+			}
+
+			/* Paintings stay side by side and fully visible */
+			.portrait-art {
+				aspect-ratio: 3 / 4;
+				background: #0b1020;
+			}
+
+			.portrait-art img {
+				object-fit: contain;
+			}
+
+			/* Horizontal images */
+			.gallery-image-wide {
+				grid-column: span 2;
+				aspect-ratio: 16 / 8;
+			}
+
+			/* Vertical sketches */
+			.gallery-image-tall {
+				aspect-ratio: 3 / 4;
 			}
 
 			/* =========================
@@ -262,10 +250,6 @@ import { SITE_TITLE } from '../consts';
 					aspect-ratio: 4 / 3;
 				}
 
-				.art-gallery {
-					grid-template-columns: repeat(2, 1fr);
-				}
-
 				.reflection-content {
 					grid-template-columns: 1fr;
 					gap: 1.25rem;
@@ -295,13 +279,20 @@ import { SITE_TITLE } from '../consts';
 
 				.art-gallery {
 					grid-template-columns: 1fr;
-					grid-auto-rows: 320px;
 				}
 
-				.gallery-image-large,
+				.gallery-image {
+					min-height: 300px;
+				}
+
 				.gallery-image-wide {
-					grid-row: auto;
 					grid-column: auto;
+					aspect-ratio: 4 / 3;
+				}
+
+				.portrait-art,
+				.gallery-image-tall {
+					aspect-ratio: 3 / 4;
 				}
 
 				.reflection {
@@ -325,6 +316,7 @@ import { SITE_TITLE } from '../consts';
 					<section class="creative-hero">
 
 						<div class="creative-copy">
+
 							<span class="eyebrow">
 								Creative Practice
 							</span>
@@ -334,11 +326,19 @@ import { SITE_TITLE } from '../consts';
 							</h1>
 
 							<p>
-								Art and engineering are built on many of the same habits, shaped by observation, prototyping, testing, and refinement. 
+								Art and engineering are built on many of the same habits,
+								shaped by observation, prototyping, testing, and refinement.
 							</p>
 
 							<p>
-								I’ve learned a lot from ideas that looked good on paper but changed once they encountered real materials, real constraints, or real people. Those moments have made me more willing to question assumptions, pay attention to detail, and treat iteration as an essential part of the process. Whether I’m working in ceramics, creating a prototype, or designing, I’m most interested in thoughtful, human-centered design that is truly helpful for the people it is made for.
+								I’ve learned a lot from ideas that looked good on paper but
+								changed once they encountered real materials, real constraints,
+								or real people. Those moments have made me more willing to
+								question assumptions, pay attention to detail, and treat
+								iteration as an essential part of the process. Whether I’m
+								working in ceramics, creating a prototype, or designing, I’m
+								most interested in thoughtful, human-centered design that is
+								truly helpful for the people it is made for.
 							</p>
 
 							<div class="practice-line">
@@ -350,12 +350,13 @@ import { SITE_TITLE } from '../consts';
 								<span class="arrow">→</span>
 								<span>Refine</span>
 							</div>
+
 						</div>
 
 						<div class="hero-image">
 							<img
 								src="/IMG_1311.jpeg"
-								alt="Ceramic Teapots"
+								alt="Handmade ceramic teapots"
 							/>
 						</div>
 
@@ -378,45 +379,120 @@ import { SITE_TITLE } from '../consts';
 							</h2>
 						</div>
 
+
 						<div class="art-gallery">
 
-							<div class="gallery-image gallery-image-large">
-								<div class="image-placeholder">
-									Ceramics
-								</div>
+							<!-- Portrait paintings side by side -->
+
+							<div class="gallery-image portrait-art">
+								<img
+									src="/IMG_0247.jpeg"
+									alt="Portrait painting"
+								/>
+							</div>
+
+							<div class="gallery-image portrait-art">
+								<img
+									src="/IMG_0248.jpeg"
+									alt="Portrait painting"
+								/>
+							</div>
+
+
+							<!-- Ceramics -->
+
+							<div class="gallery-image">
+								<img
+									src="/IMG_6940.jpeg"
+									alt="Handmade ceramic mugs"
+								/>
 							</div>
 
 							<div class="gallery-image">
-								<div class="image-placeholder">
-									Sketch
-								</div>
-							</div>
-
-							<div class="gallery-image">
-								<div class="image-placeholder">
-									Ceramic Detail
-								</div>
-							</div>
-
-							<div class="gallery-image">
-								<div class="image-placeholder">
-									Sketch / Study
-								</div>
-							</div>
-
-							<div class="gallery-image">
-								<div class="image-placeholder">
-									Ceramics
-								</div>
+								<img
+									src="/IMG_6074.jpeg"
+									alt="Glazed ceramic vessel"
+								/>
 							</div>
 
 							<div class="gallery-image gallery-image-wide">
-								<div class="image-placeholder">
-									Process / Visual Study
-								</div>
+								<img
+									src="/IMG_6936.jpeg"
+									alt="Handmade ceramic bowl"
+								/>
+							</div>
+
+
+							<!-- Sketches -->
+
+							<div class="gallery-image gallery-image-tall">
+								<img
+									src="/IMG_4435.jpeg"
+									alt="Observational ink sketch"
+								/>
+							</div>
+
+							<div class="gallery-image gallery-image-tall">
+								<img
+									src="/IMG_4433.jpeg"
+									alt="Ink study of hands"
+								/>
+							</div>
+
+							<div class="gallery-image gallery-image-wide">
+								<img
+									src="/IMG_4436.jpeg"
+									alt="Outdoor observational ink sketch"
+								/>
+							</div>
+
+							<div class="gallery-image gallery-image-tall">
+								<img
+									src="/IMG_4434.jpeg"
+									alt="Ink sketch of a resting cat"
+								/>
 							</div>
 
 						</div>
+
+					</section>
+
+
+					<!-- ========================================
+					     3. REFLECTION
+					     ======================================== -->
+
+					<section class="reflection">
+
+						<span class="eyebrow">
+							Reflection
+						</span>
+
+						<div class="reflection-content">
+
+							<h2>
+								Making keeps ideas honest.
+							</h2>
+
+							<div class="reflection-copy">
+
+								<p>
+									Working by hand reminds me that good design is rarely
+									finished in the first iteration. Materials push back,
+									ideas change, and unexpected results often become part
+									of the final direction.
+								</p>
+
+								<p>
+									I value that process — learning through making,
+									staying curious, and creating things that feel
+									thoughtful, tangible, and useful.
+								</p>
+
+							</div>
+
+						</div>
+
 					</section>
 
 				</div>
