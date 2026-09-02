@@ -1,0 +1,512 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+import { url } from '../../utils/paths';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Mitochondrial Transplantation & Diabetic Endothelial Dysfunction | ${SITE_TITLE}`}
+			description="Research investigating mitochondrial transplantation as a potential therapeutic strategy for diabetic endothelial dysfunction."
+		/>
+
+		<style>
+			main {
+				max-width: none;
+				padding: 0;
+				background: #050814;
+			}
+
+			.research-page {
+				min-height: 100vh;
+				background:
+					radial-gradient(
+						ellipse at 18% 5%,
+						rgba(49, 70, 105, 0.22),
+						transparent 50%
+					),
+					#050814;
+			}
+
+			.research-inner {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 4rem 0 6rem;
+			}
+
+			/* =========================
+			   HERO
+			   ========================= */
+
+			.back-link {
+				display: inline-block;
+				margin-bottom: 2rem;
+				font-size: 0.82rem;
+				font-weight: 600;
+				color: #80b7f4;
+				text-decoration: none;
+			}
+
+			.back-link:hover {
+				color: #a7cffb;
+				text-decoration: none;
+			}
+
+			.research-hero {
+				padding-bottom: 3rem;
+				border-bottom: 1px solid #334155;
+			}
+
+			.research-hero h1 {
+				max-width: 950px;
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: clamp(2.2rem, 3.5vw, 3rem);
+				line-height: 1.15;
+				color: var(--color-text-main);
+			}
+
+			.research-meta {
+				margin: 1.25rem 0 0;
+				font-size: 0.95rem;
+				color: var(--color-text-muted);
+			}
+
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.55rem;
+				margin-top: 1.5rem;
+			}
+
+			.tag {
+				padding: 0.35rem 0.7rem;
+				border-radius: 999px;
+				background: #172033;
+				font-size: 0.72rem;
+				color: #cbd5e1;
+			}
+
+			/* =========================
+			   SUMMARY
+			   ========================= */
+
+			.summary {
+				padding: 3rem 0;
+				border-bottom: 1px solid #334155;
+			}
+
+			.label {
+				display: block;
+				margin-bottom: 0.8rem;
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.13em;
+				text-transform: uppercase;
+				color: #94a3b8;
+			}
+
+			.summary p {
+				max-width: 900px;
+				margin: 0;
+				font-size: 1.05rem;
+				line-height: 1.75;
+				color: #cbd5e1;
+			}
+
+			/* =========================
+			   DETAILS
+			   ========================= */
+
+			.details-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				column-gap: 5rem;
+				row-gap: 3rem;
+				padding: 3.5rem 0;
+				border-bottom: 1px solid #334155;
+			}
+
+			.detail p {
+				margin: 0;
+				font-size: 0.95rem;
+				line-height: 1.75;
+				color: #cbd5e1;
+			}
+
+			/* =========================
+			   METHODS GALLERY
+			   ========================= */
+
+			.methods-section {
+				padding-top: 4rem;
+			}
+
+			.methods-header {
+				margin-bottom: 2rem;
+			}
+
+			.methods-header h2 {
+				display: block;
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: 1.6rem;
+				color: var(--color-text-main);
+			}
+
+			.methods-header p {
+				max-width: 650px;
+				margin: 0.65rem 0 0;
+				font-size: 0.9rem;
+				line-height: 1.6;
+				color: var(--color-text-muted);
+			}
+
+			.methods-gallery {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1.25rem;
+			}
+
+			.method-item {
+				min-width: 0;
+			}
+
+			.method-image {
+				width: 100%;
+				aspect-ratio: 4 / 3;
+				overflow: hidden;
+				background: #0b1020;
+			}
+
+			.method-image img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+			}
+
+			.method-caption {
+				padding-top: 0.9rem;
+			}
+
+			.method-caption h3 {
+				margin: 0 0 0.35rem;
+				font-family: var(--font-serif);
+				font-size: 1rem;
+				font-weight: 600;
+				color: var(--color-text-main);
+			}
+
+			.method-caption p {
+				margin: 0;
+				font-size: 0.78rem;
+				line-height: 1.55;
+				color: var(--color-text-muted);
+			}
+
+			/* =========================
+			   NOTE
+			   ========================= */
+
+			.research-note {
+				margin-top: 3rem;
+				padding-top: 1.5rem;
+				border-top: 1px solid #1e293b;
+			}
+
+			.research-note p {
+				margin: 0;
+				font-size: 0.78rem;
+				line-height: 1.6;
+				color: #64748b;
+			}
+
+			/* =========================
+			   RESPONSIVE
+			   ========================= */
+
+			@media (max-width: 850px) {
+				.research-inner {
+					padding-left: 2rem;
+					padding-right: 2rem;
+				}
+
+				.details-grid {
+					grid-template-columns: 1fr;
+					gap: 2.5rem;
+				}
+
+				.methods-gallery {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+
+			@media (max-width: 600px) {
+				.research-inner {
+					padding: 3rem 1rem 4rem;
+				}
+
+				.research-hero h1 {
+					font-size: 2rem;
+				}
+
+				.methods-gallery {
+					grid-template-columns: 1fr;
+				}
+
+				.method-image {
+					aspect-ratio: 4 / 3;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<div class="research-page">
+				<div class="research-inner">
+
+					<!-- =========================
+					     HERO
+					     ========================= -->
+
+					<section class="research-hero">
+
+						<a href={url('/research')} class="back-link">
+							← Back to Research
+						</a>
+
+						<h1>
+							Mitochondrial Transplantation & Diabetic Endothelial Dysfunction
+						</h1>
+
+						<p class="research-meta">
+							Bin Jiang Lab · Northwestern University · Research Intern · 2025–2026
+						</p>
+
+						<div class="tags">
+							<span class="tag">Cell Culture</span>
+							<span class="tag">Histology</span>
+							<span class="tag">Immunofluorescence</span>
+							<span class="tag">ImageJ</span>
+							<span class="tag">Experimental Design</span>
+						</div>
+
+					</section>
+
+
+					<!-- =========================
+					     SUMMARY
+					     ========================= -->
+
+					<section class="summary">
+
+						<span class="label">
+							Summary
+						</span>
+
+						<p>
+							Investigating mitochondrial transplantation as a potential
+							therapeutic strategy for restoring endothelial function
+							impaired by diabetes.
+						</p>
+
+					</section>
+
+
+					<!-- =========================
+					     RESEARCH DETAILS
+					     ========================= -->
+
+					<section class="details-grid">
+
+						<div class="detail">
+
+							<span class="label">
+								Research Focus
+							</span>
+
+							<p>
+								Studying how mitochondrial dysfunction contributes to
+								diabetic endothelial dysfunction and whether introducing
+								healthy mitochondria can help restore cellular function.
+							</p>
+
+						</div>
+
+
+						<div class="detail">
+
+							<span class="label">
+								My Role
+							</span>
+
+							<p>
+								Designed and performed in vitro experiments, analyzed
+								microscopy data, and contributed to an in vivo diabetic
+								wound-healing model.
+							</p>
+
+						</div>
+
+
+						<div class="detail">
+
+							<span class="label">
+								Methods & Tools
+							</span>
+
+							<p>
+								Cell culture, mitochondrial isolation, immunofluorescence,
+								JC-1, resazurin assays, scratch assays, histology,
+								microscopy, ImageJ, and statistical analysis.
+							</p>
+
+						</div>
+
+
+						<div class="detail">
+
+							<span class="label">
+								Research Context
+							</span>
+
+							<p>
+								This work explores a regenerative approach to understanding
+								and addressing impaired vascular function associated with
+								diabetes.
+							</p>
+
+						</div>
+
+					</section>
+
+
+					<!-- =========================
+					     METHODS GALLERY
+					     ========================= -->
+
+					<section class="methods-section">
+
+						<div class="methods-header">
+
+							<span class="label">
+								Selected Methods
+							</span>
+
+							<h2>
+								Experimental Work
+							</h2>
+
+							<p>
+								Representative images of experimental techniques used
+								throughout the project.
+							</p>
+
+						</div>
+
+
+						<div class="methods-gallery">
+
+							<!-- JC-1 -->
+
+							<div class="method-item">
+
+								<div class="method-image">
+									<img
+										src={url('/jc1.jpeg')}
+										alt="Representative JC-1 fluorescence microscopy image"
+									/>
+								</div>
+
+								<div class="method-caption">
+									<h3>
+										JC-1 Fluorescence Microscopy
+									</h3>
+
+									<p>
+										Assessment of mitochondrial membrane potential.
+									</p>
+								</div>
+
+							</div>
+
+
+							<!-- SCRATCH ASSAY -->
+
+							<div class="method-item">
+
+								<div class="method-image">
+									<img
+										src={url('/scratch.jpeg')}
+										alt="Representative endothelial scratch assay image"
+									/>
+								</div>
+
+								<div class="method-caption">
+									<h3>
+										Scratch Assay
+									</h3>
+
+									<p>
+										Image-based evaluation of endothelial cell migration.
+									</p>
+								</div>
+
+							</div>
+
+
+							<!-- HISTOLOGY -->
+
+							<div class="method-item">
+
+								<div class="method-image">
+									<img
+										src={url('/histology.jpeg')}
+										alt="Representative histology image from diabetic wound model"
+									/>
+								</div>
+
+								<div class="method-caption">
+									<h3>
+										Histology
+									</h3>
+
+									<p>
+										Histological assessment of tissue remodeling.
+									</p>
+								</div>
+
+							</div>
+
+						</div>
+
+
+						<div class="research-note">
+							<p>
+								Representative method images are shown without experimental
+								group assignments or quantitative results because this work
+								is ongoing.
+							</p>
+						</div>
+
+					</section>
+
+				</div>
+			</div>
+		</main>
+
+		<Footer />
+	</body>
+</html>
