@@ -1,0 +1,433 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+import { url } from '../../utils/paths';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Legacy PopUp Display | ${SITE_TITLE}`}
+			description="Portable modular exhibition system designed for Shorefront Legacy Center."
+		/>
+
+		<style>
+			main {
+				max-width: none;
+				padding: 0;
+				background: #050814;
+			}
+
+			.project-page {
+				min-height: 100vh;
+				background:
+					radial-gradient(
+						ellipse at 18% 5%,
+						rgba(49, 70, 105, 0.22),
+						transparent 50%
+					),
+					#050814;
+			}
+
+			.project-inner {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 4rem 0 6rem;
+			}
+
+			.label {
+				display: block;
+				margin-bottom: 0.75rem;
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.13em;
+				text-transform: uppercase;
+				color: #94a3b8;
+			}
+
+			.section-title {
+				display: block;
+				margin: 0 0 1rem;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: 1.65rem;
+				color: var(--color-text-main);
+			}
+
+			.section-copy p {
+				margin: 0 0 0.9rem;
+				font-size: 0.95rem;
+				line-height: 1.75;
+				color: #cbd5e1;
+			}
+
+			.back-link {
+				display: inline-block;
+				margin-bottom: 2rem;
+				font-size: 0.82rem;
+				font-weight: 600;
+				color: #80b7f4;
+				text-decoration: none;
+			}
+
+			.project-hero {
+				padding-bottom: 3.5rem;
+				border-bottom: 1px solid #334155;
+			}
+
+			.project-hero h1 {
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: clamp(2.2rem, 3.5vw, 3rem);
+				color: var(--color-text-main);
+			}
+
+			.project-meta {
+				margin: 1.2rem 0 0;
+				font-size: 0.95rem;
+				color: var(--color-text-muted);
+			}
+
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.55rem;
+				margin-top: 1.5rem;
+			}
+
+			.tag {
+				padding: 0.35rem 0.7rem;
+				border-radius: 999px;
+				background: #172033;
+				font-size: 0.72rem;
+				color: #cbd5e1;
+			}
+
+			.text-section {
+				display: grid;
+				grid-template-columns: 180px minmax(0, 1fr);
+				gap: 4rem;
+				padding: 3.5rem 0;
+				border-bottom: 1px solid #334155;
+			}
+
+			.text-section h2 {
+				display: block;
+				margin: 0;
+				padding: 0;
+				border: none;
+				font-family: var(--font-serif);
+				font-size: 1.45rem;
+				color: var(--color-text-main);
+			}
+
+			.process-section {
+				padding: 4rem 0;
+				border-bottom: 1px solid #334155;
+			}
+
+			.process-step {
+				display: grid;
+				grid-template-columns: 0.85fr 1.15fr;
+				gap: 4rem;
+				align-items: center;
+				margin-top: 3rem;
+			}
+
+			.process-step.reverse {
+				grid-template-columns: 1.15fr 0.85fr;
+			}
+
+			.project-image img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+
+			.feature-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1rem;
+				margin-top: 2rem;
+			}
+
+			.feature {
+				padding: 1.25rem;
+				background: #111827;
+				border: 1px solid #334155;
+				border-radius: 10px;
+			}
+
+			.feature h3 {
+				margin: 0 0 0.45rem;
+				font-family: var(--font-serif);
+				font-size: 1rem;
+				color: var(--color-text-main);
+			}
+
+			.feature p {
+				margin: 0;
+				font-size: 0.8rem;
+				line-height: 1.6;
+				color: var(--color-text-muted);
+			}
+
+			.results-section {
+				padding: 4rem 0 0;
+			}
+
+			.final-image {
+				margin-top: 2rem;
+				display: flex;
+				justify-content: center;
+			}
+
+			.final-image img {
+				width: min(100%, 820px);
+				height: auto;
+				display: block;
+			}
+
+			@media (max-width: 850px) {
+				.project-inner {
+					padding-left: 2rem;
+					padding-right: 2rem;
+				}
+
+				.text-section,
+				.process-step,
+				.process-step.reverse {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+
+				.feature-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media (max-width: 600px) {
+				.project-inner {
+					padding: 3rem 1rem 4rem;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<div class="project-page">
+				<div class="project-inner">
+
+					<section class="project-hero">
+
+						<a href={url('/projects')} class="back-link">
+							← Back to Projects
+						</a>
+
+						<h1>Legacy PopUp Display</h1>
+
+						<p class="project-meta">
+							Shorefront Legacy Center · 2025
+						</p>
+
+						<div class="tags">
+							<span class="tag">Human-Centered Design</span>
+							<span class="tag">Product Design</span>
+							<span class="tag">User Research</span>
+							<span class="tag">Fabrication</span>
+							<span class="tag">Prototyping</span>
+						</div>
+
+					</section>
+
+
+					<section class="text-section">
+
+						<h2>Overview</h2>
+
+						<div class="section-copy">
+							<p>
+								Designed a portable modular exhibit system for Shorefront
+								Legacy Center, an organization preserving and sharing
+								Black history across Chicago's North Shore.
+							</p>
+
+							<p>
+								The design supports both 2D graphics and 3D artifacts
+								while collapsing into a smaller form for transportation.
+							</p>
+						</div>
+
+					</section>
+
+
+					<section class="text-section">
+
+						<h2>Problem</h2>
+
+						<div class="section-copy">
+							<p>
+								Shorefront's traveling displays were often heavy, bulky,
+								and difficult to move between schools, libraries, and
+								community spaces.
+							</p>
+
+							<p>
+								The new system needed to improve portability and setup
+								without sacrificing modularity, stability, or the ability
+								to safely display multiple types of historical media.
+							</p>
+						</div>
+
+					</section>
+
+
+					<section class="process-section">
+
+						<span class="label">Process</span>
+
+						<h2 class="section-title">
+							Turning client observations into physical design decisions
+						</h2>
+
+
+						<div class="process-step">
+
+							<div class="section-copy">
+								<span class="label">01 · User Research</span>
+
+								<h2 class="section-title">
+									Understanding transportation and setup
+								</h2>
+
+								<p>
+									We interviewed the client and observed existing display
+									systems being transported and assembled.
+								</p>
+
+								<p>
+									Those observations highlighted weight, bulk,
+									repetitive setup, and limited customization as the
+									main usability problems.
+								</p>
+							</div>
+
+							<div class="project-image">
+								<img
+									src={url('/legacy-context.png')}
+									alt="Existing exhibition display systems"
+								/>
+							</div>
+
+						</div>
+
+
+						<div class="feature-grid">
+
+							<div class="feature">
+								<h3>Collapsible Frame</h3>
+								<p>
+									A telescoping aluminum structure reduces the display's
+									size for storage and transportation.
+								</p>
+							</div>
+
+							<div class="feature">
+								<h3>Modular Media</h3>
+								<p>
+									Hooks and a fold-out table accommodate both flat
+									graphics and three-dimensional objects.
+								</p>
+							</div>
+
+							<div class="feature">
+								<h3>Artifact Protection</h3>
+								<p>
+									A transparent acrylic case protects fragile media
+									while keeping artifacts fully visible.
+								</p>
+							</div>
+
+						</div>
+
+
+						<div class="process-step reverse">
+
+							<div class="project-image">
+								<img
+									src={url('/legacy-prototype.png')}
+									alt="Legacy PopUp design prototype"
+								/>
+							</div>
+
+							<div class="section-copy">
+								<span class="label">02 · Prototyping</span>
+
+								<h2 class="section-title">
+									Balancing portability with structural function
+								</h2>
+
+								<p>
+									The prototype integrated a telescoping frame, folding
+									table, modular media attachments, base supports, and a
+									carrying handle into one system.
+								</p>
+
+								<p>
+									Client feedback helped refine how the display could
+									collapse for transport while remaining adaptable to
+									different exhibit layouts.
+								</p>
+							</div>
+
+						</div>
+
+					</section>
+
+
+					<section class="results-section">
+
+						<span class="label">Results</span>
+
+						<h2 class="section-title">
+							A portable platform for changing exhibitions
+						</h2>
+
+						<div class="section-copy">
+							<p>
+								The final prototype demonstrates a display that can
+								transition between compact transport, 2D presentation,
+								and a fold-out surface for protected 3D artifacts.
+							</p>
+
+							<p>
+								Its modular structure allows Shorefront to adapt the same
+								system to different stories, venues, and media.
+							</p>
+						</div>
+
+						<div class="final-image">
+							<img
+								src={url('/legacy-final.png')}
+								alt="Final Legacy PopUp Display prototype"
+							/>
+						</div>
+
+					</section>
+
+				</div>
+			</div>
+		</main>
+
+		<Footer />
+	</body>
+</html>
