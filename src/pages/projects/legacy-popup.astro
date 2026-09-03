@@ -65,6 +65,12 @@ import { url } from '../../utils/paths';
 				color: #cbd5e1;
 			}
 
+			.section-copy p:last-child {
+				margin-bottom: 0;
+			}
+
+			/* HERO */
+
 			.back-link {
 				display: inline-block;
 				margin-bottom: 2rem;
@@ -109,6 +115,8 @@ import { url } from '../../utils/paths';
 				color: #cbd5e1;
 			}
 
+			/* OVERVIEW + PROBLEM */
+
 			.text-section {
 				display: grid;
 				grid-template-columns: 180px minmax(0, 1fr);
@@ -127,6 +135,8 @@ import { url } from '../../utils/paths';
 				color: var(--color-text-main);
 			}
 
+			/* PROCESS */
+
 			.process-section {
 				padding: 4rem 0;
 				border-bottom: 1px solid #334155;
@@ -140,21 +150,29 @@ import { url } from '../../utils/paths';
 				margin-top: 3rem;
 			}
 
-			.process-step.reverse {
-				grid-template-columns: 1.15fr 0.85fr;
+			/* DESIGN SKETCHES */
+
+			.sketch-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1rem;
+				align-items: center;
 			}
 
-			.project-image img {
+			.sketch-grid img {
 				width: 100%;
 				height: auto;
 				display: block;
+				object-fit: contain;
 			}
+
+			/* DESIGN FEATURES */
 
 			.feature-grid {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
 				gap: 1rem;
-				margin-top: 2rem;
+				margin-top: 3rem;
 			}
 
 			.feature {
@@ -178,8 +196,10 @@ import { url } from '../../utils/paths';
 				color: var(--color-text-muted);
 			}
 
+			/* RESULTS */
+
 			.results-section {
-				padding: 4rem 0 0;
+				padding: 4rem 0;
 			}
 
 			.final-image {
@@ -192,7 +212,10 @@ import { url } from '../../utils/paths';
 				width: min(100%, 820px);
 				height: auto;
 				display: block;
+				object-fit: contain;
 			}
+
+			/* MOBILE */
 
 			@media (max-width: 850px) {
 				.project-inner {
@@ -201,8 +224,7 @@ import { url } from '../../utils/paths';
 				}
 
 				.text-section,
-				.process-step,
-				.process-step.reverse {
+				.process-step {
 					grid-template-columns: 1fr;
 					gap: 1.5rem;
 				}
@@ -216,6 +238,10 @@ import { url } from '../../utils/paths';
 				.project-inner {
 					padding: 3rem 1rem 4rem;
 				}
+
+				.sketch-grid {
+					grid-template-columns: 1fr;
+				}
 			}
 		</style>
 	</head>
@@ -226,6 +252,8 @@ import { url } from '../../utils/paths';
 		<main>
 			<div class="project-page">
 				<div class="project-inner">
+
+					<!-- HERO -->
 
 					<section class="project-hero">
 
@@ -250,6 +278,8 @@ import { url } from '../../utils/paths';
 					</section>
 
 
+					<!-- OVERVIEW -->
+
 					<section class="text-section">
 
 						<h2>Overview</h2>
@@ -258,17 +288,16 @@ import { url } from '../../utils/paths';
 							<p>
 								Designed a portable modular exhibit system for Shorefront
 								Legacy Center, an organization preserving and sharing
-								Black history across Chicago's North Shore.
-							</p>
-
-							<p>
-								The design supports both 2D graphics and 3D artifacts
-								while collapsing into a smaller form for transportation.
+								Black history across Chicago's North Shore. The design
+								supports both 2D graphics and 3D artifacts while collapsing
+								into a smaller form for transportation.
 							</p>
 						</div>
 
 					</section>
 
+
+					<!-- PROBLEM -->
 
 					<section class="text-section">
 
@@ -278,63 +307,79 @@ import { url } from '../../utils/paths';
 							<p>
 								Shorefront's traveling displays were often heavy, bulky,
 								and difficult to move between schools, libraries, and
-								community spaces.
-							</p>
-
-							<p>
-								The new system needed to improve portability and setup
-								without sacrificing modularity, stability, or the ability
-								to safely display multiple types of historical media.
+								community spaces. The new system needed to improve
+								portability and setup without sacrificing modularity,
+								stability, or the ability to safely display multiple
+								types of historical media.
 							</p>
 						</div>
 
 					</section>
 
 
+					<!-- PROCESS -->
+
 					<section class="process-section">
 
 						<span class="label">Process</span>
 
 						<h2 class="section-title">
-							Turning client observations into physical design decisions
+							Turning client needs into physical design decisions
 						</h2>
 
 
 						<div class="process-step">
 
 							<div class="section-copy">
-								<span class="label">01 · User Research</span>
+
+								<span class="label">
+									01 · Research + Concept Development
+								</span>
 
 								<h2 class="section-title">
-									Understanding transportation and setup
+									Translating needs into design concepts
 								</h2>
 
 								<p>
-									We interviewed the client and observed existing display
-									systems being transported and assembled.
+									Client interviews helped identify portability,
+									efficient setup, customization, and artifact protection
+									as key design priorities.
 								</p>
 
 								<p>
-									Those observations highlighted weight, bulk,
-									repetitive setup, and limited customization as the
-									main usability problems.
+									We translated these requirements into concept sketches
+									exploring collapsible structures, modular display
+									surfaces, storage, and methods for presenting both
+									two-dimensional and three-dimensional media.
 								</p>
+
 							</div>
 
-							<div class="project-image">
+
+							<div class="sketch-grid">
+
 								<img
-									src={url('/legacy-context.png')}
-									alt="Existing exhibition display systems"
+									src={url('/legacy-sketch-1.png')}
+									alt="Legacy PopUp Display design concept sketch"
 								/>
+
+								<img
+									src={url('/legacy-sketch-2.png')}
+									alt="Legacy PopUp Display design rationale sketch"
+								/>
+
 							</div>
 
 						</div>
 
 
+						<!-- DESIGN FEATURES -->
+
 						<div class="feature-grid">
 
 							<div class="feature">
 								<h3>Collapsible Frame</h3>
+
 								<p>
 									A telescoping aluminum structure reduces the display's
 									size for storage and transportation.
@@ -343,6 +388,7 @@ import { url } from '../../utils/paths';
 
 							<div class="feature">
 								<h3>Modular Media</h3>
+
 								<p>
 									Hooks and a fold-out table accommodate both flat
 									graphics and three-dimensional objects.
@@ -351,6 +397,7 @@ import { url } from '../../utils/paths';
 
 							<div class="feature">
 								<h3>Artifact Protection</h3>
+
 								<p>
 									A transparent acrylic case protects fragile media
 									while keeping artifacts fully visible.
@@ -359,40 +406,10 @@ import { url } from '../../utils/paths';
 
 						</div>
 
-
-						<div class="process-step reverse">
-
-							<div class="project-image">
-								<img
-									src={url('/legacy-prototype.png')}
-									alt="Legacy PopUp design prototype"
-								/>
-							</div>
-
-							<div class="section-copy">
-								<span class="label">02 · Prototyping</span>
-
-								<h2 class="section-title">
-									Balancing portability with structural function
-								</h2>
-
-								<p>
-									The prototype integrated a telescoping frame, folding
-									table, modular media attachments, base supports, and a
-									carrying handle into one system.
-								</p>
-
-								<p>
-									Client feedback helped refine how the display could
-									collapse for transport while remaining adaptable to
-									different exhibit layouts.
-								</p>
-							</div>
-
-						</div>
-
 					</section>
 
+
+					<!-- RESULTS -->
 
 					<section class="results-section">
 
@@ -406,11 +423,8 @@ import { url } from '../../utils/paths';
 							<p>
 								The final prototype demonstrates a display that can
 								transition between compact transport, 2D presentation,
-								and a fold-out surface for protected 3D artifacts.
-							</p>
-
-							<p>
-								Its modular structure allows Shorefront to adapt the same
+								and a fold-out surface for protected 3D artifacts. Its
+								modular structure allows Shorefront to adapt the same
 								system to different stories, venues, and media.
 							</p>
 						</div>
