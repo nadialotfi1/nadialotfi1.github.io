@@ -32,9 +32,9 @@ const projects = [
 		description:
 			'A portable, modular exhibition system designed to protect and present historical media.',
 		skills: ['Fabrication', 'Product Design', 'Teamwork'],
-		image: '/legacy-final.png', 
+		image: '/legacy-final.png',
 		link: '/projects/legacy-popup',
-		imageClass: '',
+		imageClass: 'legacy-cover',
 	},
 	{
 		title: 'Once Upon a Tile',
@@ -138,8 +138,15 @@ const projects = [
 				display: block;
 			}
 
-			/* Blood-pressure schematic: show full image, don't crop it */
+			/* Blood pressure: show full image without cropping */
 			.project-image img.blood-pressure-cover {
+				object-fit: contain;
+				object-position: center;
+				background: #e5e5e5;
+			}
+
+			/* Legacy: show full image without zoom or cropping */
+			.project-image img.legacy-cover {
 				object-fit: contain;
 				object-position: center;
 				background: #e5e5e5;
@@ -247,12 +254,14 @@ const projects = [
 
 					<section class="page-header">
 						<h1>Projects</h1>
+
 						<p>
 							Engineering design work from early concepts through prototyping and testing.
 						</p>
 					</section>
 
 					<div class="project-grid">
+
 						{projects.map((project) => (
 							<article class="project-card">
 
@@ -271,6 +280,7 @@ const projects = [
 								</div>
 
 								<div class="project-content">
+
 									<span class="project-category">
 										{project.category}
 									</span>
@@ -293,10 +303,12 @@ const projects = [
 									>
 										View Project →
 									</a>
+
 								</div>
 
 							</article>
 						))}
+
 					</div>
 
 				</div>
