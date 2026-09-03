@@ -181,6 +181,13 @@ import { url } from '../../utils/paths';
 				object-fit: contain;
 			}
 
+
+.prototype-image img {
+	width: min(100%, 430px);
+	height: auto;
+	object-fit: contain;
+}
+
 			.iteration-stat {
 				margin-top: 1.3rem;
 				padding-left: 1rem;
@@ -454,12 +461,12 @@ import { url } from '../../utils/paths';
 								</div>
 							</div>
 
-							<div class="process-image">
-								<img
-									src={url('/brake-prototype.png')}
-									alt="Printed bicycle brake prototype"
-								/>
-							</div>
+							<div class="process-image prototype-image">
+	<img
+		src={url('/brake-prototype.png')}
+		alt="Printed bicycle brake prototype"
+	/>
+</div>
 
 						</div>
 
