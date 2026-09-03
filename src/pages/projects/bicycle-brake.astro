@@ -69,6 +69,8 @@ import { url } from '../../utils/paths';
 				margin-bottom: 0;
 			}
 
+			/* HERO */
+
 			.back-link {
 				display: inline-block;
 				margin-bottom: 2rem;
@@ -113,6 +115,8 @@ import { url } from '../../utils/paths';
 				color: #cbd5e1;
 			}
 
+			/* OVERVIEW + PROBLEM */
+
 			.text-section {
 				display: grid;
 				grid-template-columns: 180px minmax(0, 1fr);
@@ -130,6 +134,8 @@ import { url } from '../../utils/paths';
 				font-size: 1.45rem;
 				color: var(--color-text-main);
 			}
+
+			/* PROCESS */
 
 			.process-section {
 				padding: 4rem 0;
@@ -156,22 +162,23 @@ import { url } from '../../utils/paths';
 				margin-bottom: 0;
 			}
 
+			.process-image {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
 			.process-image img {
 				width: 100%;
 				height: auto;
 				display: block;
 			}
 
-			.dual-images {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 1rem;
-			}
-
-			.dual-images img {
-				width: 100%;
+			/* Keep topology image large but controlled */
+			.topology-image img {
+				width: min(100%, 620px);
 				height: auto;
-				display: block;
+				object-fit: contain;
 			}
 
 			.iteration-stat {
@@ -191,6 +198,8 @@ import { url } from '../../utils/paths';
 				font-size: 0.75rem;
 				color: var(--color-text-muted);
 			}
+
+			/* RESULTS */
 
 			.results-section {
 				padding: 4rem 0 0;
@@ -240,6 +249,8 @@ import { url } from '../../utils/paths';
 				display: block;
 			}
 
+			/* MOBILE */
+
 			@media (max-width: 850px) {
 				.project-inner {
 					padding-left: 2rem;
@@ -262,10 +273,6 @@ import { url } from '../../utils/paths';
 				.project-inner {
 					padding: 3rem 1rem 4rem;
 				}
-
-				.dual-images {
-					grid-template-columns: 1fr;
-				}
 			}
 		</style>
 	</head>
@@ -276,6 +283,8 @@ import { url } from '../../utils/paths';
 		<main>
 			<div class="project-page">
 				<div class="project-inner">
+
+					<!-- HERO -->
 
 					<section class="project-hero">
 
@@ -300,6 +309,8 @@ import { url } from '../../utils/paths';
 					</section>
 
 
+					<!-- OVERVIEW -->
+
 					<section class="text-section">
 
 						<h2>Overview</h2>
@@ -307,19 +318,16 @@ import { url } from '../../utils/paths';
 						<div class="section-copy">
 							<p>
 								Designed, optimized, manufactured, and tested a
-								lightweight bicycle caliper brake through analytical
-								modeling, finite element analysis, topology optimization,
-								and rapid prototyping.
-							</p>
-
-							<p>
-								I served as the team's FEA and topology lead, focusing on
+								lightweight bicycle caliper brake through modeling, finite element analysis, topology optimization,
+								and prototyping. I was the team's FEA and topology lead, focusing on
 								structural performance and material-efficient geometry.
 							</p>
 						</div>
 
 					</section>
 
+
+					<!-- PROBLEM -->
 
 					<section class="text-section">
 
@@ -328,7 +336,7 @@ import { url } from '../../utils/paths';
 						<div class="section-copy">
 							<p>
 								The brake needed to remain lightweight while safely
-								transmitting braking loads with limited stress and
+								transmitting braking loads with little stress and
 								deflection. Its geometry also had to fit around the wheel,
 								frame, mounting locations, cable, and brake pads.
 							</p>
@@ -336,6 +344,8 @@ import { url } from '../../utils/paths';
 
 					</section>
 
+
+					<!-- PROCESS -->
 
 					<section class="process-section">
 
@@ -348,10 +358,14 @@ import { url } from '../../utils/paths';
 						</div>
 
 
+						<!-- STEP 1 -->
+
 						<div class="process-step">
 
 							<div class="section-copy">
-								<span class="label">01 · Structural Analysis</span>
+								<span class="label">
+									01 · Structural Analysis
+								</span>
 
 								<h2 class="section-title">
 									Establishing loads and identifying weak regions
@@ -360,11 +374,7 @@ import { url } from '../../utils/paths';
 								<p>
 									Hand calculations were used to estimate braking loads,
 									cable tension, stress, and deflection before the CAD
-									geometry was evaluated with FEA.
-								</p>
-
-								<p>
-									Initial simulations revealed stress concentrations
+									geometry was evaluated with FEA. Initial simulations revealed stress concentrations
 									and excessive deformation around abrupt geometry
 									transitions and mounting regions.
 								</p>
@@ -380,22 +390,21 @@ import { url } from '../../utils/paths';
 						</div>
 
 
+						<!-- STEP 2 -->
+
 						<div class="process-step reverse">
 
-							<div class="dual-images">
+							<div class="process-image topology-image">
 								<img
 									src={url('/brake-topology.png')}
-									alt="Topology optimization"
-								/>
-
-								<img
-									src={url('/brake-fea-optimized.png')}
-									alt="Optimized FEA"
+									alt="Topology optimization of bicycle brake caliper"
 								/>
 							</div>
 
 							<div class="section-copy">
-								<span class="label">02 · Optimization</span>
+								<span class="label">
+									02 · Optimization
+								</span>
 
 								<h2 class="section-title">
 									Using load paths to shape the geometry
@@ -408,8 +417,8 @@ import { url } from '../../utils/paths';
 								</p>
 
 								<p>
-									The resulting truss-inspired geometry was then
-									re-evaluated using FEA to balance stiffness,
+									The resulting geometry was then
+									re-evaluated using FEA to optimize stiffness,
 									strength, and mass.
 								</p>
 							</div>
@@ -417,10 +426,14 @@ import { url } from '../../utils/paths';
 						</div>
 
 
+						<!-- STEP 3 -->
+
 						<div class="process-step">
 
 							<div class="section-copy">
-								<span class="label">03 · Prototype + Redesign</span>
+								<span class="label">
+									03 · Prototype + Redesign
+								</span>
 
 								<h2 class="section-title">
 									Testing revealed a stiffness problem
@@ -429,17 +442,15 @@ import { url } from '../../utils/paths';
 								<p>
 									The SLS Nylon 12 prototype showed that the right
 									caliper deflected too much, preventing the opposite pad
-									from engaging effectively.
-								</p>
-
-								<p>
-									Reinforcing its primary load path improved force
-									transfer and reduced predicted right-caliper deflection.
+									from engaging effectively. Reinforcing its primary load path improved force
+									transfer and reduced the predicted right-caliper deflection.
 								</p>
 
 								<div class="iteration-stat">
 									<strong>~8 mm → ~3 mm</strong>
-									<span>Predicted right-caliper deflection after redesign</span>
+									<span>
+										Predicted right-caliper deflection after redesign
+									</span>
 								</div>
 							</div>
 
@@ -454,6 +465,8 @@ import { url } from '../../utils/paths';
 
 					</section>
 
+
+					<!-- RESULTS -->
 
 					<section class="results-section">
 
