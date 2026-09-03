@@ -10,8 +10,8 @@ import { url } from '../../utils/paths';
 <html lang="en">
 	<head>
 		<BaseHead
-			title={`Once Upon a Tile | ${SITE_TITLE}`}
-			description="Accessible interactive robotics and storytelling system developed with Misericordia Heart of Mercy."
+			title={`Legacy PopUp Display | ${SITE_TITLE}`}
+			description="Portable modular exhibition system designed for Shorefront Legacy Center."
 		/>
 
 		<style>
@@ -150,11 +150,21 @@ import { url } from '../../utils/paths';
 				display: block;
 			}
 
-.testing-image img {
-	width: min(100%, 445px);
-	height: auto;
-	object-fit: contain;
-}
+			/* DESIGN SKETCHES */
+
+			.sketch-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1rem;
+				align-items: center;
+			}
+
+			.sketch-grid img {
+				width: 100%;
+				height: auto;
+				display: block;
+				object-fit: contain;
+			}
 
 			.feature-grid {
 				display: grid;
@@ -222,6 +232,10 @@ import { url } from '../../utils/paths';
 				.project-inner {
 					padding: 3rem 1rem 4rem;
 				}
+
+				.sketch-grid {
+					grid-template-columns: 1fr;
+				}
 			}
 		</style>
 	</head>
@@ -233,28 +247,32 @@ import { url } from '../../utils/paths';
 			<div class="project-page">
 				<div class="project-inner">
 
+					<!-- HERO -->
+
 					<section class="project-hero">
 
 						<a href={url('/projects')} class="back-link">
 							← Back to Projects
 						</a>
 
-						<h1>Once Upon a Tile</h1>
+						<h1>Legacy PopUp Display</h1>
 
 						<p class="project-meta">
-							Misericordia Heart of Mercy · 2025
+							Shorefront Legacy Center · 2025
 						</p>
 
 						<div class="tags">
 							<span class="tag">Human-Centered Design</span>
-							<span class="tag">User Testing</span>
-							<span class="tag">Robotics</span>
+							<span class="tag">Product Design</span>
+							<span class="tag">User Research</span>
+							<span class="tag">Fabrication</span>
 							<span class="tag">Prototyping</span>
-							<span class="tag">Accessible Design</span>
 						</div>
 
 					</section>
 
+
+					<!-- OVERVIEW -->
 
 					<section class="text-section">
 
@@ -262,16 +280,17 @@ import { url } from '../../utils/paths';
 
 						<div class="section-copy">
 							<p>
-								Designed an interactive robotics experience with
-								Misericordia Heart of Mercy for adults with cognitive and
-								developmental disabilities. The system combines modular whiteboard tiles, projected
-								environments, and a line-following robot to support
-								creative, adaptable learning.
+								Designed a portable modular exhibit system for Shorefront
+								Legacy Center, an organization preserving and sharing
+								Black history across Chicago's North Shore. The design supports both 2D graphics and 3D artifacts
+								while collapsing into a smaller form for transportation.
 							</p>
 						</div>
 
 					</section>
 
+
+					<!-- PROBLEM -->
 
 					<section class="text-section">
 
@@ -279,138 +298,129 @@ import { url } from '../../utils/paths';
 
 						<div class="section-copy">
 							<p>
-								Residents enjoyed the existing robotics activities, but
-								the available content was repetitive, difficult to
-								customize, and offered limited visual or sensory
-								engagement. The challenge was to create something accessible across
-								different abilities while giving users more agency and
-								room for imaginative play.
+								Shorefront's traveling displays were often heavy, bulky,
+								and difficult to move between schools, libraries, and
+								community spaces. The new system needed to improve portability and setup
+								without sacrificing modularity, stability, or the ability
+								to safely display multiple types of historical media.
 							</p>
 						</div>
 
 					</section>
 
+
+					<!-- PROCESS -->
 
 					<section class="process-section">
 
 						<span class="label">Process</span>
 
 						<h2 class="section-title">
-							User observation, prototyping, and iteration
+							Turning client needs into physical design decisions
 						</h2>
 
+
+						<!-- STEP 1 -->
 
 						<div class="process-step">
 
 							<div class="section-copy">
-								<span class="label">01 · User Research</span>
+								<span class="label">
+									01 · Research + Concept Development
+								</span>
 
 								<h2 class="section-title">
-									Designing around real interactions
+									Translating needs into design concepts
 								</h2>
 
 								<p>
-									We observed residents using existing robotics
-									activities and tested early tile and projection
-									concepts directly at Misericordia.
+									Client interviews helped identify portability,
+									efficient setup, customization, and artifact protection
+									as key design priorities.
 								</p>
 
 								<p>
-									Engagement observations, resident feedback, and
-									facilitator input helped identify a preference for
-									simple, tactile, visual, and open-ended experiences.
+									We translated these requirements into concept sketches
+									exploring collapsible structures, modular display
+									surfaces, storage, and methods for presenting both
+									two-dimensional and three-dimensional media.
 								</p>
 							</div>
 
-							<div class="process-image testing-image">
-	<img
-		src={url('/tile-testing.png')}
-		alt="User testing of the Once Upon a Tile prototype"
-	/>
-</div>
+							<div class="sketch-grid">
+								<img
+									src={url('/legacy-sketch-1.png')}
+									alt="Legacy PopUp Display design concept sketch"
+								/>
+
+								<img
+									src={url('/legacy-sketch-2.png')}
+									alt="Legacy PopUp Display design rationale sketch"
+								/>
+							</div>
 
 						</div>
 
+
+						<!-- FEATURES -->
 
 						<div class="feature-grid">
 
 							<div class="feature">
-								<h3>Whiteboard Tiles</h3>
+								<h3>Collapsible Frame</h3>
 								<p>
-									Reusable acrylic puzzle pieces let users draw the
-									robot's path and rearrange the play surface.
+									A telescoping aluminum structure reduces the display's
+									size for storage and transportation.
 								</p>
 							</div>
 
 							<div class="feature">
-								<h3>Projection</h3>
+								<h3>Modular Media</h3>
 								<p>
-									Projected visuals and sound create changing
-									environments without adding physical complexity.
+									Hooks and a fold-out table accommodate both flat
+									graphics and three-dimensional objects.
 								</p>
 							</div>
 
 							<div class="feature">
-								<h3>Robot + Toppers</h3>
+								<h3>Artifact Protection</h3>
 								<p>
-									A programmed line-following Cutebot and interchangeable
-									toppers support movement and storytelling.
+									A transparent acrylic case protects fragile media
+									while keeping artifacts fully visible.
 								</p>
 							</div>
 
 						</div>
 
-
-						<div class="process-step reverse">
-
-							<div class="project-image">
-								<img
-									src={url('/tile-context.png')}
-									alt="Once Upon a Tile prototype development"
-								/>
-							</div>
-
-							<div class="section-copy">
-								<span class="label">02 · Iteration</span>
-
-								<h2 class="section-title">
-									Simplifying instead of adding complexity
-								</h2>
-
-								<p>
-									Early concepts included more structured games and
-									accessories, but testing showed that open-ended
-									interaction was more flexible and accessible. The final concept therefore became a modular platform
-									that instructors and residents could continuously
-									re-theme and expand.
-								</p>
-							</div>
 
 						</div>
 
 					</section>
 
 
+					<!-- RESULTS -->
+
 					<section class="results-section">
 
 						<span class="label">Results</span>
 
 						<h2 class="section-title">
-							A reusable platform for creative learning
+							A portable platform for changing exhibitions
 						</h2>
 
 						<div class="section-copy">
 							<p>
-								The final prototype replaced fixed activities with a
-								system that can support new paths, stories, environments,
-								and robot themes while keeping the core interaction simple.
+								The final prototype demonstrates a display that can
+								transition between compact transport, 2D presentation,
+								and a fold-out surface for protected 3D artifacts. Its modular structure allows Shorefront to adapt the same
+								system to different stories, venues, and media.
 							</p>
 						</div>
 
 						<div class="final-image">
 							<img
-								src={url('/tile-final.png')}
-								alt="Final Once Upon a Tile prototype"
+								src={url('/legacy-final.png')}
+								alt="Final Legacy PopUp Display prototype"
 							/>
 						</div>
 
