@@ -174,19 +174,19 @@ import { url } from '../../utils/paths';
 				display: block;
 			}
 
-			/* Keep topology image large but controlled */
+			/* Smaller topology image */
 			.topology-image img {
-				width: min(100%, 620px);
+				width: min(100%, 460px);
 				height: auto;
 				object-fit: contain;
 			}
 
-
-.prototype-image img {
-	width: min(100%, 430px);
-	height: auto;
-	object-fit: contain;
-}
+			/* Smaller prototype image */
+			.prototype-image img {
+				width: min(100%, 430px);
+				height: auto;
+				object-fit: contain;
+			}
 
 			.iteration-stat {
 				margin-top: 1.3rem;
@@ -325,9 +325,11 @@ import { url } from '../../utils/paths';
 						<div class="section-copy">
 							<p>
 								Designed, optimized, manufactured, and tested a
-								lightweight bicycle caliper brake through modeling, finite element analysis, topology optimization,
-								and prototyping. I was the team's FEA and topology lead, focusing on
-								structural performance and material-efficient geometry.
+								lightweight bicycle caliper brake through modeling,
+								finite element analysis, topology optimization,
+								and prototyping. I was the team's FEA and topology lead,
+								focusing on structural performance and material-efficient
+								geometry.
 							</p>
 						</div>
 
@@ -381,9 +383,9 @@ import { url } from '../../utils/paths';
 								<p>
 									Hand calculations were used to estimate braking loads,
 									cable tension, stress, and deflection before the CAD
-									geometry was evaluated with FEA. Initial simulations revealed stress concentrations
-									and excessive deformation around abrupt geometry
-									transitions and mounting regions.
+									geometry was evaluated with FEA. Initial simulations
+									revealed stress concentrations and excessive deformation
+									around abrupt geometry transitions and mounting regions.
 								</p>
 							</div>
 
@@ -424,9 +426,8 @@ import { url } from '../../utils/paths';
 								</p>
 
 								<p>
-									The resulting geometry was then
-									re-evaluated using FEA to optimize stiffness,
-									strength, and mass.
+									The resulting geometry was then re-evaluated using FEA
+									to optimize stiffness, strength, and mass.
 								</p>
 							</div>
 
@@ -449,8 +450,9 @@ import { url } from '../../utils/paths';
 								<p>
 									The SLS Nylon 12 prototype showed that the right
 									caliper deflected too much, preventing the opposite pad
-									from engaging effectively. Reinforcing its primary load path improved force
-									transfer and reduced the predicted right-caliper deflection.
+									from engaging effectively. Reinforcing its primary load
+									path improved force transfer and reduced the predicted
+									right-caliper deflection.
 								</p>
 
 								<div class="iteration-stat">
@@ -462,11 +464,11 @@ import { url } from '../../utils/paths';
 							</div>
 
 							<div class="process-image prototype-image">
-	<img
-		src={url('/brake-prototype.png')}
-		alt="Printed bicycle brake prototype"
-	/>
-</div>
+								<img
+									src={url('/brake-prototype.png')}
+									alt="Printed bicycle brake prototype"
+								/>
+							</div>
 
 						</div>
 
@@ -515,6 +517,9 @@ import { url } from '../../utils/paths';
 			</div>
 		</main>
 
+		<Footer />
+	</body>
+</html>
 		<Footer />
 	</body>
 </html>
