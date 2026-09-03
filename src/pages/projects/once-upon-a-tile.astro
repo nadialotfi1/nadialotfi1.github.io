@@ -150,6 +150,12 @@ import { url } from '../../utils/paths';
 				display: block;
 			}
 
+.testing-image img {
+	width: min(100%, 445px);
+	height: auto;
+	object-fit: contain;
+}
+
 			.feature-grid {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
@@ -316,12 +322,12 @@ import { url } from '../../utils/paths';
 								</p>
 							</div>
 
-							<div class="project-image">
-								<img
-									src={url('/tile-testing.png')}
-									alt="Once Upon a Tile user testing"
-								/>
-							</div>
+							<div class="process-image testing-image">
+	<img
+		src={url('/tile-testing.png')}
+		alt="User testing of the Once Upon a Tile prototype"
+	/>
+</div>
 
 						</div>
 
