@@ -69,8 +69,6 @@ import { url } from '../../utils/paths';
 				margin-bottom: 0;
 			}
 
-			/* HERO */
-
 			.back-link {
 				display: inline-block;
 				margin-bottom: 2rem;
@@ -115,8 +113,6 @@ import { url } from '../../utils/paths';
 				color: #cbd5e1;
 			}
 
-			/* OVERVIEW + PROBLEM */
-
 			.text-section {
 				display: grid;
 				grid-template-columns: 180px minmax(0, 1fr);
@@ -142,37 +138,18 @@ import { url } from '../../utils/paths';
 				border-bottom: 1px solid #334155;
 			}
 
-			.process-step {
-				display: grid;
-				grid-template-columns: 0.85fr 1.15fr;
-				gap: 4rem;
-				align-items: center;
+			.concept-copy {
+				max-width: 760px;
 				margin-top: 3rem;
 			}
 
-			/* DESIGN SKETCHES */
-
-			.sketch-grid {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				gap: 1rem;
-				align-items: center;
-			}
-
-			.sketch-grid img {
-				width: 100%;
-				height: auto;
-				display: block;
-				object-fit: contain;
-			}
-
-			/* DESIGN FEATURES */
+			/* FEATURES */
 
 			.feature-grid {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
 				gap: 1rem;
-				margin-top: 3rem;
+				margin-top: 2.5rem;
 			}
 
 			.feature {
@@ -196,6 +173,23 @@ import { url } from '../../utils/paths';
 				color: var(--color-text-muted);
 			}
 
+			/* LARGE SIDE-BY-SIDE SKETCHES */
+
+			.sketch-grid {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 1.5rem;
+				margin-top: 3rem;
+				align-items: center;
+			}
+
+			.sketch-grid img {
+				width: 100%;
+				height: 430px;
+				display: block;
+				object-fit: contain;
+			}
+
 			/* RESULTS */
 
 			.results-section {
@@ -215,22 +209,23 @@ import { url } from '../../utils/paths';
 				object-fit: contain;
 			}
 
-			/* MOBILE */
-
 			@media (max-width: 850px) {
 				.project-inner {
 					padding-left: 2rem;
 					padding-right: 2rem;
 				}
 
-				.text-section,
-				.process-step {
+				.text-section {
 					grid-template-columns: 1fr;
 					gap: 1.5rem;
 				}
 
 				.feature-grid {
 					grid-template-columns: 1fr;
+				}
+
+				.sketch-grid img {
+					height: 350px;
 				}
 			}
 
@@ -241,6 +236,10 @@ import { url } from '../../utils/paths';
 
 				.sketch-grid {
 					grid-template-columns: 1fr;
+				}
+
+				.sketch-grid img {
+					height: auto;
 				}
 			}
 		</style>
@@ -327,18 +326,17 @@ import { url } from '../../utils/paths';
 							Turning client needs into physical design decisions
 						</h2>
 
+						<div class="concept-copy">
 
-						<div class="process-step">
+							<span class="label">
+								01 · Research + Concept Development
+							</span>
+
+							<h2 class="section-title">
+								Translating needs into design concepts
+							</h2>
 
 							<div class="section-copy">
-
-								<span class="label">
-									01 · Research + Concept Development
-								</span>
-
-								<h2 class="section-title">
-									Translating needs into design concepts
-								</h2>
 
 								<p>
 									Client interviews helped identify portability,
@@ -352,21 +350,6 @@ import { url } from '../../utils/paths';
 									surfaces, storage, and methods for presenting both
 									two-dimensional and three-dimensional media.
 								</p>
-
-							</div>
-
-
-							<div class="sketch-grid">
-
-								<img
-									src={url('/legacy-sketch-1.png')}
-									alt="Legacy PopUp Display design concept sketch"
-								/>
-
-								<img
-									src={url('/legacy-sketch-2.png')}
-									alt="Legacy PopUp Display design rationale sketch"
-								/>
 
 							</div>
 
@@ -406,6 +389,23 @@ import { url } from '../../utils/paths';
 
 						</div>
 
+
+						<!-- LARGE CONCEPT SKETCHES -->
+
+						<div class="sketch-grid">
+
+							<img
+								src={url('/legacy-sketch-1.png')}
+								alt="Legacy PopUp Display design concept sketch"
+							/>
+
+							<img
+								src={url('/legacy-sketch-2.png')}
+								alt="Legacy PopUp Display design rationale sketch"
+							/>
+
+						</div>
+
 					</section>
 
 
@@ -420,6 +420,7 @@ import { url } from '../../utils/paths';
 						</h2>
 
 						<div class="section-copy">
+
 							<p>
 								The final prototype demonstrates a display that can
 								transition between compact transport, 2D presentation,
@@ -427,13 +428,16 @@ import { url } from '../../utils/paths';
 								modular structure allows Shorefront to adapt the same
 								system to different stories, venues, and media.
 							</p>
+
 						</div>
 
 						<div class="final-image">
+
 							<img
 								src={url('/legacy-final.png')}
 								alt="Final Legacy PopUp Display prototype"
 							/>
+
 						</div>
 
 					</section>
